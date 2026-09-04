@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>AeroCardia — Real-time guidance for every run &amp; ride</title><meta name="description" content="Portable VO2 &amp; breath sensor for runners, cyclists and longevity-focused athletes. Wellness training data, not a medical device."/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+html{scroll-behavior:smooth;}
+/* Custom Biometric Telemetry Animations */
+@keyframes waveFlow {
+  0% { stroke-dashoffset: 800; }
+  100% { stroke-dashoffset: 0; }
+}
+@keyframes scanlineMove {
+  0% { transform: translateX(-10%); opacity: 0.2; }
+  50% { opacity: 0.9; }
+  100% { transform: translateX(410px); opacity: 0.2; }
+}
+@keyframes breathRhythm {
+  0%, 100% { transform: scaleY(1); opacity: 0.85; }
+  50% { transform: scaleY(1.18); opacity: 1; }
+}
+@keyframes radarPulse {
+  0% { transform: scale(0.85); opacity: 0.9; }
+  50% { transform: scale(1.22); opacity: 0.35; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(0,240,170,0.5)); }
+  50% { filter: drop-shadow(0 0 14px rgba(0,240,170,0.95)); }
+}
+.animate-wave-flow {
+  stroke-dasharray: 800;
+  animation: waveFlow 6s linear infinite;
+}
+.animate-breath {
+  transform-origin: center bottom;
+  animation: breathRhythm 4s ease-in-out infinite;
+}
+.animate-radar {
+  transform-origin: center;
+  animation: radarPulse 2.8s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+.animate-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* Neko-style scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(.16,.84,.44,1), transform 0.9s cubic-bezier(.16,.84,.44,1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.is-visible > * {
+  animation: revealChild 0.8s cubic-bezier(.16,.84,.44,1) both;
+}
+.reveal-stagger.is-visible > *:nth-child(1) { animation-delay: 0.02s; }
+.reveal-stagger.is-visible > *:nth-child(2) { animation-delay: 0.10s; }
+.reveal-stagger.is-visible > *:nth-child(3) { animation-delay: 0.18s; }
+.reveal-stagger.is-visible > *:nth-child(4) { animation-delay: 0.26s; }
+@keyframes revealChild {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Squarespace-style idle horizontal marquee */
+.marquee-row { overflow: hidden; position: relative; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: marqueeScroll 38s linear infinite; }
+.marquee-row:hover .marquee-track { animation-play-state: paused; }
+@keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* Backed-by logo tiles: multiply-blend punches out a flat white background so
+   it disappears into the dark card; brightness/contrast/saturate compensates
+   for multiply's darkening so ink still pops. No-op if the source PNG already
+   has real alpha transparency (nothing to punch out, filter just adds a touch
+   of pop). Swap in a true transparent PNG for pixel-perfect results. */
+.logo-tile-img {
+  mix-blend-mode: multiply;
+  filter: brightness(1.7) contrast(1.15) saturate(1.35);
+  transition: filter 0.3s ease;
+}
+.logo-tile:hover .logo-tile-img {
+  filter: brightness(1.85) contrast(1.2) saturate(1.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
+  .animate-wave-flow, .animate-breath, .animate-radar, .animate-glow-pulse, .animate-pulse, .animate-ping, .animate-spin, .marquee-track { animation: none !important; }
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary": "#003825", "border-cyan": "rgba(6, 182, 212, 0.25)", "primary-fixed": "#44ffba", "surface-container-low": "#181c1e", "on-secondary-fixed": "#001f26", "surface-card": "#0E1417", "on-secondary": "#003640", "outline-variant": "#3b4a41", "surface-variant": "#313538", "on-primary-fixed": "#002114", "on-primary-container": "#006848", "outline": "#84958a", "surface-card-elevated": "#141D21", "on-primary-fixed-variant": "#005137", "inverse-primary": "#006c4a", "surface-tint": "#00e2a0", "telemetry-warning": "#F59E0B", "background": "#101416", "tertiary": "#b5ffe4", "tertiary-fixed-dim": "#00e0b3", "text-secondary": "#94A3B8", "error": "#ffb4ab", "border-biometric": "rgba(0, 240, 170, 0.22)", "secondary-fixed-dim": "#4cd7f6", "surface-base": "#080C0E", "on-error": "#690005", "surface-container": "#1c2022", "tertiary-container": "#00efbf", "border-subtle": "rgba(255, 255, 255, 0.08)", "secondary": "#4cd7f6", "primary-container": "#00f0aa", "on-tertiary-container": "#006851", "error-container": "#93000a", "glow-mint": "rgba(13, 245, 196, 0.15)", "surface-bright": "#363a3c", "telemetry-critical": "#EF4444", "secondary-fixed": "#acedff", "primary-fixed-dim": "#00e2a0", "surface-container-highest": "#313538", "on-surface": "#e0e3e5", "on-secondary-fixed-variant": "#004e5c", "on-secondary-container": "#00424e", "on-surface-variant": "#b9cbbf", "tertiary-fixed": "#2cffcd", "inverse-surface": "#e0e3e5", "on-error-container": "#ffdad6", "surface-dim": "#101416", "secondary-container": "#03b5d3", "primary": "#b7ffda", "on-tertiary-fixed": "#002118", "text-tertiary": "#475569", "on-tertiary-fixed-variant": "#00513f", "on-background": "#e0e3e5", "on-tertiary": "#00382b", "inverse-on-surface": "#2d3133", "text-primary": "#F1F5F9", "surface-container-lowest": "#0b0f11", "surface": "#101416", "surface-container-high": "#262b2d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "3rem", "space-xs": "0.5rem", "space-md": "1rem", "container-max": "1240px", "space-2xs": "0.25rem", "gutter-mobile": "1rem", "gutter-desktop": "2rem", "space-3xl": "4.5rem", "space-4xl": "6rem", "space-sm": "0.75rem", "space-lg": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "caption": ["Inter"], "headline-lg": ["Inter"], "body-base": ["Inter"], "display-hero-mobile": ["Inter"], "display-hero": ["Inter"], "data-metric": ["JetBrains Mono"], "headline-md": ["Inter"], "headline-lg-mobile": ["Inter"], "telemetry-badge": ["JetBrains Mono"], "data-readout": ["JetBrains Mono"], "body-sm": ["Inter"], "body-lg": ["Inter"] }, "fontSize": { "caption": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "400" }], "headline-lg": ["38px", { "lineHeight": "1.18", "letterSpacing": "-0.025em", "fontWeight": "600" }], "body-base": ["15px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero-mobile": ["36px", { "lineHeight": "1.12", "letterSpacing": "-0.025em", "fontWeight": "700" }], "display-hero": ["56px", { "lineHeight": "1.08", "letterSpacing": "-0.035em", "fontWeight": "700" }], "data-metric": ["32px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg-mobile": ["28px", { "lineHeight": "1.22", "letterSpacing": "-0.02em", "fontWeight": "600" }], "telemetry-badge": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600" }], "data-readout": ["14px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface-base font-body-base text-body-base text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-card/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-20 max-w-[1240px] mx-auto px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="AeroCardia Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XvUpakRvkDLarpY9NvzcyCDQuSxqO4o2vsgWf8ioYUWYbqNLLottasSyaSL7sn6BVYMCphY-zzIKnl1pSsmoTOrwfYb-Rmhehuf-2ea2Jabm0IOCc-9g0pEhKEUa6gT3QwHDIliChTtaEdwFhoEtpOfsMRgQQJL5ZPLPZP2euUPa_H0y34dz9idQ5vYLLd1q3uaWZvnxKOXu6PbOz_NzGIw--ei5DtCpKs_9xCw_V7uzdeiL5wVFTgwwo"/><span class="font-headline-md text-headline-md font-semibold tracking-tight text-text-primary">AeroCardia</span></div><nav class="hidden lg:flex items-center gap-space-md bg-surface-container-lowest/80 px-space-md py-space-xs rounded-full" data-active-classes="bg-surface-container-high text-primary-container font-semibold rounded-full"><a aria-current="page" class="px-space-md py-space-xs transition-colors bg-surface-container-high text-primary-container font-semibold rounded-full" data-path="product" href="#">Product</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="how-it-works" href="#">How it works</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="about" href="#">About</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="blog" href="#">Blog</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-xs rounded-full bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold tracking-tight shadow-[0_0_20px_rgba(0,240,170,0.35)] hover:bg-primary hover:text-on-primary transition-all duration-300" data-path="join-the-waitlist" href="#">Join the waitlist</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface-base min-h-[calc(100vh-20rem)]"><div class="flex flex-col w-full text-on-surface">
+<!-- HERO SECTION WITH DRAMATIC 3D PRODUCT RENDER BACKGROUND -->
+<section class="relative w-full overflow-hidden px-gutter-mobile lg:px-gutter-desktop py-space-2xl lg:py-space-4xl">
+<!-- Ambient Bio-Glow Background Spotlights -->
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container/10 blur-[130px] rounded-full pointer-events-none"></div>
+<div class="absolute bottom-10 right-1/4 w-[28rem] h-[28rem] bg-secondary/10 blur-[140px] rounded-full pointer-events-none"></div>
+<!-- Integrated 3D Product Atmospheric Backdrop -->
+<div class="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
+<div class="absolute w-[800px] h-[550px] bg-primary-container/15 blur-[140px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+<img alt="AeroCardia Sensor Pod 3D Render" class="w-full max-w-5xl h-auto object-contain opacity-35 lg:opacity-40 mix-blend-screen scale-110 lg:scale-125 translate-y-10 lg:translate-y-6 select-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7JAKTdlbncWOXvh35qUlSh4xLpWVFEkR8Q_6je1bj8TfQNr3Oc1b_wG8ZpzMtZH46rqbVufrw-NmUwqXyRE81SADMOTxPHGumRNgNaVgazI71hqU_t8dQ1-6eObOZMyJW7nH4TGgwHRmJbzrDWfseMbDLNcEsLA9xdiSrIw_vVXYUnehIoS3EPkGfD50xnlIAYGh9GgAewGj2sgyspHFj9FBeCAiGCt7tNLutu_DZVd6As5rBm6izM9uF4hZ_77IDvg" style="filter: drop-shadow(0 0 60px rgba(0, 240, 170, 0.25));"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-base via-surface-base/60 to-surface-base/80"></div>
+<div class="absolute inset-0 bg-radial from-transparent via-surface-base/40 to-surface-base"></div>
+</div>
+<div class="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center relative z-10">
+<!-- Left Editorial Column -->
+<div class="lg:col-span-7 flex flex-col items-start gap-space-lg">
+<div class="inline-flex items-center gap-space-xs px-3 py-1 rounded-full bg-primary-container/10 border-biometric backdrop-blur-md">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Portable VO2 &amp; Breath Sensor</span>
+</div>
+<h1 class="font-display-hero text-display-hero text-text-primary tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+          Real-time guidance <br class="hidden sm:inline"/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-text-primary via-primary to-secondary">for every run &amp; ride.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-xl drop-shadow-sm">
+          Clip on the cup, breathe like you always do, and go. AeroCardia reads your oxygen uptake, ventilation and effort live — the lab test for endurance and longevity, in every session.
+        </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<a class="inline-flex items-center gap-space-xs px-space-xl py-space-sm rounded-full bg-primary-container text-on-primary font-body-base text-body-base font-semibold tracking-tight shadow-[0_0_24px_rgba(0,240,170,0.35)] hover:bg-primary transition-all duration-300" data-path="join-the-waitlist" href="#">
+<span>Join the waitlist</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-full bg-surface-card/90 hover:bg-surface-card-elevated text-text-primary font-body-base text-body-base transition-colors border-subtle backdrop-blur-md" data-path="how-it-works" href="#">
+<span class="material-symbols-outlined text-secondary text-[20px]">play_circle</span>
+<span>See how it works</span>
+</a>
+</div>
+<div class="flex items-center gap-space-xs text-text-tertiary font-caption text-caption pt-space-xs">
+<span class="material-symbols-outlined text-[15px] text-text-secondary">verified_user</span>
+<span>For general wellness and fitness use. AeroCardia is not a medical device.</span>
+</div>
+</div>
+<!-- Right Column: Interactive Live Telemetry HUD (Replacing Stock Photo) -->
+<div class="lg:col-span-5 w-full">
+<div class="relative w-full rounded-2xl bg-surface-card/90 p-space-lg shadow-2xl border-biometric backdrop-blur-xl">
+<!-- Top Accent Light Line -->
+<div class="absolute -top-[1px] left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-transparent via-primary-container to-transparent"></div>
+<!-- Console Header -->
+<div class="flex items-center justify-between pb-space-md mb-space-md border-b border-white/5">
+<div class="flex flex-col">
+<span class="font-telemetry-badge text-telemetry-badge text-text-tertiary uppercase tracking-wider">Telemetry HUD // v3.4</span>
+<h3 class="font-headline-md text-headline-md text-text-primary">From your last session</h3>
+</div>
+<span class="font-data-readout text-data-readout text-primary-container px-space-xs py-0.5 rounded bg-primary-container/10 font-bold animate-pulse">// 02</span>
+</div>
+<!-- Live Device Link Chip -->
+<div class="flex items-center justify-between px-space-md py-space-xs rounded-lg bg-surface-container-lowest/80 mb-space-lg">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-caption text-caption text-text-secondary font-mono">BLE 5.2 &amp; ANT+ CONNECTED</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-text-secondary font-mono">
+<span class="material-symbols-outlined text-[16px] text-primary-container">battery_charging_90</span>
+<span>98%</span>
+</div>
+</div>
+<!-- Primary Metric Grid -->
+<div class="grid grid-cols-2 gap-space-md mb-space-lg">
+<!-- VO2 Primary -->
+<div class="p-space-md rounded-xl bg-surface-card-elevated flex flex-col justify-between hover:border-biometric border border-transparent transition-all">
+<span class="font-telemetry-badge text-telemetry-badge text-text-secondary uppercase">VO2 Live Peak</span>
+<div class="my-space-xs flex items-baseline gap-1">
+<span class="font-data-metric text-data-metric text-primary-container tracking-tight">44.1</span>
+<span class="font-caption text-caption text-text-tertiary font-mono">ml/kg/min</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-caption text-caption text-text-secondary">Aerobic Zone 3</span>
+</div>
+</div>
+<!-- Minute Ventilation -->
+<div class="p-space-md rounded-xl bg-surface-card-elevated flex flex-col justify-between hover:border-biometric border border-transparent transition-all">
+<span class="font-telemetry-badge text-telemetry-badge text-text-secondary uppercase">Minute Ventilation</span>
+<div class="my-space-xs flex items-baseline gap-1">
+<span class="font-data-metric text-data-metric text-text-primary tracking-tight">96</span>
+<span class="font-caption text-caption text-text-tertiary font-mono">L/min</span>
+</div>
+<span class="font-caption text-caption text-secondary">Optimal VE/VCO2</span>
+</div>
+<!-- RER Metric -->
+<div class="p-space-md rounded-xl bg-surface-card-elevated flex flex-col justify-between hover:border-biometric border border-transparent transition-all">
+<span class="font-telemetry-badge text-telemetry-badge text-text-secondary uppercase">Live RER</span>
+<div class="my-space-xs flex items-baseline gap-1">
+<span class="font-data-metric text-data-metric text-secondary tracking-tight">0.98</span>
+<span class="font-caption text-caption text-text-tertiary font-mono">CO2/O2</span>
+</div>
+<span class="font-caption text-caption text-text-tertiary">Fat: 12% | Carb: 88%</span>
+</div>
+<!-- Threshold Held -->
+<div class="p-space-md rounded-xl bg-surface-card-elevated flex flex-col justify-between hover:border-biometric border border-transparent transition-all">
+<span class="font-telemetry-badge text-telemetry-badge text-text-secondary uppercase">Threshold Held</span>
+<div class="my-space-xs flex items-baseline gap-1">
+<span class="font-data-metric text-data-metric text-text-primary tracking-tight">52:00</span>
+<span class="font-caption text-caption text-text-tertiary font-mono">min:s</span>
+</div>
+<span class="font-caption text-caption text-primary font-mono">VT2 Sustained</span>
+</div>
+</div>
+<!-- Dynamic SVG Gas-Exchange Waveform Visualizer with Live Scanning & Inspection Tooltip -->
+<div class="relative p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-xs group/waveform cursor-crosshair border border-white/5 hover:border-biometric transition-colors" id="hero-waveform-card">
+<div class="flex justify-between items-center text-text-tertiary font-caption text-caption">
+<span class="font-mono text-primary-container text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] animate-spin" style="animation-duration: 8s;">graphic_eq</span>
+                EXPIRATORY GAS EXCHANGE OSCILLATION
+              </span>
+<span class="font-mono text-xs flex items-center gap-1.5 text-primary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+                2.4 Hz Live
+              </span>
+</div>
+<!-- Interactive Hover Telemetry Inspection Badge -->
+<div class="opacity-0 group-hover/waveform:opacity-100 pointer-events-none transition-all duration-300 absolute -top-8 left-1/2 -translate-x-1/2 z-30 px-3 py-1 rounded-md bg-surface-card-elevated/95 border border-primary-container/40 shadow-xl backdrop-blur-md flex items-center gap-2 whitespace-nowrap text-[11px] font-mono text-primary-container">
+<span class="material-symbols-outlined text-[13px] text-primary-container">insights</span>
+<span>Instantaneous VE: <strong class="text-text-primary">96.4 L/min</strong> | FiO2/FeO2 Δ: <strong class="text-text-primary">4.8%</strong> | Cadence: <strong class="text-text-primary">14 bpm</strong></span>
+</div>
+<div class="w-full h-16 relative overflow-hidden flex items-center">
+<!-- Moving Vertical Radar Scanline -->
+<div class="absolute inset-y-0 w-8 pointer-events-none z-20 bg-gradient-to-r from-transparent via-primary-container/20 to-transparent blur-[2px]" style="animation: scanlineMove 3.6s ease-in-out infinite;"></div>
+<div class="absolute inset-y-0 w-[1.5px] bg-primary-container/60 pointer-events-none z-20" style="animation: scanlineMove 3.6s ease-in-out infinite;"></div>
+<svg class="w-full h-full animate-breath" fill="none" preserveaspectratio="none" viewbox="0 0 400 64">
+<defs>
+<lineargradient id="waveGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00F0AA" stop-opacity="0.38"></stop>
+<stop offset="100%" stop-color="#00F0AA" stop-opacity="0.02"></stop>
+</lineargradient>
+<lineargradient id="waveStrokeGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#00F0AA" stop-opacity="0.4"></stop>
+<stop offset="35%" stop-color="#4CD7F6" stop-opacity="0.9"></stop>
+<stop offset="70%" stop-color="#00F0AA" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="#4CD7F6" stop-opacity="0.5"></stop>
+</lineargradient>
+</defs>
+<path d="M0 32 Q 20 6, 40 32 T 80 32 T 120 12 T 160 52 T 200 32 T 240 10 T 280 50 T 320 32 T 360 8 T 400 32 L 400 64 L 0 64 Z" fill="url(#waveGradient)"></path>
+<path class="animate-wave-flow" d="M0 32 Q 20 6, 40 32 T 80 32 T 120 12 T 160 52 T 200 32 T 240 10 T 280 50 T 320 32 T 360 8 T 400 32" stroke="url(#waveStrokeGradient)" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Real-time pulsing tracker node on peak -->
+<circle class="animate-ping" cx="240" cy="10" fill="#00F0AA" r="3.5"></circle>
+<circle cx="240" cy="10" fill="#080C0E" r="3" stroke="#00F0AA" stroke-width="2"></circle>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BACKED BY SECTION -->
+<section class="w-full py-space-xl bg-surface-card border-y border-white/5">
+<div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<span class="font-telemetry-badge text-telemetry-badge text-text-tertiary uppercase tracking-widest whitespace-nowrap">Backed By</span>
+<div class="reveal reveal-stagger grid grid-cols-2 md:grid-cols-4 gap-space-md w-full">
+<div class="logo-tile flex items-center justify-center p-space-md h-16 rounded-xl bg-surface-container-low/60 border border-primary-container/15 hover:border-primary-container/50 hover:bg-surface-container-low transition-all duration-300 overflow-hidden">
+<img alt="McGill Dobson Centre for Entrepreneurship" class="logo-tile-img max-h-10 max-w-[82%] object-contain" onerror="aeroLogoFallback(this,'McGill Dobson Centre')" src="assets/img/backed-by/mcgill-dobson-centre.png"/>
+</div>
+<div class="logo-tile flex items-center justify-center p-space-md h-16 rounded-xl bg-surface-container-low/60 border border-primary-container/15 hover:border-primary-container/50 hover:bg-surface-container-low transition-all duration-300 overflow-hidden">
+<img alt="Garage&amp;Co Incubator" class="logo-tile-img max-h-10 max-w-[82%] object-contain" onerror="aeroLogoFallback(this,'Garage&amp;Co Incubator')" src="assets/img/backed-by/garage-and-co.png"/>
+</div>
+<div class="logo-tile flex items-center justify-center p-space-md h-16 rounded-xl bg-surface-container-low/60 border border-primary-container/15 hover:border-primary-container/50 hover:bg-surface-container-low transition-all duration-300 overflow-hidden">
+<img alt="Vitruvius Venture Studio" class="logo-tile-img max-h-10 max-w-[82%] object-contain" onerror="aeroLogoFallback(this,'Vitruvius Venture Studio')" src="assets/img/backed-by/vitruvius-venture-studio.png"/>
+</div>
+<div class="logo-tile flex items-center justify-center p-space-md h-16 rounded-xl bg-surface-container-low/60 border border-primary-container/15 hover:border-primary-container/50 hover:bg-surface-container-low transition-all duration-300 overflow-hidden">
+<img alt="CLIP" class="logo-tile-img max-h-10 max-w-[82%] object-contain" onerror="aeroLogoFallback(this,'CLIP')" src="assets/img/backed-by/clip.png"/>
+</div>
+</div>
+</div>
+</section>
+<!-- IDLE HORIZONTAL MARQUEE (Squarespace-inspired ambient motion strip) -->
+<section class="w-full py-space-lg bg-surface-base border-b border-white/5">
+<div class="marquee-row">
+<div class="marquee-track">
+<!-- Set A -->
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap"><span class="material-symbols-outlined text-primary-container text-[18px]">directions_run</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Marathon Pacing</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap"><span class="material-symbols-outlined text-secondary text-[18px]">directions_bike</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Gran Fondo Power</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap"><span class="material-symbols-outlined text-primary text-[18px]">favorite</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Healthspan &amp; Longevity</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap"><span class="material-symbols-outlined text-telemetry-warning text-[18px]">landscape</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Trail &amp; Ultra</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap"><span class="material-symbols-outlined text-primary-container text-[18px]">pool</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Triathlon Base</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap"><span class="material-symbols-outlined text-secondary text-[18px]">monitor_heart</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">VO2 Max Testing</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap"><span class="material-symbols-outlined text-primary text-[18px]">emoji_events</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Race-Day Ready</span></div>
+<!-- Set B (duplicate for seamless loop) -->
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap" aria-hidden="true"><span class="material-symbols-outlined text-primary-container text-[18px]">directions_run</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Marathon Pacing</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap" aria-hidden="true"><span class="material-symbols-outlined text-secondary text-[18px]">directions_bike</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Gran Fondo Power</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap" aria-hidden="true"><span class="material-symbols-outlined text-primary text-[18px]">favorite</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Healthspan &amp; Longevity</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap" aria-hidden="true"><span class="material-symbols-outlined text-telemetry-warning text-[18px]">landscape</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Trail &amp; Ultra</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap" aria-hidden="true"><span class="material-symbols-outlined text-primary-container text-[18px]">pool</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Triathlon Base</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap" aria-hidden="true"><span class="material-symbols-outlined text-secondary text-[18px]">monitor_heart</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">VO2 Max Testing</span></div>
+<div class="flex items-center gap-space-xs px-space-lg py-space-sm whitespace-nowrap" aria-hidden="true"><span class="material-symbols-outlined text-primary text-[18px]">emoji_events</span><span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Race-Day Ready</span></div>
+</div>
+</div>
+</section>
+<!-- WHAT YOU GET SECTION (WITH INTERACTIVE TOOLTIPS & SCRUBBING) -->
+<section class="w-full py-space-3xl lg:py-space-4xl px-gutter-mobile lg:px-gutter-desktop max-w-[1240px] mx-auto">
+<div class="reveal flex flex-col items-start gap-space-xs mb-space-2xl max-w-3xl">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">What You Get</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">
+        Personalised run &amp; ride training. Powered by the best data.
+      </h2>
+<p class="font-body-lg text-body-lg text-text-secondary mt-space-xs">
+        Heart rate tells you how hard your heart is working. AeroCardia tells you what your whole system is doing — how much oxygen you are actually using, and how close you are to your ceiling.
+      </p>
+</div>
+<!-- 3 Data Cards Grid -->
+<div class="reveal reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-space-xl">
+<!-- Feature Card 01: Training Zones with Interactive Segment Tooltips -->
+<div class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated transition-all duration-300 shadow-xl border-subtle">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-data-readout text-data-readout text-primary-container font-mono">01 // TELEMETRY</span>
+<span class="material-symbols-outlined text-text-tertiary">tune</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary">Real-time guidance</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            Live VO2, ventilation and effort stream to your watch or head unit — so you hold the right zone on every hill and interval, not a guess from max heart rate.
+          </p>
+<!-- SVG Zone Spectrum Visualization with Interactive Hover Tooltips -->
+<div class="relative my-space-md p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-sm group/zones">
+<div class="flex justify-between text-caption font-caption text-text-tertiary font-mono">
+<span class="group-hover/zones:text-primary-container transition-colors cursor-pointer" title="VT1 Aerobic Boundary">VT1 (Aerobic)</span>
+<span class="text-primary-container font-bold">CURRENT: ZONE 2</span>
+<span class="group-hover/zones:text-secondary transition-colors cursor-pointer" title="VT2 Lactate Threshold">VT2 (Lactate)</span>
+</div>
+<!-- Interactive Zone Bar Stack with Tooltips -->
+<div class="relative w-full flex h-3.5 rounded-full overflow-visible gap-1 bg-surface-container-high cursor-pointer p-0.5">
+<!-- Zone 1 -->
+<div class="group/z1 relative w-[18%] h-full bg-secondary/50 rounded-l-full hover:bg-secondary transition-all">
+<div class="opacity-0 group-hover/z1:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-0 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-white/10 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
+<span class="text-secondary font-bold">Zone 1 Active Recovery</span><br/><span class="text-text-secondary">&lt; 120 bpm • Baseline Lipolysis</span>
+</div>
+</div>
+<!-- Zone 2 Aerobic (Active Highlight) -->
+<div class="group/z2 relative w-[28%] h-full bg-primary-container shadow-[0_0_12px_rgba(0,240,170,0.6)] hover:brightness-110 transition-all">
+<div class="opacity-0 group-hover/z2:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-primary-container/40 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
+<span class="text-primary-container font-bold">Zone 2 Aerobic Base</span><br/><span class="text-text-secondary">120-148 bpm • Lactate &lt; 2.0 mmol/L</span>
+</div>
+</div>
+<!-- Zone 3 Sweetspot -->
+<div class="group/z3 relative w-[22%] h-full bg-secondary-container/40 hover:bg-secondary-container transition-all">
+<div class="opacity-0 group-hover/z3:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-secondary-container/40 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
+<span class="text-secondary font-bold">Sweetspot / Tempo</span><br/><span class="text-text-secondary">148-165 bpm • Sustainable Glycogen</span>
+</div>
+</div>
+<!-- Zone 4 Threshold -->
+<div class="group/z4 relative w-[18%] h-full bg-telemetry-warning/40 hover:bg-telemetry-warning transition-all">
+<div class="opacity-0 group-hover/z4:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-telemetry-warning/40 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
+<span class="text-telemetry-warning font-bold">Zone 4 Threshold (VT2)</span><br/><span class="text-text-secondary">166-176 bpm • 4.0 mmol/L Lactate</span>
+</div>
+</div>
+<!-- Zone 5 Anaerobic -->
+<div class="group/z5 relative w-[14%] h-full bg-telemetry-critical/40 rounded-r-full hover:bg-telemetry-critical transition-all">
+<div class="opacity-0 group-hover/z5:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 right-0 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-telemetry-critical/40 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
+<span class="text-telemetry-critical font-bold">Zone 5 VO2 Max Peak</span><br/><span class="text-text-secondary">&gt; 176 bpm • Max Ventilation</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between font-caption text-caption text-text-tertiary font-mono">
+<span>120 bpm</span>
+<span class="text-primary font-bold">148 bpm (Sweetspot)</span>
+<span>176 bpm</span>
+</div>
+</div>
+<ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-text-secondary">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>Live oxygen &amp; breathing feedback</span>
+</li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>Zones from measured thresholds</span>
+</li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>Works on the road, trail and bike</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Feature Card 02: Train In Phases with Interactive Progression Curve Tooltips -->
+<div class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated transition-all duration-300 shadow-xl border-subtle">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-data-readout text-data-readout text-primary-container font-mono">02 // PROGRESSION</span>
+<span class="material-symbols-outlined text-text-tertiary">stacked_line_chart</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary">Train in phases</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            Build an aerobic base, test where you are, then sharpen for race day. Each session becomes feedback: was that aerobic, or did you drift?
+          </p>
+<!-- SVG Step Ramp & Trend Graph with Hotspot Pins -->
+<div class="relative my-space-md p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-xs group/phases">
+<div class="flex justify-between text-caption font-caption text-text-tertiary font-mono">
+<span>12-Week VO2 Peak Curve</span>
+<span class="text-primary-container font-bold">+6.4 ml/kg</span>
+</div>
+<div class="relative w-full h-16 flex items-end">
+<svg class="w-full h-full cursor-crosshair" preserveaspectratio="none" viewbox="0 0 200 60">
+<!-- Ramp Steps in background -->
+<path d="M 0 55 L 40 55 L 40 45 L 80 45 L 80 35 L 120 35 L 120 20 L 160 20 L 160 8 L 200 8" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"></path>
+<!-- Trend curve with glow transition on card hover -->
+<path class="transition-all duration-300 group-hover/phases:stroke-[#00F0AA]" d="M 0 52 Q 60 48, 100 32 T 200 10" fill="none" filter="drop-shadow(0 0 3px rgba(76,215,246,0.5))" stroke="#4CD7F6" stroke-width="2.5"></path>
+<circle class="animate-ping" cx="200" cy="10" fill="#4CD7F6" r="3.5"></circle>
+<circle cx="200" cy="10" fill="#080C0E" r="3.5" stroke="#4CD7F6" stroke-width="2"></circle>
+</svg>
+<!-- Interactive Inspection Node: Week 4 Base -->
+<div class="group/point1 absolute left-[20%] top-[70%] -translate-x-1/2 -translate-y-1/2 cursor-pointer">
+<div class="w-2.5 h-2.5 rounded-full bg-surface-base border-2 border-secondary group-hover/point1:bg-secondary group-hover/point1:scale-125 transition-all"></div>
+<div class="opacity-0 group-hover/point1:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-1.5 left-1/2 -translate-x-1/2 z-40 px-2 py-1 rounded bg-surface-card-elevated border border-secondary/40 shadow-xl text-[11px] font-mono text-text-primary whitespace-nowrap">
+<span class="text-secondary font-semibold">Week 4 Base:</span> 48.1 ml/kg/min (+1.2)
+                </div>
+</div>
+<!-- Interactive Inspection Node: Week 8 Test -->
+<div class="group/point2 absolute left-[50%] top-[45%] -translate-x-1/2 -translate-y-1/2 cursor-pointer">
+<div class="w-3 h-3 rounded-full bg-surface-base border-2 border-primary-container group-hover/point2:bg-primary-container group-hover/point2:scale-125 transition-all"></div>
+<div class="opacity-0 group-hover/point2:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-1.5 left-1/2 -translate-x-1/2 z-40 px-2 py-1 rounded bg-surface-card-elevated border border-primary-container/40 shadow-xl text-[11px] font-mono text-text-primary whitespace-nowrap">
+<span class="text-primary-container font-semibold">Week 8 Test:</span> 51.2 ml/kg/min (+3.8)
+                </div>
+</div>
+<!-- Interactive Inspection Node: Week 12 Peak -->
+<div class="group/point3 absolute right-0 top-[12%] translate-x-1 -translate-y-1/2 cursor-pointer">
+<div class="w-3 h-3 rounded-full bg-transparent group-hover/point3:bg-secondary/40 transition-all"></div>
+<div class="opacity-0 group-hover/point3:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-1.5 right-0 z-40 px-2 py-1 rounded bg-surface-card-elevated border border-secondary/40 shadow-xl text-[11px] font-mono text-text-primary whitespace-nowrap">
+<span class="text-secondary font-semibold">Week 12 Peak:</span> 54.5 ml/kg/min (+6.4)
+                </div>
+</div>
+</div>
+<div class="flex justify-between font-caption text-caption text-text-tertiary font-mono pt-1">
+<span>Base Block</span>
+<span>Test Block</span>
+<span class="text-secondary font-semibold">Peak Sharp</span>
+</div>
+</div>
+<ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-text-secondary">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>Foundation, test and peak blocks</span>
+</li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>Session review after every workout</span>
+</li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>VO2 max tracked as a long-term trend</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Feature Card 03: Race-Day Targets with Interactive Substrate Oxidation Tooltips -->
+<div class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated transition-all duration-300 shadow-xl border-subtle">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-data-readout text-data-readout text-primary-container font-mono">03 // OXIDATION</span>
+<span class="material-symbols-outlined text-text-tertiary">local_fire_department</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary">Race-day targets</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            Turn months of real gas-exchange data into pacing you can trust — from a 10k to a marathon or a gran fondo, know what is sustainable before you spend it.
+          </p>
+<!-- SVG Substrate Oxidation Curve (Fat vs Carb) with Interactive Pins -->
+<div class="relative my-space-md p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-xs group/ox">
+<div class="flex justify-between text-caption font-caption text-text-tertiary font-mono">
+<span class="text-primary-container flex items-center gap-1">■ Fat Ox</span>
+<span class="text-telemetry-warning flex items-center gap-1">■ CHO Burn</span>
+<span class="text-text-primary font-bold">Crossover: 260W</span>
+</div>
+<div class="relative w-full h-16 flex items-center">
+<svg class="w-full h-full cursor-crosshair" preserveaspectratio="none" viewbox="0 0 200 60">
+<!-- Fat burn curve descending with glow on hover -->
+<path class="transition-all duration-300 group-hover/ox:filter group-hover/ox:drop-shadow-[0_0_4px_rgba(0,240,170,0.8)]" d="M 0 10 Q 70 12, 100 32 T 200 55" fill="none" stroke="#00F0AA" stroke-width="2.2"></path>
+<!-- Carb burn curve ascending with glow on hover -->
+<path class="transition-all duration-300 group-hover/ox:filter group-hover/ox:drop-shadow-[0_0_4px_rgba(245,158,11,0.8)]" d="M 0 55 Q 80 50, 100 32 T 200 6" fill="none" stroke="#F59E0B" stroke-width="2.2"></path>
+<!-- Vertical threshold guide dashed line -->
+<line stroke="rgba(255,255,255,0.2)" stroke-dasharray="2 2" stroke-width="1" x1="100" x2="100" y1="5" y2="55"></line>
+<!-- Crossover node -->
+<circle cx="100" cy="32" fill="#F1F5F9" r="3.5"></circle>
+</svg>
+<!-- Interactive FatMax Tooltip Pin -->
+<div class="group/fatmax absolute left-3 top-2.5 cursor-pointer">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-primary-container/30 group-hover/fatmax:scale-125 transition-transform"></div>
+<div class="opacity-0 group-hover/fatmax:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-1.5 left-0 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-primary-container/40 shadow-xl backdrop-blur-md text-[11px] font-mono whitespace-nowrap">
+<span class="text-primary-container font-semibold">Aerobic Max:</span> Fat 0.68 g/min (180W)
+                </div>
+</div>
+<!-- Interactive Crossover Tooltip Pin -->
+<div class="group/crossover absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer">
+<div class="w-4 h-4 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+</div>
+<div class="opacity-0 group-hover/crossover:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-white/20 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
+<span class="text-text-primary font-bold">Crossover Point (260W):</span><br/>
+<span class="text-text-secondary">50% Fat / 50% Carb oxidation (RER 0.85)</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between font-caption text-caption text-text-tertiary font-mono pt-1">
+<span>Aerobic (Fat Max)</span>
+<span class="text-text-primary">Threshold (Mix)</span>
+<span>Anaerobic (Glyco)</span>
+</div>
+</div>
+<ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-text-secondary">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>Threshold pace &amp; power targets</span>
+</li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>Fuelling cues from live RER</span>
+</li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+<span>Peak when it matters</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- SETUP SECTION (HIGH-RESOLUTION 3D DEVICE RENDER WITH INTERACTIVE HOTSPOTS) -->
+<section class="w-full py-space-3xl lg:py-space-4xl bg-surface-card-elevated">
+<div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
+<!-- Left: Clean 3D Product Showcase with Hotspots and Switcher -->
+<div class="reveal lg:col-span-6 w-full flex flex-col items-center">
+<div class="relative w-full aspect-square max-w-lg rounded-3xl bg-surface-base p-space-lg flex flex-col justify-between border-subtle shadow-2xl overflow-hidden group/cad">
+<!-- Background Grid & Glow -->
+<div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(rgba(0, 240, 170, 0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-primary-container/5 via-transparent to-primary-container/5 pointer-events-none"></div>
+<!-- Top Bar with Switcher -->
+<div class="relative z-20 flex justify-between items-center text-text-tertiary font-mono text-caption">
+<span class="text-primary-container flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[15px] animate-spin" style="animation-duration: 12s;">memory</span>
+  AEROCARDIA POD Mk-IV
+</span>
+<!-- View / Model Toggle -->
+<div class="flex items-center gap-1 bg-surface-card/80 p-0.5 rounded-full border border-white/10 text-[10px]">
+<button class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-bold transition-all" id="setup-view-flagship" onclick="setSetupModel('flagship')">Arctic Cyan</button>
+<button class="px-2.5 py-0.5 rounded-full text-text-secondary hover:text-text-primary transition-all" id="setup-view-solar" onclick="setSetupModel('solar')">Solar Gold</button>
+</div>
+</div>
+<!-- Central High-Res 3D Device Render with Interactive Hotspots -->
+<div class="relative z-10 w-full flex-1 flex items-center justify-center py-2">
+<div class="relative w-full max-w-md flex items-center justify-center">
+<!-- Active Product Render Image -->
+<img alt="AeroCardia Sensor Pod 3D Render" class="w-full h-auto object-contain max-h-64 drop-shadow-[0_15px_35px_rgba(0,240,170,0.22)] transition-all duration-500 scale-105" id="setup-device-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArSpnmmiZMZB2cghffRfyUKc19XHopu-5vEUN4AUps1AhfuULTWVGYMF_QnP0kjSMu30f-WydV5OdtVdxYSF3vnKo8HwhWwhZ_mKMjXJm_V59LmlfGb2Xogh4ZbEpFmR00l-vo8B4wapNHgDUxVTgQiYDmp20e0CJFvWzy-gaqG1Q3hzI6hHkjPLn31ijXVShkdP1RhAyVt5ZqRoHOjiwnRq0Q-Dy3Ae9oCwaquI8LHHTECuhR2_M62bx30feyBu3IuA"/>
+<!-- Radar Pulse Ring Behind Sensor Nozzle -->
+<div class="absolute left-[16%] top-[50%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<div class="w-20 h-20 rounded-full border border-primary-container/40 animate-radar"></div>
+<div class="w-28 h-28 rounded-full border border-secondary/30 animate-radar" style="animation-delay: 1s;"></div>
+</div>
+<!-- Hotspot 1: Ergonomic Soft Face-Cup -->
+<div class="group/seal absolute right-[14%] top-[34%] cursor-pointer z-30">
+<div class="relative flex items-center justify-center">
+<span class="w-4 h-4 rounded-full bg-primary-container/40 animate-ping absolute"></span>
+<span class="w-3 h-3 rounded-full bg-primary-container border-2 border-surface-base shadow-[0_0_8px_#00F0AA]"></span>
+</div>
+<div class="opacity-0 group-hover/seal:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full right-0 mb-2.5 z-40 p-2.5 rounded-xl bg-surface-card-elevated/95 border border-primary-container/40 shadow-2xl backdrop-blur-md text-[11px] font-mono whitespace-nowrap">
+<div class="text-primary-container font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Biocompatible Face-Cup Seal
+        </div>
+<div class="text-text-secondary">Medical-grade silicone (&lt;0.5 hPa leak rate)</div>
+<div class="text-text-tertiary">Quick-snap magnetic release connector</div>
+</div>
+</div>
+<!-- Hotspot 2: Core Micro-Spectrometer Pod -->
+<div class="group/core absolute left-[46%] top-[40%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30">
+<div class="relative flex items-center justify-center w-8 h-8 rounded-full hover:bg-primary-container/15 transition-colors">
+<span class="w-3.5 h-3.5 rounded-full bg-primary-container animate-pulse shadow-[0_0_12px_#00F0AA]"></span>
+</div>
+<div class="opacity-0 group-hover/core:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 z-40 p-2.5 rounded-xl bg-surface-card-elevated/95 border border-primary-container/50 shadow-2xl backdrop-blur-md text-[11px] font-mono whitespace-nowrap">
+<div class="text-primary-container font-bold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Dual Optical Micro-Spectrometer
+        </div>
+<div class="text-text-secondary">50Hz differential O2/CO2 infrared optical bench</div>
+<div class="text-text-tertiary">Dynamic barometric &amp; humidity auto-compensation</div>
+</div>
+</div>
+<!-- Hotspot 3: Front Expiratory Vent Nozzle -->
+<div class="group/vent absolute left-[16%] top-[50%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30">
+<div class="relative flex items-center justify-center">
+<span class="w-4 h-4 rounded-full bg-secondary/40 animate-ping absolute"></span>
+<span class="w-3 h-3 rounded-full bg-secondary border-2 border-surface-base shadow-[0_0_8px_#4CD7F6]"></span>
+</div>
+<div class="opacity-0 group-hover/vent:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full left-0 mb-2.5 z-40 p-2.5 rounded-xl bg-surface-card-elevated/95 border border-secondary/40 shadow-2xl backdrop-blur-md text-[11px] font-mono whitespace-nowrap">
+<div class="text-secondary font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Hydrophobic Expiratory Channel
+        </div>
+<div class="text-text-secondary">Zero-condensation ultrasonic micro-vortex flow sensor</div>
+<div class="text-text-tertiary">Ventilation up to 240 L/min sprint capacity</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Micro Specs Indicator -->
+<div class="relative z-10 grid grid-cols-3 gap-2 pt-space-xs border-t border-white/5 font-mono text-caption text-text-secondary text-center">
+<div class="p-1.5 rounded-lg bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" title="29 grams ultra-lightweight composite">
+<div class="text-[10px] text-text-tertiary">WEIGHT</div>
+<div class="text-text-primary font-bold">29g Net</div>
+</div>
+<div class="p-1.5 rounded-lg bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" title="Dual differential sampling at 50Hz">
+<div class="text-[10px] text-text-tertiary">SAMPLING</div>
+<div class="text-primary-container font-bold">50Hz Dual</div>
+</div>
+<div class="p-1.5 rounded-lg bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" title="Certified hypoallergenic medical silicone">
+<div class="text-[10px] text-text-tertiary">SEAL</div>
+<div class="text-secondary font-bold">Med-Silicone</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md flex items-center gap-space-sm font-caption text-caption text-text-secondary">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>Soft mask • Head strap • Sensor pod</span>
+</div>
+</div>
+<!-- Right: Setup Instructions & Specs -->
+<div class="reveal lg:col-span-6 flex flex-col items-start gap-space-md">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Setup</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Clip it on in seconds and go.</h2>
+<p class="font-body-lg text-body-lg text-text-secondary">
+          A soft cup seals over your nose and mouth, a light strap holds it, and the sensor pod does the rest. No mouthpiece to bite, no calibration ritual, no cart of gas analysers.
+        </p>
+<div class="flex flex-col gap-space-md w-full pt-space-sm">
+<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-card border-subtle hover:border-biometric transition-colors">
+<div class="p-space-xs rounded-lg bg-primary-container/10 text-primary-container">
+<span class="material-symbols-outlined text-[24px]">bluetooth_connected</span>
+</div>
+<div>
+<h4 class="font-body-base text-body-base font-semibold text-text-primary">Instant Universal Sync</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Pairs over Bluetooth &amp; ANT+ with Garmin, Wahoo, Apple Watch and Zwift automatically.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-card border-subtle hover:border-biometric transition-colors">
+<div class="p-space-xs rounded-lg bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined text-[24px]">water_drop</span>
+</div>
+<div>
+<h4 class="font-body-base text-body-base font-semibold text-text-primary">Sweat &amp; Weatherproof</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Engineered with IP67 hydrophobic diaphragms built specifically for torrential rain and humidity.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-card border-subtle hover:border-biometric transition-colors">
+<div class="p-space-xs rounded-lg bg-primary-container/10 text-primary-container">
+<span class="material-symbols-outlined text-[24px]">touch_app</span>
+</div>
+<div>
+<h4 class="font-body-base text-body-base font-semibold text-text-primary">Double-Tap Status HUD</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Double-tap the outer pod for haptic and audio threshold checks without pulling out your smartphone.</p>
+</div>
+</div>
+</div>
+<a class="inline-flex items-center gap-space-xs text-primary-container hover:text-primary font-mono text-body-base font-semibold tracking-tight transition-colors pt-space-xs" data-path="how-it-works" href="#">
+<span>How the sensing works</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- FROM THE BLOG / TRAIN IN PHASES SECTION (NO STOCK PHOTOS) -->
+<section class="w-full py-space-3xl lg:py-space-4xl px-gutter-mobile lg:px-gutter-desktop max-w-[1240px] mx-auto">
+<div class="reveal flex flex-col items-start gap-space-xs mb-space-2xl max-w-3xl">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">From The Blog</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Train in phases. Peak when it matters.</h2>
+<p class="font-body-lg text-body-lg text-text-secondary">
+        Raising VO2 max is not about going hard every day. It is about building an aerobic base, testing where you are, then sharpening for the event that counts.
+      </p>
+</div>
+<!-- 3 Schematic Training Phase Containers -->
+<div class="reveal reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Phase 1: Foundation -->
+<div class="p-space-lg rounded-2xl bg-surface-card border-subtle flex flex-col justify-between hover:border-biometric transition-all">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-white/5 mb-space-md">
+<span class="font-data-readout text-data-readout text-primary-container font-mono">PHASE 01</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-mono bg-primary-container/10 text-primary-container">BASE VOLUME</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary mb-space-xs">Foundation</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            Easy-paced volume that grows your aerobic engine. AeroCardia keeps you genuinely easy so you never drift past your metabolic ceiling prematurely.
+          </p>
+</div>
+<div class="mt-space-lg p-space-md rounded-xl bg-surface-container-lowest">
+<div class="flex justify-between text-caption font-caption text-text-tertiary font-mono mb-2">
+<span>Zone 2 Target</span>
+<span class="text-primary-container">70% Session Vol</span>
+</div>
+<div class="h-2 w-full rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container w-[70%]"></div>
+</div>
+<span class="font-caption text-caption text-text-tertiary block mt-2 font-mono">Aerobic efficiency baseline</span>
+</div>
+</div>
+<!-- Phase 2: Test -->
+<div class="p-space-lg rounded-2xl bg-surface-card border-subtle flex flex-col justify-between hover:border-biometric transition-all">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-white/5 mb-space-md">
+<span class="font-data-readout text-data-readout text-secondary font-mono">PHASE 02</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-mono bg-secondary/10 text-secondary">RAMP PROTOCOL</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary mb-space-xs">Test</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            A structured ramp protocol delivers real-time clinical VO2 max determination and automatically recalculates current threshold boundaries.
+          </p>
+</div>
+<div class="mt-space-lg p-space-md rounded-xl bg-surface-container-lowest">
+<div class="flex justify-between text-caption font-caption text-text-tertiary font-mono mb-2">
+<span>Ramp Staircase</span>
+<span class="text-secondary">+25W / 2 min</span>
+</div>
+<div class="flex items-end gap-1 h-8">
+<span class="w-1/5 h-2 rounded bg-surface-container-high"></span>
+<span class="w-1/5 h-4 rounded bg-surface-container-high"></span>
+<span class="w-1/5 h-6 rounded bg-secondary/70"></span>
+<span class="w-1/5 h-8 rounded bg-secondary"></span>
+<span class="w-1/5 h-8 rounded bg-primary-container"></span>
+</div>
+<span class="font-caption text-caption text-text-tertiary block mt-2 font-mono">Automated threshold detection</span>
+</div>
+</div>
+<!-- Phase 3: Peak -->
+<div class="p-space-lg rounded-2xl bg-surface-card border-subtle flex flex-col justify-between hover:border-biometric transition-all">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-white/5 mb-space-md">
+<span class="font-data-readout text-data-readout text-telemetry-warning font-mono">PHASE 03</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-mono bg-telemetry-warning/10 text-telemetry-warning">ANAEROBIC SHARP</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-text-primary mb-space-xs">Peak</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            Short intervals targeted directly at VO2 max ceiling, timed to preserve recovery so you sharpen race fitness without digging a metabolic hole.
+          </p>
+</div>
+<div class="mt-space-lg p-space-md rounded-xl bg-surface-container-lowest">
+<div class="flex justify-between text-caption font-caption text-text-tertiary font-mono mb-2">
+<span>Interval Spikes</span>
+<span class="text-telemetry-warning">95-100% VO2 Max</span>
+</div>
+<div class="flex items-end gap-1.5 h-8">
+<span class="w-1/6 h-8 rounded bg-telemetry-warning"></span>
+<span class="w-1/6 h-2 rounded bg-surface-container-high"></span>
+<span class="w-1/6 h-8 rounded bg-telemetry-warning"></span>
+<span class="w-1/6 h-2 rounded bg-surface-container-high"></span>
+<span class="w-1/6 h-8 rounded bg-telemetry-warning"></span>
+<span class="w-1/6 h-2 rounded bg-surface-container-high"></span>
+</div>
+<span class="font-caption text-caption text-text-tertiary block mt-2 font-mono">Neuromuscular &amp; central adaptations</span>
+</div>
+</div>
+</div>
+<div class="mt-space-xl">
+<a class="inline-flex items-center gap-space-xs text-primary-container hover:text-primary font-mono text-body-base font-semibold tracking-tight transition-colors" data-path="blog" href="#">
+<span>Read: How to improve your VO2 max</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- CHAMPIONSHIP EDITION SECTION (DYNAMIC 3D COLORWAY SHOWCASE) -->
+<section class="w-full py-space-3xl lg:py-space-4xl bg-surface-card border-t border-white/5" id="championship-showcase">
+<div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
+<!-- Text & Interactive Edition Selectors -->
+<div class="reveal lg:col-span-6 flex flex-col items-start gap-space-md">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Championship Edition</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Sport your team's colours.</h2>
+<p class="font-body-lg text-body-lg text-text-secondary">
+          Express your country with enthusiasm. Match your sensor to your national colours for the UCI Road World Championships — or your club, your flag, your race day.
+        </p>
+<!-- Nation Selector Pills with Interactive Handlers -->
+<div class="flex flex-wrap gap-space-xs pt-space-xs" id="nation-button-group">
+<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border-2 border-[#E05A1F] text-text-primary font-caption text-caption font-semibold shadow-[0_0_12px_rgba(224,90,31,0.35)] transition-all" id="btn-netherlands" onclick="selectEdition('netherlands')">
+<span class="w-2.5 h-2.5 rounded-full bg-[#E05A1F]"></span>
+<span>Netherlands</span>
+</button>
+<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption hover:border-[#169B62] transition-all" id="btn-ireland" onclick="selectEdition('ireland')">
+<span class="w-2.5 h-2.5 rounded-full bg-[#169B62]"></span>
+<span>Ireland</span>
+</button>
+<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption hover:border-[#00e2a0] transition-all" id="btn-slovenia" onclick="selectEdition('slovenia')">
+<span class="w-2.5 h-2.5 rounded-full bg-[#00e2a0]"></span>
+<span>Slovenia</span>
+</button>
+<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption hover:border-[#FDDA24] transition-all" id="btn-belgium" onclick="selectEdition('belgium')">
+<span class="w-2.5 h-2.5 rounded-full bg-[#FDDA24]"></span>
+<span>Belgium</span>
+</button>
+<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption hover:border-[#4CD7F6] transition-all" id="btn-great-britain" onclick="selectEdition('great-britain')">
+<span class="w-2.5 h-2.5 rounded-full bg-[#4CD7F6]"></span>
+<span>Great Britain</span>
+</button>
+</div>
+<p class="font-caption text-caption text-text-tertiary" id="edition-description">
+<strong class="text-text-secondary font-semibold" id="edition-title">Netherlands</strong> • <span id="edition-detail">Copper colourway. France, Slovenia and more editions confirmed closer to the race.</span>
+</p>
+</div>
+<!-- Pod Dynamic 3D Render Display Container -->
+<div class="reveal lg:col-span-6 w-full flex items-center justify-center">
+<div class="w-full max-w-lg p-space-lg lg:p-space-xl rounded-3xl bg-surface-container-lowest border-biometric flex flex-col items-center justify-between relative overflow-hidden shadow-2xl min-h-[380px]">
+<!-- Ambient Dynamic Glow Backdrop -->
+<div class="absolute inset-0 bg-[#E05A1F]/15 blur-3xl rounded-full transition-colors duration-500 pointer-events-none" id="edition-glow"></div>
+<div class="w-full flex justify-between items-center text-text-tertiary font-mono text-caption relative z-10 mb-2">
+<span class="text-primary-container">// SPECIAL RACE APPAREL</span>
+<span class="text-[#E05A1F] font-bold px-2 py-0.5 rounded bg-surface-card-elevated border border-white/5 transition-colors" id="edition-badge">EDITION: ORANJE / COPPER</span>
+</div>
+<!-- High-Resolution Render Image with Smooth Transition -->
+<div class="relative z-10 w-full flex-1 flex items-center justify-center py-4">
+<img alt="Championship Edition Render" class="w-full max-w-sm h-auto object-contain max-h-56 transition-all duration-300 transform scale-105 hover:scale-110 drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)]" id="edition-render-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzBEACvcMxehUG3zVCXa313-OL_qJxIfa33D4J6szroZoYu0jKSe-gtboyRTlrFuLGv_eH14vkk_7cUgdG-Kh9ZkeZIZAVEJPc_L8Tzrxv5QkpwLYAojNsB3UY8jl2ugYx5oKyriiUZlvmoV5bUTuWWns7b-oRGsbNM0AMCGK9owHhVcpw1osHoFStFPtC6VMROBhaZCwKJ3mffXaSr1Wphvjxprp0f3qT0WLlIdlLcrwUHRIPwcYLpm7WS50XT2HuGg"/>
+</div>
+<!-- Bottom Material Spec Readout -->
+<div class="relative z-10 w-full flex items-center justify-center gap-space-xs font-mono text-caption text-text-secondary pt-3 border-t border-white/5">
+<span class="w-2 h-2 rounded-full bg-[#E05A1F] transition-colors" id="edition-indicator-dot"></span>
+<span class="text-center" id="edition-spec-text">Anodized Aerospace Copper Bezel • Satin Matte Obsidian Housing</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EDITORIAL BLOG SECTION (NO STOCK PHOTOS - ELEGANT SCIENTIFIC CARDS) -->
+<section class="w-full py-space-3xl lg:py-space-4xl px-gutter-mobile lg:px-gutter-desktop max-w-[1240px] mx-auto">
+<div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-space-md mb-space-2xl">
+<div class="reveal flex flex-col items-start gap-space-xs">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">The Blog</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Reading on oxygen, endurance &amp; healthspan.</h2>
+</div>
+<a class="inline-flex items-center gap-space-xs text-primary-container hover:text-primary font-mono text-body-base font-semibold tracking-tight transition-colors" data-path="blog" href="#">
+<span>All posts</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- 3 High-End Article Cards -->
+<div class="reveal reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-space-xl">
+<!-- Article 1 -->
+<article class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
+<span>Aug 20 • 4 min read</span>
+<span class="text-primary-container font-semibold">PHYSIOLOGY</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest font-mono text-[11px] text-text-tertiary border-l-2 border-primary-container">
+            SERIES: GRAND TOUR BIO-PACING
+          </div>
+<h3 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">
+            Peak Performance and Longevity: The Tour de France Guide to VO2 Max
+          </h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            What three weeks of racing at the limit of human endurance teaches the rest of us about pacing, ceilings and systemic cardiorespiratory recovery.
+          </p>
+</div>
+<div class="pt-space-lg flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold">
+<span>Read analysis</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
+<span>Jul 27 • 4 min read</span>
+<span class="text-secondary font-semibold">METABOLICS</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest font-mono text-[11px] text-text-tertiary border-l-2 border-secondary">
+            NORMATIVE STANDARDS 2026
+          </div>
+<h3 class="font-headline-md text-headline-md text-text-primary group-hover:text-secondary transition-colors">
+            The Ultimate Guide to VO2 Max: Measurement, Normative Data &amp; Optimization
+          </h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            How VO2 max is measured, what an elite score looks like stratified by age and biological sex, and the precise aerobic volume that genuinely moves it.
+          </p>
+</div>
+<div class="pt-space-lg flex items-center gap-space-xs text-secondary font-mono text-caption font-semibold">
+<span>Read analysis</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
+<span>Jul 13 • 3 min read</span>
+<span class="text-primary font-semibold">LONGEVITY</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest font-mono text-[11px] text-text-tertiary border-l-2 border-primary">
+            ALL-CAUSE MORTALITY METRICS
+          </div>
+<h3 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary transition-colors">
+            What Is VO2 Max, and Why Does It Matter for Healthspan?
+          </h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            The gold-standard measure of cardiorespiratory fitness — and statistically the single most powerful predictor of how long and how well you live.
+          </p>
+</div>
+<div class="pt-space-lg flex items-center gap-space-xs text-primary font-mono text-caption font-semibold">
+<span>Read analysis</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+</div>
+</section>
+<!-- FINAL CONVERSION CTA -->
+<section class="w-full py-space-3xl lg:py-space-4xl px-gutter-mobile lg:px-gutter-desktop">
+<div class="reveal max-w-[1240px] mx-auto rounded-3xl bg-surface-card p-space-2xl lg:p-space-3xl relative overflow-hidden border-biometric shadow-[0_0_60px_rgba(0,240,170,0.1)] text-center flex flex-col items-center">
+<!-- Ambient Mint Core -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary-container/15 blur-[120px] rounded-full pointer-events-none"></div>
+<span class="relative z-10 font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest mb-space-xs">Limited Cohort 2026</span>
+<h2 class="relative z-10 font-headline-lg text-headline-lg text-text-primary max-w-2xl tracking-tight mb-space-md">
+        Be first to train with your own numbers.
+      </h2>
+<p class="relative z-10 font-body-lg text-body-lg text-text-secondary max-w-xl mb-space-xl">
+        AeroCardia is coming to runners, cyclists and longevity athletes. Join the waitlist for early access, launch pricing and updates from the team.
+      </p>
+<!-- Conversion Input Box -->
+<form class="relative z-10 w-full max-w-md flex flex-col sm:flex-row gap-space-xs" onsubmit="event.preventDefault();">
+<input class="w-full px-space-lg py-space-sm rounded-full bg-surface-container-lowest text-text-primary placeholder:text-text-tertiary border-subtle focus:outline-none focus:ring-1 focus:ring-primary-container transition-all font-body-base text-body-base" placeholder="Enter your email" required="" type="email"/>
+<button class="whitespace-nowrap px-space-xl py-space-sm rounded-full bg-primary-container text-on-primary font-body-base text-body-base font-semibold tracking-tight shadow-[0_0_20px_rgba(0,240,170,0.35)] hover:bg-primary transition-all duration-300 flex items-center justify-center gap-1" type="submit">
+<span>Join the waitlist</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<div class="relative z-10 flex items-center gap-space-xs font-mono text-caption text-text-tertiary mt-space-md">
+<span class="material-symbols-outlined text-[16px] text-primary-container">lock</span>
+<span>Early cohort shipping Q3 2026. No spam, ever.</span>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-card-elevated"><div class="max-w-[1240px] mx-auto px-gutter-desktop pt-space-3xl pb-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-2xl"><div class="lg:col-span-2 flex flex-col gap-space-md pr-space-xl"><div class="flex items-center gap-space-sm"><img alt="AeroCardia Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XvUpakRvkDLarpY9NvzcyCDQuSxqO4o2vsgWf8ioYUWYbqNLLottasSyaSL7sn6BVYMCphY-zzIKnl1pSsmoTOrwfYb-Rmhehuf-2ea2Jabm0IOCc-9g0pEhKEUa6gT3QwHDIliChTtaEdwFhoEtpOfsMRgQQJL5ZPLPZP2euUPa_H0y34dz9idQ5vYLLd1q3uaWZvnxKOXu6PbOz_NzGIw--ei5DtCpKs_9xCw_V7uzdeiL5wVFTgwwo"/><span class="font-headline-md text-headline-md font-semibold tracking-tight text-text-primary">AeroCardia</span></div><p class="font-body-sm text-body-sm text-text-secondary max-w-sm">Portable VO2 and cardiopulmonary breath intelligence. Clinical precision calibrated for high-performance human athletics and metabolic diagnostics.</p><div class="flex items-center gap-space-xs text-secondary-fixed-dim"><span class="material-symbols-outlined text-[18px]">vital_signs</span><span class="font-telemetry-badge text-telemetry-badge uppercase tracking-wider">Calibrated Biometric Stream</span></div></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Explore</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="product" href="#">Product</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it works</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="about" href="#">About us</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="blog" href="#">Blog</a></li></ul></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Get started</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="join-the-waitlist" href="#">Join the waitlist</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Contact the team</a></li></ul></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Connect</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">LinkedIn</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#">Instagram</a></li><li class="flex"><a class="text-on-surface-variant hover:text-primary transition-colors font-data-readout text-data-readout" href="mailto:info@aerocardia.com">info@aerocardia.com</a></li></ul></div></div><div class="pt-space-xl flex flex-col gap-space-md"><div class="p-space-md rounded-lg bg-surface-container-lowest/60 text-text-tertiary font-caption text-caption leading-relaxed"><span class="text-text-secondary font-semibold">Wellness Disclaimer:</span> AeroCardia devices and related software applications are engineered for cardiorespiratory fitness tracking, metabolic conditioning analysis, and athletic training optimization. They are not cleared as diagnostic medical devices and are not intended to diagnose, treat, cure, or prevent any cardiovascular, pulmonary, or systemic pathological condition. Always consult a qualified medical professional prior to initiating intensive VO2 max threshold protocols.</div><div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm text-text-tertiary font-caption text-caption"><p>© 2025 AeroCardia Inc. All rights reserved.</p><div class="flex items-center gap-space-md"><a class="hover:text-text-secondary transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-text-secondary transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="hover:text-text-secondary transition-colors" data-path="biometric-compliance" href="#">Telemetry Compliance</a></div></div></div></div></footer>
+<script>
+// Interactive Setup Model Switcher
+function setSetupModel(type) {
+  const img = document.getElementById('setup-device-img');
+  const btnFlagship = document.getElementById('setup-view-flagship');
+  const btnSolar = document.getElementById('setup-view-solar');
+
+  if (type === 'flagship') {
+    img.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyxmr5BIYRr2FZjIwYD-mfMQAyA0pTzGRc5YW7tqipj2xOiZbDycMqwkY-ypcPiiR4hv1w84Xe8wnVKrmz7gSBPA9_qtlXPE7VaD9cDMKVTx1sJ4nFltpHxBAI6P6HtneO1AQ6_x5X08OPheGKh_b34hS4scHOZMyybQq7S661yZCuurnnD_Yg5vNbSeeT5nkIGysFuBqyTUOPVsGIfj72pynAYaa7va_e-iE6VC7zvBH_zT4CrM5rk7tsjeWisrtxZg';
+    btnFlagship.className = 'px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-bold transition-all';
+    btnSolar.className = 'px-2.5 py-0.5 rounded-full text-text-secondary hover:text-text-primary transition-all';
+  } else {
+    img.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyLqdn7_c-F2rhsAroQ3ea-WzpLm2-XIXTk8kibszJfjQUHr09fFMjHA7P2YyrO1nIcerI4GuhrTR4UVbNyv2dtIG0sfgWK_h2UshLl4IfYlFAWlM6IGLXQyjkLPLQomMeaUUc4rcLHrk_xYxfGaT09IIkvTEX-u_WT3Z2Kod9kvHwq9nTvkvBCFIRcW77AoyA5uE1XzecQPFCc9QJ3pg1n98lUlgCcevzuWVhFZy4ENO3U-pQ1pmcIw1QclvZI9yl8Q';
+    btnSolar.className = 'px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-bold transition-all';
+    btnFlagship.className = 'px-2.5 py-0.5 rounded-full text-text-secondary hover:text-text-primary transition-all';
+  }
+}
+
+// Interactive Championship Edition Colorway Showcase
+const editionData = {
+  'netherlands': {
+    title: 'Netherlands',
+    detail: 'Copper colourway. Official racing edition with copper anodized perimeter band.',
+    badge: 'EDITION: ORANJE / COPPER',
+    badgeColor: '#E05A1F',
+    glowClass: 'bg-[#E05A1F]/15',
+    specText: 'Anodized Aerospace Copper Bezel • Satin Matte Obsidian Housing',
+    dotColor: '#E05A1F',
+    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDQxPtOS8-0uznvjEUoNxTzyIRtjQuSIUZDWyhDIWd_PhBzDdideMj1qMStX1E8p2NgkvnRAz92YgCda1GVE5pC3XxrgFxW0cDDnkUOQfSBrJdXjGxjVziX6ElqAad79lOD23TixAO6okUDZn_lkgwQTpXNFF6oBxaXUlirYnHp9Wpg4f5XNIk3LdJD-2B3_XwFFftazP7NSdBhKEQBUg7qS85QNECFenBa3kjspCY_ub1_yOjMh_VazlTmd6I07A925w'
+  },
+  'ireland': {
+    title: 'Ireland',
+    detail: 'Emerald & Shamrock edition. Matte obsidian shell with dynamic emerald silicone accents.',
+    badge: 'EDITION: EMERALD / TEAL',
+    badgeColor: '#169B62',
+    glowClass: 'bg-[#169B62]/15',
+    specText: 'Emerald Green Anodized Trim • Low-Reflectance Dark Composite',
+    dotColor: '#169B62',
+    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDyIPy4l9YQ970Ap85fGv73jRCZsyrMJfQEsRVNJacyTUK8N4j4kpVyYHPeAf3Vs6ghK3-CR6syJulwzV3pNrCeZe_ajJLlBRBiwUbyPp54cPxB33D8nNVWC2CVJJR_DiXVQxKCkuBvTAdI9p1DWC1gLLelLJpmvuCD5k_uzvb3bS6pjPZbj4Jc-y-G5ps7l3aNnDkSsx_ggxKokka3nhlEWjCWZf_aadkFne_H4Nns5OHwnTOWPlcnk870aaM4DLCIAw'
+  },
+  'slovenia': {
+    title: 'Slovenia',
+    detail: 'Alpine Mint edition. Gloss white aerodynamic monocoque with signature Arctic cyan ring.',
+    badge: 'EDITION: ARCTIC MINT / CYAN',
+    badgeColor: '#00F0AA',
+    glowClass: 'bg-primary-container/20',
+    specText: 'High-Gloss Pure Alpine Shell • Mint-Cyan Silicone Seal',
+    dotColor: '#00F0AA',
+    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCcG0F9JenxbAobIV0BVzvInrZFWXBfb1Wus6CFgMVlcXkTN83-c7jJchidZza4YvphClrgLJmasU3l6ZKvd9bLROXd_8e0paHfHRXUYWFsWj7vpTOYV1-VR2VTILuWRj17UbgZ0jrgyn14WCkRYaogixP83gy73qCETWhH6HSJfZE1Gy6lDrwmCsUKBaxXG4L6yiCh3RYfuAb7kYk1WDsfZRrDbv-8M-ds1wZ_mUYbXtF3rUnM5EKRx9SDj2g8KWRp9A'
+  },
+  'belgium': {
+    title: 'Belgium',
+    detail: 'Tour of Flanders edition. Pure alpine chassis with Solar Gold sprint accent stripe.',
+    badge: 'EDITION: SOLAR GOLD / FLANDERS',
+    badgeColor: '#FDDA24',
+    glowClass: 'bg-[#FDDA24]/15',
+    specText: 'Solar Gold Bezel • Medical-Grade Polymer Composite',
+    dotColor: '#FDDA24',
+    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuApur5l9NOGZOWk-iE3v8jXSXzkukWXO7c8-iNZy4zRGdysaF9_gppYHmWc1Ub-W4u78KiPK1OUTnTqbrGxLkYm7Q3a3FZVKtn5amDK2xCmX2gu72Vs-46APJm_b5IHvPU5C4lOEmIgQOBMDCmDLzqG_c2AMv2vG3mvzSlsky2XokBqR_rJpSi4HA4b-2uadgIub9ArGRgEgwnyG_5qEsO8R_k2MtjjMTxsE7uKSr_hqQL0D2F7VJlCkqIEazB4we-15A'
+  },
+  'great-britain': {
+    title: 'Great Britain',
+    detail: 'Velodrome Stealth edition. Titanium grey and deep teal contrast racing livery.',
+    badge: 'EDITION: STEALTH / TITANIUM',
+    badgeColor: '#4CD7F6',
+    glowClass: 'bg-[#4CD7F6]/15',
+    specText: 'Brushed Titanium Accent • Dark Matter Satin Housing',
+    dotColor: '#4CD7F6',
+    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA-8dE3O2XFzpvXafOG32VemQgnyLadeg_W9IrM6AcBoPvVAglgEksO2za5DM3o7SV_L-cvexC0HXWBpTe1JJP5g8gqnAW8te8kjj4DZrBokUvlDHXhw7qju2BiPTEQZsWaVuy--aYNi8jRmov362HG4TLgIOuuQgO2Yf5Oal3XDC1S3JfZirTHT-Nft38ckjCRSiQjoFail1W8nOV9Uqt4YTY_4mL9quMSad0IKbrKNaAqrpRim5MG36QukQ4hXJHpXQ'
+  }
+};
+
+function selectEdition(id) {
+  const data = editionData[id];
+  if (!data) return;
+
+  // Update Image with fast crossfade effect
+  const img = document.getElementById('edition-render-img');
+  img.style.opacity = '0';
+  img.style.transform = 'scale(0.95)';
+  setTimeout(() => {
+    img.src = data.imgSrc;
+    img.style.opacity = '1';
+    img.style.transform = 'scale(1.05)';
+  }, 150);
+
+  // Update Text & Badges
+  document.getElementById('edition-title').textContent = data.title;
+  document.getElementById('edition-detail').textContent = data.detail;
+
+  const badge = document.getElementById('edition-badge');
+  badge.textContent = data.badge;
+  badge.style.color = data.badgeColor;
+
+  document.getElementById('edition-spec-text').textContent = data.specText;
+  document.getElementById('edition-indicator-dot').style.backgroundColor = data.dotColor;
+
+  // Glow
+  const glow = document.getElementById('edition-glow');
+  glow.className = `absolute inset-0 ${data.glowClass} blur-3xl rounded-full transition-all duration-500 pointer-events-none`;
+
+  // Button Active State Styling
+  const buttons = document.querySelectorAll('.edition-btn');
+  buttons.forEach(btn => {
+    btn.classList.remove('border-2', 'shadow-[0_0_12px_rgba(224,90,31,0.35)]', 'border-[#E05A1F]', 'border-[#169B62]', 'border-[#00e2a0]', 'border-[#FDDA24]', 'border-[#4CD7F6]', 'text-text-primary');
+    btn.classList.add('border', 'border-subtle', 'text-text-secondary');
+  });
+
+  const activeBtn = document.getElementById(`btn-${id}`);
+  if (activeBtn) {
+    activeBtn.classList.remove('border-subtle', 'text-text-secondary');
+    activeBtn.classList.add('border-2', 'text-text-primary');
+    activeBtn.style.borderColor = data.dotColor;
+  }
+}
+
+// Backed-by logo fallback: shown until the real logo file lands in assets/img/backed-by/
+function aeroLogoFallback(img, label) {
+  var span = document.createElement('span');
+  span.className = 'font-caption text-caption font-semibold tracking-tight text-text-secondary text-center';
+  span.textContent = label;
+  img.replaceWith(span);
+}
+
+// Neko-style scroll reveal: fade/slide sections in as they enter the viewport
+(function() {
+  var targets = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || !targets.length) {
+    targets.forEach(function(t) { t.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  targets.forEach(function(t) { io.observe(t); });
+})();
+</script>
+</body></html>
