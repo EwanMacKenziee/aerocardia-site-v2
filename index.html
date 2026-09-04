@@ -103,6 +103,20 @@ html{scroll-behavior:smooth;}
   filter: brightness(2.3) contrast(1.15) saturate(1.6);
 }
 
+/* White-silhouette treatment for logos too light to survive multiply-blend
+   legibly (McGill, Garage&Co). grayscale+invert turns the flat white fill into
+   black and the ink into light/white; screen blend has no brightness ceiling
+   the way multiply does, so the ink can reach true white regardless of how
+   dark the tile is. Trades brand color for legibility, by request. */
+.logo-tile-img-mono {
+  mix-blend-mode: screen;
+  filter: grayscale(1) invert(1) brightness(1.1) contrast(1.05);
+  transition: filter 0.3s ease;
+}
+.logo-tile:hover .logo-tile-img-mono {
+  filter: grayscale(1) invert(1) brightness(1.25) contrast(1.1);
+}
+
 /* Offset anchor-scroll targets so content isn't hidden under the fixed header */
 section[id] { scroll-margin-top: 96px; }
 
@@ -271,10 +285,10 @@ section[id] { scroll-margin-top: 96px; }
 <span class="font-telemetry-badge text-telemetry-badge text-text-tertiary uppercase tracking-widest whitespace-nowrap">Backed By</span>
 <div class="reveal reveal-stagger grid grid-cols-2 md:grid-cols-4 gap-space-md w-full">
 <div class="logo-tile flex items-center justify-center p-space-md h-16 rounded-xl bg-[#2f353a] border border-primary-container/15 hover:border-primary-container/50 hover:bg-[#3a4147] transition-all duration-300 overflow-hidden">
-<img alt="McGill Dobson Centre for Entrepreneurship" class="logo-tile-img max-h-10 max-w-[82%] object-contain" onerror="aeroLogoFallback(this,'McGill Dobson Centre')" src="assets/img/backed-by/mcgill-dobson-centre.png"/>
+<img alt="McGill Dobson Centre for Entrepreneurship" class="logo-tile-img-mono max-h-10 max-w-[82%] object-contain" onerror="aeroLogoFallback(this,'McGill Dobson Centre')" src="assets/img/backed-by/mcgill-dobson-centre.png"/>
 </div>
 <div class="logo-tile flex items-center justify-center p-space-md h-16 rounded-xl bg-[#2f353a] border border-primary-container/15 hover:border-primary-container/50 hover:bg-[#3a4147] transition-all duration-300 overflow-hidden">
-<img alt="Garage&amp;Co Incubator" class="logo-tile-img max-h-10 max-w-[82%] object-contain" onerror="aeroLogoFallback(this,'Garage&amp;Co Incubator')" src="assets/img/backed-by/garage-and-co.png"/>
+<img alt="Garage&amp;Co Incubator" class="logo-tile-img-mono max-h-10 max-w-[82%] object-contain" onerror="aeroLogoFallback(this,'Garage&amp;Co Incubator')" src="assets/img/backed-by/garage-and-co.png"/>
 </div>
 <div class="logo-tile flex items-center justify-center p-space-md h-16 rounded-xl bg-[#2f353a] border border-primary-container/15 hover:border-primary-container/50 hover:bg-[#3a4147] transition-all duration-300 overflow-hidden">
 <img alt="Vitruvius Venture Studio" class="logo-tile-img max-h-10 max-w-[82%] object-contain" onerror="aeroLogoFallback(this,'Vitruvius Venture Studio')" src="assets/img/backed-by/vitruvius-venture-studio.png"/>
