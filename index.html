@@ -122,6 +122,14 @@ section[id] { scroll-margin-top: 96px; }
   .animate-wave-flow, .animate-breath, .animate-radar, .animate-glow-pulse, .animate-pulse, .animate-ping, .animate-spin, .marquee-track { animation: none !important; }
 }
 
+/* Feathers a rectangular studio-background render into a dark card —
+   used for the local device renders (device-*.png), which sit on a
+   black/grey studio backdrop rather than true alpha transparency. */
+.render-feather {
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 48%, #000 48%, transparent 76%);
+          mask-image: radial-gradient(ellipse 60% 60% at 50% 48%, #000 48%, transparent 76%);
+}
+
 /* Mobile navigation panel (below the lg breakpoint) */
 #mobile-menu {
   max-height: 0;
@@ -146,7 +154,7 @@ body.menu-open { overflow: hidden; }
 <!-- Integrated 3D Product Atmospheric Backdrop -->
 <div class="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
 <div class="absolute w-[800px] h-[550px] bg-primary-container/15 blur-[140px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-<img alt="AeroCardia Sensor Pod 3D Render" class="w-full max-w-5xl h-auto object-contain opacity-35 lg:opacity-40 mix-blend-screen scale-110 lg:scale-125 translate-y-10 lg:translate-y-6 select-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7JAKTdlbncWOXvh35qUlSh4xLpWVFEkR8Q_6je1bj8TfQNr3Oc1b_wG8ZpzMtZH46rqbVufrw-NmUwqXyRE81SADMOTxPHGumRNgNaVgazI71hqU_t8dQ1-6eObOZMyJW7nH4TGgwHRmJbzrDWfseMbDLNcEsLA9xdiSrIw_vVXYUnehIoS3EPkGfD50xnlIAYGh9GgAewGj2sgyspHFj9FBeCAiGCt7tNLutu_DZVd6As5rBm6izM9uF4hZ_77IDvg" style="filter: drop-shadow(0 0 60px rgba(32, 197, 183, 0.25));"/>
+<img alt="AeroCardia sensor pod render" class="w-full max-w-5xl h-auto object-contain opacity-35 lg:opacity-40 mix-blend-screen scale-110 lg:scale-125 translate-y-10 lg:translate-y-6 select-none" src="assets/img/renders/device-cobalt.png" style="filter: drop-shadow(0 0 60px rgba(32, 197, 183, 0.25));"/>
 <div class="absolute inset-0 bg-gradient-to-t from-surface-base via-surface-base/60 to-surface-base/80"></div>
 <div class="absolute inset-0 bg-radial from-transparent via-surface-base/40 to-surface-base"></div>
 </div>
@@ -587,14 +595,14 @@ body.menu-open { overflow: hidden; }
 <div class="relative z-10 w-full flex-1 flex items-center justify-center py-2">
 <div class="relative w-full max-w-md flex items-center justify-center">
 <!-- Active Product Render Image -->
-<img alt="AeroCardia Sensor Pod 3D Render" class="w-full h-auto object-contain max-h-64 drop-shadow-[0_15px_35px_rgba(32,197,183,0.22)] transition-all duration-500 scale-105" id="setup-device-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArSpnmmiZMZB2cghffRfyUKc19XHopu-5vEUN4AUps1AhfuULTWVGYMF_QnP0kjSMu30f-WydV5OdtVdxYSF3vnKo8HwhWwhZ_mKMjXJm_V59LmlfGb2Xogh4ZbEpFmR00l-vo8B4wapNHgDUxVTgQiYDmp20e0CJFvWzy-gaqG1Q3hzI6hHkjPLn31ijXVShkdP1RhAyVt5ZqRoHOjiwnRq0Q-Dy3Ae9oCwaquI8LHHTECuhR2_M62bx30feyBu3IuA"/>
+<img alt="AeroCardia sensor pod render" class="render-feather w-full h-auto object-contain max-h-64 drop-shadow-[0_15px_35px_rgba(32,197,183,0.22)] transition-all duration-500 scale-105" id="setup-device-img" src="assets/img/renders/device-cobalt.png"/>
 <!-- Radar Pulse Ring Behind Sensor Nozzle -->
-<div class="absolute left-[16%] top-[50%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<div class="absolute left-[30%] top-[50%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
 <div class="w-20 h-20 rounded-full border border-primary-container/40 animate-radar"></div>
 <div class="w-28 h-28 rounded-full border border-secondary/30 animate-radar" style="animation-delay: 1s;"></div>
 </div>
 <!-- Hotspot 1: Ergonomic Soft Face-Cup -->
-<div class="group/seal absolute right-[14%] top-[34%] cursor-pointer z-30">
+<div class="group/seal absolute right-[22%] top-[30%] cursor-pointer z-30">
 <div class="relative flex items-center justify-center">
 <span class="w-4 h-4 rounded-full bg-primary-container/40 animate-ping absolute"></span>
 <span class="w-3 h-3 rounded-full bg-primary-container border-2 border-surface-base shadow-[0_0_8px_#20C5B7]"></span>
@@ -608,7 +616,7 @@ body.menu-open { overflow: hidden; }
 </div>
 </div>
 <!-- Hotspot 2: Core Micro-Spectrometer Pod -->
-<div class="group/core absolute left-[46%] top-[40%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30">
+<div class="group/core absolute left-[50%] top-[42%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30">
 <div class="relative flex items-center justify-center w-8 h-8 rounded-full hover:bg-primary-container/15 transition-colors">
 <span class="w-3.5 h-3.5 rounded-full bg-primary-container animate-pulse shadow-[0_0_12px_#20C5B7]"></span>
 </div>
@@ -836,7 +844,7 @@ body.menu-open { overflow: hidden; }
 </div>
 <!-- High-Resolution Render Image with Smooth Transition -->
 <div class="relative z-10 w-full flex-1 flex items-center justify-center py-4">
-<img alt="Championship Edition Render" class="w-full max-w-sm h-auto object-contain max-h-56 transition-all duration-300 transform scale-105 hover:scale-110 drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)]" id="edition-render-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzBEACvcMxehUG3zVCXa313-OL_qJxIfa33D4J6szroZoYu0jKSe-gtboyRTlrFuLGv_eH14vkk_7cUgdG-Kh9ZkeZIZAVEJPc_L8Tzrxv5QkpwLYAojNsB3UY8jl2ugYx5oKyriiUZlvmoV5bUTuWWns7b-oRGsbNM0AMCGK9owHhVcpw1osHoFStFPtC6VMROBhaZCwKJ3mffXaSr1Wphvjxprp0f3qT0WLlIdlLcrwUHRIPwcYLpm7WS50XT2HuGg"/>
+<img alt="AeroCardia sensor pod in national colours" class="render-feather w-full max-w-sm h-auto object-contain max-h-56 transition-all duration-300 transform scale-105 hover:scale-110" id="edition-render-img" src="assets/img/renders/device-copper.png"/>
 </div>
 <!-- Bottom Material Spec Readout -->
 <div class="relative z-10 w-full flex items-center justify-center gap-space-xs font-mono text-caption text-text-secondary pt-3 border-t border-white/5">
@@ -1044,11 +1052,11 @@ function setSetupModel(type) {
   const btnSolar = document.getElementById('setup-view-solar');
 
   if (type === 'flagship') {
-    img.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyxmr5BIYRr2FZjIwYD-mfMQAyA0pTzGRc5YW7tqipj2xOiZbDycMqwkY-ypcPiiR4hv1w84Xe8wnVKrmz7gSBPA9_qtlXPE7VaD9cDMKVTx1sJ4nFltpHxBAI6P6HtneO1AQ6_x5X08OPheGKh_b34hS4scHOZMyybQq7S661yZCuurnnD_Yg5vNbSeeT5nkIGysFuBqyTUOPVsGIfj72pynAYaa7va_e-iE6VC7zvBH_zT4CrM5rk7tsjeWisrtxZg';
+    img.src = 'assets/img/renders/device-cobalt.png';
     btnFlagship.className = 'px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-bold transition-all';
     btnSolar.className = 'px-2.5 py-0.5 rounded-full text-text-secondary hover:text-text-primary transition-all';
   } else {
-    img.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAyLqdn7_c-F2rhsAroQ3ea-WzpLm2-XIXTk8kibszJfjQUHr09fFMjHA7P2YyrO1nIcerI4GuhrTR4UVbNyv2dtIG0sfgWK_h2UshLl4IfYlFAWlM6IGLXQyjkLPLQomMeaUUc4rcLHrk_xYxfGaT09IIkvTEX-u_WT3Z2Kod9kvHwq9nTvkvBCFIRcW77AoyA5uE1XzecQPFCc9QJ3pg1n98lUlgCcevzuWVhFZy4ENO3U-pQ1pmcIw1QclvZI9yl8Q';
+    img.src = 'assets/img/renders/device-copper.png';
     btnSolar.className = 'px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-bold transition-all';
     btnFlagship.className = 'px-2.5 py-0.5 rounded-full text-text-secondary hover:text-text-primary transition-all';
   }
@@ -1064,7 +1072,7 @@ const editionData = {
     glowClass: 'bg-[#E05A1F]/15',
     specText: 'Anodized Aerospace Copper Bezel • Satin Matte Obsidian Housing',
     dotColor: '#E05A1F',
-    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDQxPtOS8-0uznvjEUoNxTzyIRtjQuSIUZDWyhDIWd_PhBzDdideMj1qMStX1E8p2NgkvnRAz92YgCda1GVE5pC3XxrgFxW0cDDnkUOQfSBrJdXjGxjVziX6ElqAad79lOD23TixAO6okUDZn_lkgwQTpXNFF6oBxaXUlirYnHp9Wpg4f5XNIk3LdJD-2B3_XwFFftazP7NSdBhKEQBUg7qS85QNECFenBa3kjspCY_ub1_yOjMh_VazlTmd6I07A925w'
+    imgSrc: 'assets/img/renders/device-copper.png'
   },
   'ireland': {
     title: 'Ireland',
@@ -1074,7 +1082,7 @@ const editionData = {
     glowClass: 'bg-[#169B62]/15',
     specText: 'Emerald Green Anodized Trim • Low-Reflectance Dark Composite',
     dotColor: '#169B62',
-    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDyIPy4l9YQ970Ap85fGv73jRCZsyrMJfQEsRVNJacyTUK8N4j4kpVyYHPeAf3Vs6ghK3-CR6syJulwzV3pNrCeZe_ajJLlBRBiwUbyPp54cPxB33D8nNVWC2CVJJR_DiXVQxKCkuBvTAdI9p1DWC1gLLelLJpmvuCD5k_uzvb3bS6pjPZbj4Jc-y-G5ps7l3aNnDkSsx_ggxKokka3nhlEWjCWZf_aadkFne_H4Nns5OHwnTOWPlcnk870aaM4DLCIAw'
+    imgSrc: 'assets/img/renders/device-green-gold.png'
   },
   'slovenia': {
     title: 'Slovenia',
@@ -1084,7 +1092,7 @@ const editionData = {
     glowClass: 'bg-[#00F0AA]/20',
     specText: 'High-Gloss Pure Alpine Shell • Mint-Cyan Silicone Seal',
     dotColor: '#00F0AA',
-    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCcG0F9JenxbAobIV0BVzvInrZFWXBfb1Wus6CFgMVlcXkTN83-c7jJchidZza4YvphClrgLJmasU3l6ZKvd9bLROXd_8e0paHfHRXUYWFsWj7vpTOYV1-VR2VTILuWRj17UbgZ0jrgyn14WCkRYaogixP83gy73qCETWhH6HSJfZE1Gy6lDrwmCsUKBaxXG4L6yiCh3RYfuAb7kYk1WDsfZRrDbv-8M-ds1wZ_mUYbXtF3rUnM5EKRx9SDj2g8KWRp9A'
+    imgSrc: 'assets/img/renders/device-teal.png'
   },
   'belgium': {
     title: 'Belgium',
@@ -1094,7 +1102,7 @@ const editionData = {
     glowClass: 'bg-[#FDDA24]/15',
     specText: 'Solar Gold Bezel • Medical-Grade Polymer Composite',
     dotColor: '#FDDA24',
-    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuApur5l9NOGZOWk-iE3v8jXSXzkukWXO7c8-iNZy4zRGdysaF9_gppYHmWc1Ub-W4u78KiPK1OUTnTqbrGxLkYm7Q3a3FZVKtn5amDK2xCmX2gu72Vs-46APJm_b5IHvPU5C4lOEmIgQOBMDCmDLzqG_c2AMv2vG3mvzSlsky2XokBqR_rJpSi4HA4b-2uadgIub9ArGRgEgwnyG_5qEsO8R_k2MtjjMTxsE7uKSr_hqQL0D2F7VJlCkqIEazB4we-15A'
+    imgSrc: 'assets/img/renders/device-white-yellow.png'
   },
   'great-britain': {
     title: 'Great Britain',
@@ -1104,7 +1112,7 @@ const editionData = {
     glowClass: 'bg-[#4CD7F6]/15',
     specText: 'Brushed Titanium Accent • Dark Matter Satin Housing',
     dotColor: '#4CD7F6',
-    imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA-8dE3O2XFzpvXafOG32VemQgnyLadeg_W9IrM6AcBoPvVAglgEksO2za5DM3o7SV_L-cvexC0HXWBpTe1JJP5g8gqnAW8te8kjj4DZrBokUvlDHXhw7qju2BiPTEQZsWaVuy--aYNi8jRmov362HG4TLgIOuuQgO2Yf5Oal3XDC1S3JfZirTHT-Nft38ckjCRSiQjoFail1W8nOV9Uqt4YTY_4mL9quMSad0IKbrKNaAqrpRim5MG36QukQ4hXJHpXQ'
+    imgSrc: 'assets/img/renders/device-cobalt.png'
   }
 };
 
