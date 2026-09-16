@@ -365,52 +365,27 @@ body.menu-open { overflow: hidden; }
 </div>
 <h3 class="font-headline-md text-headline-md text-text-primary">Real-time guidance</h3>
 <p class="font-body-sm text-body-sm text-text-secondary">
-            Live VO2, ventilation and effort stream to your watch or head unit — so you hold the right zone on every hill and interval, not a guess from max heart rate.
+            Live VO2, ventilation and RER stream to your watch or head unit — see exactly what your engine is doing, breath by breath, on every hill and interval.
           </p>
-<!-- SVG Zone Spectrum Visualization with Interactive Hover Tooltips -->
-<div class="relative my-space-md p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-sm group/zones">
+<!-- Live breath-by-breath metric readout (raw signals only -- no HR/PPG, so no zone or lactate claims) -->
+<div class="relative my-space-md p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-sm">
 <div class="flex justify-between text-caption font-caption text-text-tertiary font-mono">
-<span class="group-hover/zones:text-primary-container transition-colors cursor-pointer" title="VT1 Aerobic Boundary">VT1 (Aerobic)</span>
-<span class="text-primary-container font-bold">CURRENT: ZONE 2</span>
-<span class="group-hover/zones:text-secondary transition-colors cursor-pointer" title="VT2 Lactate Threshold">VT2 (Lactate)</span>
+<span>LIVE, BREATH BY BREATH</span>
+<span class="text-primary-container font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>STREAMING</span>
 </div>
-<!-- Interactive Zone Bar Stack with Tooltips -->
-<div class="relative w-full flex h-3.5 rounded-full overflow-visible gap-1 bg-surface-container-high cursor-pointer p-0.5">
-<!-- Zone 1 -->
-<div class="group/z1 relative w-[18%] h-full bg-secondary/50 rounded-l-full hover:bg-secondary transition-all">
-<div class="opacity-0 group-hover/z1:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-0 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-white/10 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
-<span class="text-secondary font-bold">Zone 1 Active Recovery</span><br/><span class="text-text-secondary">&lt; 120 bpm • Baseline Lipolysis</span>
+<div class="grid grid-cols-3 gap-space-sm text-center">
+<div class="flex flex-col p-space-xs rounded-lg bg-surface-container">
+<span class="font-data-metric text-[22px] text-primary-container font-bold tracking-tight">44.1</span>
+<span class="font-caption text-caption text-text-tertiary">VO2 ml/kg/min</span>
 </div>
+<div class="flex flex-col p-space-xs rounded-lg bg-surface-container">
+<span class="font-data-metric text-[22px] text-text-primary font-bold tracking-tight">96</span>
+<span class="font-caption text-caption text-text-tertiary">VE L/min</span>
 </div>
-<!-- Zone 2 Aerobic (Active Highlight) -->
-<div class="group/z2 relative w-[28%] h-full bg-primary-container shadow-[0_0_12px_rgba(32,197,183,0.6)] hover:brightness-110 transition-all">
-<div class="opacity-0 group-hover/z2:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-primary-container/40 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
-<span class="text-primary-container font-bold">Zone 2 Aerobic Base</span><br/><span class="text-text-secondary">120-148 bpm • Lactate &lt; 2.0 mmol/L</span>
+<div class="flex flex-col p-space-xs rounded-lg bg-surface-container">
+<span class="font-data-metric text-[22px] text-secondary font-bold tracking-tight">0.98</span>
+<span class="font-caption text-caption text-text-tertiary">RER</span>
 </div>
-</div>
-<!-- Zone 3 Sweetspot -->
-<div class="group/z3 relative w-[22%] h-full bg-secondary-container/40 hover:bg-secondary-container transition-all">
-<div class="opacity-0 group-hover/z3:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-secondary-container/40 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
-<span class="text-secondary font-bold">Sweetspot / Tempo</span><br/><span class="text-text-secondary">148-165 bpm • Sustainable Glycogen</span>
-</div>
-</div>
-<!-- Zone 4 Threshold -->
-<div class="group/z4 relative w-[18%] h-full bg-telemetry-warning/40 hover:bg-telemetry-warning transition-all">
-<div class="opacity-0 group-hover/z4:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-telemetry-warning/40 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
-<span class="text-telemetry-warning font-bold">Zone 4 Threshold (VT2)</span><br/><span class="text-text-secondary">166-176 bpm • 4.0 mmol/L Lactate</span>
-</div>
-</div>
-<!-- Zone 5 Anaerobic -->
-<div class="group/z5 relative w-[14%] h-full bg-telemetry-critical/40 rounded-r-full hover:bg-telemetry-critical transition-all">
-<div class="opacity-0 group-hover/z5:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 right-0 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-telemetry-critical/40 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
-<span class="text-telemetry-critical font-bold">Zone 5 VO2 Max Peak</span><br/><span class="text-text-secondary">&gt; 176 bpm • Max Ventilation</span>
-</div>
-</div>
-</div>
-<div class="flex justify-between font-caption text-caption text-text-tertiary font-mono">
-<span>120 bpm</span>
-<span class="text-primary font-bold">148 bpm (Sweetspot)</span>
-<span>176 bpm</span>
 </div>
 </div>
 <ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-text-secondary">
@@ -420,7 +395,7 @@ body.menu-open { overflow: hidden; }
 </li>
 <li class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
-<span>Zones from measured thresholds</span>
+<span>Measured, not estimated</span>
 </li>
 <li class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
