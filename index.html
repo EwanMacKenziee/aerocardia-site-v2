@@ -522,10 +522,15 @@ body.menu-open { overflow: hidden; }
 </section>
 <!-- SETUP SECTION (HIGH-RESOLUTION 3D DEVICE RENDER WITH INTERACTIVE HOTSPOTS) -->
 <section class="w-full py-space-3xl lg:py-space-4xl bg-surface-card-elevated" id="how-it-works">
-<div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
-<!-- Left: Clean 3D Product Showcase with Hotspots and Switcher -->
-<div class="reveal lg:col-span-6 w-full flex flex-col items-center">
-<div class="relative w-full aspect-square max-w-lg rounded-3xl bg-surface-base p-space-lg flex flex-col justify-between border-subtle shadow-2xl overflow-hidden group/cad">
+<div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<!-- Heading, above the video -->
+<div class="reveal flex flex-col items-start gap-space-xs mb-space-xl max-w-2xl">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Setup</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary">Clip it on in seconds and go.</h2>
+</div>
+<!-- Product Showcase: full-bleed + tall on mobile so the video fills the screen, contained card on lg+ -->
+<div class="reveal w-full flex flex-col items-center mb-space-xl">
+<div class="relative w-full -mx-4 lg:mx-0 lg:max-w-lg h-[65vh] lg:h-auto lg:aspect-square rounded-none lg:rounded-3xl bg-surface-base p-space-lg flex flex-col justify-between border-y lg:border border-subtle shadow-2xl overflow-hidden group/cad">
 <!-- Background Grid & Glow -->
 <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(rgba(32, 197, 183, 0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
 <div class="absolute inset-0 bg-gradient-to-b from-primary-container/5 via-transparent to-primary-container/5 pointer-events-none"></div>
@@ -537,10 +542,8 @@ body.menu-open { overflow: hidden; }
 </span>
 </div>
 <!-- Central Rotating Product Video (hotspots + colourway toggle removed for now -- video is a single angle, not yet tied to interactive callouts) -->
-<div class="relative z-10 w-full flex-1 flex items-center justify-center py-2">
-<div class="relative w-full max-w-md flex items-center justify-center">
-<video alt="AeroCardia sensor pod, rotating" class="w-full h-auto object-contain max-h-64 drop-shadow-[0_15px_35px_rgba(32,197,183,0.22)]" id="setup-device-video" src="assets/video/setup-rotating.mp4" autoplay="" loop="" muted="" playsinline=""></video>
-</div>
+<div class="relative z-10 w-full flex-1 min-h-0 flex items-center justify-center py-2">
+<video alt="AeroCardia sensor pod, rotating" class="w-full h-full lg:h-auto lg:max-h-64 object-cover lg:object-contain drop-shadow-[0_15px_35px_rgba(32,197,183,0.22)]" id="setup-device-video" src="assets/video/setup-rotating.mp4" autoplay="" loop="" muted="" playsinline=""></video>
 </div>
 <!-- Bottom Micro Specs Indicator -->
 <div class="relative z-10 grid grid-cols-3 gap-2 pt-space-xs border-t border-white/5 font-mono text-caption text-text-secondary text-center">
@@ -563,10 +566,8 @@ body.menu-open { overflow: hidden; }
 <span>Soft mask • Head strap • Sensor pod</span>
 </div>
 </div>
-<!-- Right: Setup Instructions & Specs -->
-<div class="reveal lg:col-span-6 flex flex-col items-start gap-space-md">
-<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Setup</span>
-<h2 class="font-headline-lg text-headline-lg text-text-primary">Clip it on in seconds and go.</h2>
+<!-- Text, below the video -->
+<div class="reveal flex flex-col items-start gap-space-md max-w-2xl">
 <p class="font-body-lg text-body-lg text-text-secondary">
           A soft cup seals over your nose and mouth, a light strap holds it, and the sensor pod does the rest. No mouthpiece to bite, no calibration ritual, no cart of gas analysers.
         </p>
