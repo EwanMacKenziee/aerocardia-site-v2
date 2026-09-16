@@ -141,7 +141,7 @@ section[id] { scroll-margin-top: 96px; }
 #mobile-menu-toggle .icon-close { display: none; }
 #mobile-menu-toggle.is-open .icon-menu { display: none; }
 #mobile-menu-toggle.is-open .icon-close { display: inline-block; }
-body.menu-open { overflow: hidden; }
+body.menu-open, body.viewer-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   #mobile-menu { transition: none; }
 }
@@ -700,117 +700,65 @@ body.menu-open { overflow: hidden; }
 </a>
 </div>
 </section>
-<!-- CHAMPIONSHIP EDITION SECTION (DYNAMIC 3D COLORWAY SHOWCASE) -->
+<!-- CHAMPIONSHIP EDITION SECTION (INTERACTIVE WORLD MAP + FULL-SCREEN VIEWER) -->
 <section class="w-full py-space-3xl lg:py-space-4xl bg-surface-card border-t border-white/5" id="championship-showcase">
-<div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
-<!-- Text & Interactive Edition Selectors -->
-<div class="reveal lg:col-span-6 flex flex-col items-start gap-space-md">
+<div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="reveal flex flex-col items-start gap-space-md mb-space-xl max-w-2xl">
 <span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Championship Edition</span>
 <h2 class="font-headline-lg text-headline-lg text-text-primary">Sport your team's colours.</h2>
 <p class="font-body-lg text-body-lg text-text-secondary">
           Express your country with enthusiasm. Match your sensor to your national colours — for race day, for your club, or just to fly your own flag.
         </p>
-<!-- Nation Selector Pills with Interactive Handlers -->
-<div class="flex flex-wrap gap-space-xs pt-space-xs" id="nation-button-group">
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border-2 border-[#E05A1F] text-text-primary font-caption text-caption font-semibold shadow-[0_0_12px_rgba(224,90,31,0.35)] transition-all" id="btn-netherlands" onclick="selectEdition('netherlands')" style="border-color:#E05A1F">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(0deg,#AE1C28 33%,#fff 33% 66%,#21468B 66%)"></span>
-<span>Netherlands</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-belgium" onclick="selectEdition('belgium')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(90deg,#000 33%,#FDDA24 33% 66%,#EF3340 66%)"></span>
-<span>Belgium</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-great-britain" onclick="selectEdition('great-britain')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(135deg,#012169 45%,#C8102E 45%)"></span>
-<span>Great Britain</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-italy" onclick="selectEdition('italy')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(90deg,#008C45 33%,#F4F5F0 33% 66%,#CD212A 66%)"></span>
-<span>Italy</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-france" onclick="selectEdition('france')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)"></span>
-<span>France</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-germany" onclick="selectEdition('germany')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(0deg,#000 33%,#DD0000 33% 66%,#FFCE00 66%)"></span>
-<span>Germany</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-spain" onclick="selectEdition('spain')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(0deg,#AA151B 25%,#F1BF00 25% 75%,#AA151B 75%)"></span>
-<span>Spain</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-norway" onclick="selectEdition('norway')">
-<span class="w-2.5 h-2.5 rounded-full bg-[#EF2B2D]"></span>
-<span>Norway</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-australia" onclick="selectEdition('australia')">
-<span class="w-2.5 h-2.5 rounded-full bg-[#00247D]"></span>
-<span>Australia</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-colombia" onclick="selectEdition('colombia')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(0deg,#FCD116 50%,#003893 50% 75%,#CE1126 75%)"></span>
-<span>Colombia</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-ecuador" onclick="selectEdition('ecuador')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(0deg,#FFDD00 50%,#034EA2 50% 75%,#ED1C24 75%)"></span>
-<span>Ecuador</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-eritrea" onclick="selectEdition('eritrea')">
-<span class="w-2.5 h-2.5 rounded-full bg-[#EF3340]"></span>
-<span>Eritrea</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-ethiopia" onclick="selectEdition('ethiopia')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(0deg,#078930 33%,#FCDD09 33% 66%,#DA121A 66%)"></span>
-<span>Ethiopia</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-canada" onclick="selectEdition('canada')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(90deg,#FF0000 25%,#fff 25% 75%,#FF0000 75%)"></span>
-<span>Canada</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-united-states" onclick="selectEdition('united-states')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(135deg,#3C3B6E 40%,#B31942 40% 70%,#fff 70%)"></span>
-<span>United States</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-mexico" onclick="selectEdition('mexico')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(90deg,#006847 33%,#fff 33% 66%,#CE1126 66%)"></span>
-<span>Mexico</span>
-</button>
-<button class="edition-btn inline-flex items-center gap-2 px-space-md py-space-xs rounded-full bg-surface-card-elevated border border-subtle text-text-secondary hover:text-text-primary font-caption text-caption transition-all" id="btn-uae" onclick="selectEdition('uae')">
-<span class="w-2.5 h-2.5 rounded-full" style="background:linear-gradient(135deg,#FF0000 25%,#00732F 25% 50%,#fff 50% 75%,#000 75%)"></span>
-<span>UAE</span>
-</button>
 </div>
-<p class="font-caption text-caption text-text-tertiary" id="edition-description">
-<strong class="text-text-secondary font-semibold" id="edition-title">Netherlands</strong> • <span id="edition-detail">Copper colourway. More national editions confirmed as renders are finalised.</span>
-</p>
+
+<!-- Desktop / tablet: interactive world map. Hover a pin for a preview, click to open full screen. -->
+<div class="reveal hidden lg:block relative w-full aspect-[2/1] rounded-3xl border-subtle overflow-hidden bg-surface-base" style="background-image: radial-gradient(rgba(32, 197, 183, 0.35) 1px, transparent 0); background-size: 22px 22px;">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-surface-base/40 pointer-events-none"></div>
+<span class="absolute top-space-md left-space-md font-mono text-caption text-text-tertiary uppercase tracking-widest z-10">// Global Roster</span>
+<span class="absolute top-space-md right-space-md font-mono text-caption text-text-tertiary z-10">17 nations</span>
+<div id="world-map-pins" class="absolute inset-0"></div>
 </div>
-<!-- Pod Dynamic 3D Render Display Container -->
-<div class="reveal lg:col-span-6 w-full flex items-center justify-center">
-<div class="w-full max-w-lg p-space-lg lg:p-space-xl rounded-3xl bg-surface-container-lowest border-biometric flex flex-col items-center justify-between relative overflow-hidden shadow-2xl min-h-[380px]">
-<!-- Ambient Dynamic Glow Backdrop -->
-<div class="absolute inset-0 bg-[#E05A1F]/15 blur-3xl rounded-full transition-colors duration-500 pointer-events-none" id="edition-glow"></div>
+
+<!-- Mobile / small tablet: tappable tile grid, same data, same viewer -->
+<div id="edition-tile-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-space-xs lg:hidden"></div>
+</div>
+</section>
+
+<!-- Full-screen colourway viewer, shared by the map pins and the mobile tiles -->
+<div id="edition-viewer" class="hidden fixed inset-0 z-[100] items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Colourway viewer">
+<div class="absolute inset-0 bg-surface-base/95 backdrop-blur-md" onclick="closeViewer()"></div>
+<button class="absolute top-4 right-4 lg:top-8 lg:right-8 z-10 w-11 h-11 rounded-full bg-surface-card-elevated border border-white/10 flex items-center justify-center text-text-primary hover:bg-surface-container transition-colors" onclick="closeViewer()" aria-label="Close">
+<span class="material-symbols-outlined">close</span>
+</button>
+<button class="absolute left-2 lg:left-8 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-surface-card-elevated border border-white/10 flex items-center justify-center text-text-primary hover:bg-surface-container transition-colors" onclick="prevCountry()" aria-label="Previous country">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="absolute right-2 lg:right-8 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-surface-card-elevated border border-white/10 flex items-center justify-center text-text-primary hover:bg-surface-container transition-colors" onclick="nextCountry()" aria-label="Next country">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<div class="relative z-10 w-full max-w-md mx-auto flex flex-col items-center gap-space-md">
+<div class="w-full p-space-lg lg:p-space-xl rounded-3xl bg-surface-container-lowest border-biometric flex flex-col items-center justify-between relative overflow-hidden shadow-2xl">
+<div class="absolute inset-0 bg-[#E05A1F]/15 blur-3xl rounded-full transition-colors duration-500 pointer-events-none" id="viewer-glow"></div>
 <div class="w-full flex justify-between items-center text-text-tertiary font-mono text-caption relative z-10 mb-2">
 <span class="text-primary-container">// SPECIAL RACE APPAREL</span>
-<span class="text-[#E05A1F] font-bold px-2 py-0.5 rounded bg-surface-card-elevated border border-white/5 transition-colors" id="edition-badge">EDITION: ORANJE / COPPER</span>
+<span class="text-[#E05A1F] font-bold px-2 py-0.5 rounded bg-surface-card-elevated border border-white/5 transition-colors" id="viewer-badge">EDITION</span>
 </div>
-<!-- High-Resolution Render Image with Smooth Transition -->
 <div class="relative z-10 w-full flex-1 flex items-center justify-center py-4">
-<img alt="AeroCardia sensor pod in national colours" class="render-feather w-full max-w-sm h-auto object-contain max-h-56 transition-all duration-300 transform scale-105 hover:scale-110" id="edition-render-img" src="assets/img/renders/device-copper.png"/>
-<div class="hidden w-full max-w-sm aspect-square rounded-2xl border-2 border-dashed border-white/15 flex-col items-center justify-center gap-2 text-text-tertiary" id="edition-render-placeholder">
+<img alt="AeroCardia sensor pod in national colours" class="render-feather hidden w-full max-w-sm h-auto object-contain max-h-[42vh] transition-all duration-300" id="viewer-img"/>
+<div class="w-full max-w-sm aspect-square rounded-2xl border-2 border-dashed border-white/15 flex flex-col items-center justify-center gap-2 text-text-tertiary" id="viewer-placeholder">
 <span class="material-symbols-outlined text-[32px]">photo_camera</span>
 <span class="font-mono text-caption text-center px-4">Render coming soon</span>
 </div>
 </div>
-<!-- Bottom Material Spec Readout -->
 <div class="relative z-10 w-full flex items-center justify-center gap-space-xs font-mono text-caption text-text-secondary pt-3 border-t border-white/5">
-<span class="w-2 h-2 rounded-full bg-[#E05A1F] transition-colors" id="edition-indicator-dot"></span>
-<span class="text-center" id="edition-spec-text">Anodized Aerospace Copper Bezel • Satin Matte Obsidian Housing</span>
+<span class="w-2 h-2 rounded-full bg-[#E05A1F] transition-colors" id="viewer-dot"></span>
+<span class="text-center" id="viewer-spec">—</span>
 </div>
 </div>
+<h3 class="font-headline-md text-headline-md text-text-primary text-center" id="viewer-title">—</h3>
+<p class="font-body-sm text-body-sm text-text-secondary text-center" id="viewer-detail">—</p>
 </div>
 </div>
-</section>
 <!-- ABOUT / WHY WE EXIST SECTION -->
 <section class="w-full py-space-3xl lg:py-space-4xl bg-surface-card-elevated" id="about">
 <div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
@@ -1025,111 +973,126 @@ body.menu-open { overflow: hidden; }
 <script>
 
 // Interactive Championship Edition Colorway Showcase
+// x/y are position-on-map percentages (left/top). European nations are spread
+// out slightly beyond their true geographic spacing -- 8 of the 17 countries
+// are European and their real coordinates sit close enough together to overlap
+// as pins, so this is a deliberate legibility adjustment, not a projection bug.
 const editionData = {
-  'netherlands': {
-    title: 'Netherlands',
-    detail: 'Copper colourway. Official racing edition with copper anodized perimeter band.',
-    badge: 'EDITION: ORANJE / COPPER',
-    badgeColor: '#E05A1F',
-    glowClass: 'bg-[#E05A1F]/15',
-    specText: 'Anodized Aerospace Copper Bezel • Satin Matte Obsidian Housing',
-    dotColor: '#E05A1F',
-    imgSrc: 'assets/img/renders/device-copper.png'
-  },
-  'belgium': {
-    title: 'Belgium',
-    detail: 'Tour of Flanders edition. Pure alpine chassis with Solar Gold sprint accent stripe.',
-    badge: 'EDITION: SOLAR GOLD / FLANDERS',
-    badgeColor: '#FDDA24',
-    glowClass: 'bg-[#FDDA24]/15',
-    specText: 'Solar Gold Bezel • Medical-Grade Polymer Composite',
-    dotColor: '#FDDA24',
-    imgSrc: 'assets/img/renders/device-white-yellow.png'
-  },
-  'great-britain': {
-    title: 'Great Britain',
-    detail: 'Velodrome Stealth edition. Titanium grey and deep teal contrast racing livery.',
-    badge: 'EDITION: STEALTH / TITANIUM',
-    badgeColor: '#4CD7F6',
-    glowClass: 'bg-[#4CD7F6]/15',
-    specText: 'Brushed Titanium Accent • Dark Matter Satin Housing',
-    dotColor: '#4CD7F6',
-    imgSrc: 'assets/img/renders/device-cobalt.png'
-  },
-  'italy': { title: 'Italy', detail: 'National colourway in development.', badge: 'EDITION: ITALY', badgeColor: '#CD212A', glowClass: 'bg-[#CD212A]/15', specText: 'Details confirmed with the render.', dotColor: '#CD212A', imgSrc: 'assets/img/editions/italy.png' },
-  'france': { title: 'France', detail: 'National colourway in development.', badge: 'EDITION: FRANCE', badgeColor: '#0055A4', glowClass: 'bg-[#0055A4]/15', specText: 'Details confirmed with the render.', dotColor: '#0055A4', imgSrc: 'assets/img/editions/france.png' },
-  'germany': { title: 'Germany', detail: 'National colourway in development.', badge: 'EDITION: GERMANY', badgeColor: '#DD0000', glowClass: 'bg-[#DD0000]/15', specText: 'Details confirmed with the render.', dotColor: '#DD0000', imgSrc: 'assets/img/editions/germany.png' },
-  'spain': { title: 'Spain', detail: 'National colourway in development.', badge: 'EDITION: SPAIN', badgeColor: '#F1BF00', glowClass: 'bg-[#F1BF00]/15', specText: 'Details confirmed with the render.', dotColor: '#F1BF00', imgSrc: 'assets/img/editions/spain.png' },
-  'norway': { title: 'Norway', detail: 'National colourway in development.', badge: 'EDITION: NORWAY', badgeColor: '#EF2B2D', glowClass: 'bg-[#EF2B2D]/15', specText: 'Details confirmed with the render.', dotColor: '#EF2B2D', imgSrc: 'assets/img/editions/norway.png' },
-  'australia': { title: 'Australia', detail: 'National colourway in development.', badge: 'EDITION: AUSTRALIA', badgeColor: '#00247D', glowClass: 'bg-[#00247D]/15', specText: 'Details confirmed with the render.', dotColor: '#00247D', imgSrc: 'assets/img/editions/australia.png' },
-  'colombia': { title: 'Colombia', detail: 'National colourway in development.', badge: 'EDITION: COLOMBIA', badgeColor: '#FCD116', glowClass: 'bg-[#FCD116]/15', specText: 'Details confirmed with the render.', dotColor: '#FCD116', imgSrc: 'assets/img/editions/colombia.png' },
-  'ecuador': { title: 'Ecuador', detail: 'National colourway in development.', badge: 'EDITION: ECUADOR', badgeColor: '#FFDD00', glowClass: 'bg-[#FFDD00]/15', specText: 'Details confirmed with the render.', dotColor: '#FFDD00', imgSrc: 'assets/img/editions/ecuador.png' },
-  'eritrea': { title: 'Eritrea', detail: 'National colourway in development.', badge: 'EDITION: ERITREA', badgeColor: '#EF3340', glowClass: 'bg-[#EF3340]/15', specText: 'Details confirmed with the render.', dotColor: '#EF3340', imgSrc: 'assets/img/editions/eritrea.png' },
-  'ethiopia': { title: 'Ethiopia', detail: 'National colourway in development.', badge: 'EDITION: ETHIOPIA', badgeColor: '#078930', glowClass: 'bg-[#078930]/15', specText: 'Details confirmed with the render.', dotColor: '#078930', imgSrc: 'assets/img/editions/ethiopia.png' },
-  'canada': { title: 'Canada', detail: 'National colourway in development.', badge: 'EDITION: CANADA', badgeColor: '#FF0000', glowClass: 'bg-[#FF0000]/15', specText: 'Details confirmed with the render.', dotColor: '#FF0000', imgSrc: 'assets/img/editions/canada.png' },
-  'united-states': { title: 'United States', detail: 'National colourway in development.', badge: 'EDITION: UNITED STATES', badgeColor: '#3C3B6E', glowClass: 'bg-[#3C3B6E]/15', specText: 'Details confirmed with the render.', dotColor: '#3C3B6E', imgSrc: 'assets/img/editions/united-states.png' },
-  'mexico': { title: 'Mexico', detail: 'National colourway in development.', badge: 'EDITION: MEXICO', badgeColor: '#006847', glowClass: 'bg-[#006847]/15', specText: 'Details confirmed with the render.', dotColor: '#006847', imgSrc: 'assets/img/editions/mexico.png' },
-  'uae': { title: 'UAE', detail: 'National colourway in development.', badge: 'EDITION: UAE', badgeColor: '#00732F', glowClass: 'bg-[#00732F]/15', specText: 'Details confirmed with the render.', dotColor: '#00732F', imgSrc: 'assets/img/editions/uae.png' }
+  'netherlands': { title: 'Netherlands', detail: 'Copper colourway. Official racing edition with copper anodized perimeter band.', badge: 'EDITION: ORANJE / COPPER', badgeColor: '#E05A1F', glowClass: 'bg-[#E05A1F]/15', specText: 'Anodized Aerospace Copper Bezel • Satin Matte Obsidian Housing', dotColor: '#E05A1F', imgSrc: 'assets/img/renders/device-copper.png', x: 52, y: 19, flag: 'linear-gradient(0deg,#AE1C28 33%,#fff 33% 66%,#21468B 66%)' },
+  'belgium': { title: 'Belgium', detail: 'Tour of Flanders edition. Pure alpine chassis with Solar Gold sprint accent stripe.', badge: 'EDITION: SOLAR GOLD / FLANDERS', badgeColor: '#FDDA24', glowClass: 'bg-[#FDDA24]/15', specText: 'Solar Gold Bezel • Medical-Grade Polymer Composite', dotColor: '#FDDA24', imgSrc: 'assets/img/renders/device-white-yellow.png', x: 50, y: 23, flag: 'linear-gradient(90deg,#000 33%,#FDDA24 33% 66%,#EF3340 66%)' },
+  'great-britain': { title: 'Great Britain', detail: 'Velodrome Stealth edition. Titanium grey and deep teal contrast racing livery.', badge: 'EDITION: STEALTH / TITANIUM', badgeColor: '#4CD7F6', glowClass: 'bg-[#4CD7F6]/15', specText: 'Brushed Titanium Accent • Dark Matter Satin Housing', dotColor: '#4CD7F6', imgSrc: 'assets/img/renders/device-cobalt.png', x: 46, y: 18, flag: 'linear-gradient(135deg,#012169 45%,#C8102E 45%)' },
+  'italy': { title: 'Italy', detail: 'National colourway in development.', badge: 'EDITION: ITALY', badgeColor: '#CD212A', glowClass: 'bg-[#CD212A]/15', specText: 'Details confirmed with the render.', dotColor: '#CD212A', imgSrc: 'assets/img/editions/italy.png', x: 57, y: 29, flag: 'linear-gradient(90deg,#008C45 33%,#F4F5F0 33% 66%,#CD212A 66%)' },
+  'france': { title: 'France', detail: 'National colourway in development.', badge: 'EDITION: FRANCE', badgeColor: '#0055A4', glowClass: 'bg-[#0055A4]/15', specText: 'Details confirmed with the render.', dotColor: '#0055A4', imgSrc: 'assets/img/editions/france.png', x: 47, y: 26, flag: 'linear-gradient(90deg,#0055A4 33%,#fff 33% 66%,#EF4135 66%)' },
+  'germany': { title: 'Germany', detail: 'National colourway in development.', badge: 'EDITION: GERMANY', badgeColor: '#DD0000', glowClass: 'bg-[#DD0000]/15', specText: 'Details confirmed with the render.', dotColor: '#DD0000', imgSrc: 'assets/img/editions/germany.png', x: 56, y: 21, flag: 'linear-gradient(0deg,#000 33%,#DD0000 33% 66%,#FFCE00 66%)' },
+  'spain': { title: 'Spain', detail: 'National colourway in development.', badge: 'EDITION: SPAIN', badgeColor: '#F1BF00', glowClass: 'bg-[#F1BF00]/15', specText: 'Details confirmed with the render.', dotColor: '#F1BF00', imgSrc: 'assets/img/editions/spain.png', x: 44, y: 30, flag: 'linear-gradient(0deg,#AA151B 25%,#F1BF00 25% 75%,#AA151B 75%)' },
+  'norway': { title: 'Norway', detail: 'National colourway in development.', badge: 'EDITION: NORWAY', badgeColor: '#EF2B2D', glowClass: 'bg-[#EF2B2D]/15', specText: 'Details confirmed with the render.', dotColor: '#EF2B2D', imgSrc: 'assets/img/editions/norway.png', x: 54, y: 14, flag: '#EF2B2D' },
+  'australia': { title: 'Australia', detail: 'National colourway in development.', badge: 'EDITION: AUSTRALIA', badgeColor: '#00247D', glowClass: 'bg-[#00247D]/15', specText: 'Details confirmed with the render.', dotColor: '#00247D', imgSrc: 'assets/img/editions/australia.png', x: 87, y: 64, flag: '#00247D' },
+  'colombia': { title: 'Colombia', detail: 'National colourway in development.', badge: 'EDITION: COLOMBIA', badgeColor: '#FCD116', glowClass: 'bg-[#FCD116]/15', specText: 'Details confirmed with the render.', dotColor: '#FCD116', imgSrc: 'assets/img/editions/colombia.png', x: 29, y: 48, flag: 'linear-gradient(0deg,#FCD116 50%,#003893 50% 75%,#CE1126 75%)' },
+  'ecuador': { title: 'Ecuador', detail: 'National colourway in development.', badge: 'EDITION: ECUADOR', badgeColor: '#FFDD00', glowClass: 'bg-[#FFDD00]/15', specText: 'Details confirmed with the render.', dotColor: '#FFDD00', imgSrc: 'assets/img/editions/ecuador.png', x: 28, y: 51, flag: 'linear-gradient(0deg,#FFDD00 50%,#034EA2 50% 75%,#ED1C24 75%)' },
+  'eritrea': { title: 'Eritrea', detail: 'National colourway in development.', badge: 'EDITION: ERITREA', badgeColor: '#EF3340', glowClass: 'bg-[#EF3340]/15', specText: 'Details confirmed with the render.', dotColor: '#EF3340', imgSrc: 'assets/img/editions/eritrea.png', x: 60, y: 40, flag: '#EF3340' },
+  'ethiopia': { title: 'Ethiopia', detail: 'National colourway in development.', badge: 'EDITION: ETHIOPIA', badgeColor: '#078930', glowClass: 'bg-[#078930]/15', specText: 'Details confirmed with the render.', dotColor: '#078930', imgSrc: 'assets/img/editions/ethiopia.png', x: 62, y: 46, flag: 'linear-gradient(0deg,#078930 33%,#FCDD09 33% 66%,#DA121A 66%)' },
+  'canada': { title: 'Canada', detail: 'National colourway in development.', badge: 'EDITION: CANADA', badgeColor: '#FF0000', glowClass: 'bg-[#FF0000]/15', specText: 'Details confirmed with the render.', dotColor: '#FF0000', imgSrc: 'assets/img/editions/canada.png', x: 21, y: 19, flag: 'linear-gradient(90deg,#FF0000 25%,#fff 25% 75%,#FF0000 75%)' },
+  'united-states': { title: 'United States', detail: 'National colourway in development.', badge: 'EDITION: UNITED STATES', badgeColor: '#3C3B6E', glowClass: 'bg-[#3C3B6E]/15', specText: 'Details confirmed with the render.', dotColor: '#3C3B6E', imgSrc: 'assets/img/editions/united-states.png', x: 23, y: 28, flag: 'linear-gradient(135deg,#3C3B6E 40%,#B31942 40% 70%,#fff 70%)' },
+  'mexico': { title: 'Mexico', detail: 'National colourway in development.', badge: 'EDITION: MEXICO', badgeColor: '#006847', glowClass: 'bg-[#006847]/15', specText: 'Details confirmed with the render.', dotColor: '#006847', imgSrc: 'assets/img/editions/mexico.png', x: 22, y: 37, flag: 'linear-gradient(90deg,#006847 33%,#fff 33% 66%,#CE1126 66%)' },
+  'uae': { title: 'UAE', detail: 'National colourway in development.', badge: 'EDITION: UAE', badgeColor: '#00732F', glowClass: 'bg-[#00732F]/15', specText: 'Details confirmed with the render.', dotColor: '#00732F', imgSrc: 'assets/img/editions/uae.png', x: 65, y: 37, flag: 'linear-gradient(135deg,#FF0000 25%,#00732F 25% 50%,#fff 50% 75%,#000 75%)' }
 };
+const countryOrder = Object.keys(editionData);
+let currentEditionId = null;
 
-function selectEdition(id) {
+// Build the 17 map pins (desktop/tablet) and the tile grid (mobile) from the
+// same editionData, so there is one canonical list to maintain.
+(function buildEditionPickers() {
+  const pinLayer = document.getElementById('world-map-pins');
+  const tileGrid = document.getElementById('edition-tile-grid');
+  if (!pinLayer || !tileGrid) return;
+  countryOrder.forEach(function (id) {
+    const d = editionData[id];
+
+    const pin = document.createElement('button');
+    pin.type = 'button';
+    pin.className = 'group/pin absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer';
+    pin.style.left = d.x + '%';
+    pin.style.top = d.y + '%';
+    pin.setAttribute('aria-label', d.title + ' colourway');
+    pin.onclick = function () { openViewer(id); };
+    pin.innerHTML =
+      '<span class="block w-3 h-3 rounded-full ring-2 ring-surface-base shadow-[0_0_8px_var(--pin-c)] group-hover/pin:scale-125 transition-transform" style="background:' + d.dotColor + ';--pin-c:' + d.dotColor + '"></span>' +
+      '<span class="opacity-0 group-hover/pin:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-30 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated/95 border border-white/10 shadow-xl backdrop-blur-md text-[11px] font-mono whitespace-nowrap text-text-primary">' + d.title + '</span>';
+    pinLayer.appendChild(pin);
+
+    const tile = document.createElement('button');
+    tile.type = 'button';
+    tile.className = 'flex flex-col items-center gap-1.5 p-space-sm rounded-xl bg-surface-card-elevated border border-subtle active:border-biometric transition-colors';
+    tile.onclick = function () { openViewer(id); };
+    tile.innerHTML =
+      '<span class="block w-7 h-7 rounded-full ring-1 ring-white/10" style="background:' + d.flag + '"></span>' +
+      '<span class="font-caption text-caption text-text-secondary text-center leading-tight">' + d.title + '</span>';
+    tileGrid.appendChild(tile);
+  });
+})();
+
+function renderViewer(id) {
   const data = editionData[id];
   if (!data) return;
+  currentEditionId = id;
 
-  // Update Image with fast crossfade effect -- editions without a real render
-  // file yet at assets/img/editions/<slug>.png fall back to a "render coming
-  // soon" placeholder automatically (via onerror) and self-upgrade the
-  // moment the real file is dropped in, no code change needed.
-  const img = document.getElementById('edition-render-img');
-  const placeholder = document.getElementById('edition-render-placeholder');
-  img.onload = () => {
+  const img = document.getElementById('viewer-img');
+  const placeholder = document.getElementById('viewer-placeholder');
+  img.onload = function () {
     img.classList.remove('hidden');
     placeholder.classList.add('hidden');
     placeholder.classList.remove('flex');
   };
-  img.onerror = () => {
+  img.onerror = function () {
     img.classList.add('hidden');
     placeholder.classList.remove('hidden');
     placeholder.classList.add('flex');
   };
-  img.style.opacity = '0';
-  img.style.transform = 'scale(0.95)';
-  setTimeout(() => {
-    img.src = data.imgSrc;
-    img.style.opacity = '1';
-    img.style.transform = 'scale(1.05)';
-  }, 150);
+  img.src = data.imgSrc;
 
-  // Update Text & Badges
-  document.getElementById('edition-title').textContent = data.title;
-  document.getElementById('edition-detail').textContent = data.detail;
+  document.getElementById('viewer-title').textContent = data.title;
+  document.getElementById('viewer-detail').textContent = data.detail;
 
-  const badge = document.getElementById('edition-badge');
+  const badge = document.getElementById('viewer-badge');
   badge.textContent = data.badge;
   badge.style.color = data.badgeColor;
 
-  document.getElementById('edition-spec-text').textContent = data.specText;
-  document.getElementById('edition-indicator-dot').style.backgroundColor = data.dotColor;
+  document.getElementById('viewer-spec').textContent = data.specText;
+  document.getElementById('viewer-dot').style.backgroundColor = data.dotColor;
 
-  // Glow
-  const glow = document.getElementById('edition-glow');
-  glow.className = `absolute inset-0 ${data.glowClass} blur-3xl rounded-full transition-all duration-500 pointer-events-none`;
-
-  // Button Active State Styling
-  const buttons = document.querySelectorAll('.edition-btn');
-  buttons.forEach(btn => {
-    btn.classList.remove('border-2', 'shadow-[0_0_12px_rgba(224,90,31,0.35)]', 'text-text-primary');
-    btn.classList.add('border', 'border-subtle', 'text-text-secondary');
-    btn.style.borderColor = '';
-  });
-
-  const activeBtn = document.getElementById(`btn-${id}`);
-  if (activeBtn) {
-    activeBtn.classList.remove('border-subtle', 'text-text-secondary');
-    activeBtn.classList.add('border-2', 'text-text-primary');
-    activeBtn.style.borderColor = data.dotColor;
-  }
+  document.getElementById('viewer-glow').className = 'absolute inset-0 ' + data.glowClass + ' blur-3xl rounded-full transition-all duration-500 pointer-events-none';
 }
+
+function openViewer(id) {
+  renderViewer(id);
+  const viewer = document.getElementById('edition-viewer');
+  viewer.classList.remove('hidden');
+  viewer.classList.add('flex');
+  document.body.classList.add('viewer-open');
+}
+function closeViewer() {
+  const viewer = document.getElementById('edition-viewer');
+  viewer.classList.add('hidden');
+  viewer.classList.remove('flex');
+  document.body.classList.remove('viewer-open');
+}
+function nextCountry() {
+  if (!currentEditionId) return;
+  const i = countryOrder.indexOf(currentEditionId);
+  openViewer(countryOrder[(i + 1) % countryOrder.length]);
+}
+function prevCountry() {
+  if (!currentEditionId) return;
+  const i = countryOrder.indexOf(currentEditionId);
+  openViewer(countryOrder[(i - 1 + countryOrder.length) % countryOrder.length]);
+}
+document.addEventListener('keydown', function (e) {
+  const viewer = document.getElementById('edition-viewer');
+  if (!viewer || viewer.classList.contains('hidden')) return;
+  if (e.key === 'Escape') closeViewer();
+  if (e.key === 'ArrowRight') nextCountry();
+  if (e.key === 'ArrowLeft') prevCountry();
+});
 
 // Backed-by logo fallback: shown until the real logo file lands in assets/img/backed-by/
 function aeroLogoFallback(img, label) {
