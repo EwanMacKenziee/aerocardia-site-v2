@@ -529,9 +529,9 @@ body.menu-open { overflow: hidden; }
 <h2 class="font-headline-lg text-headline-lg text-text-primary">Clip it on in seconds and go.</h2>
 </div>
 </div>
-<!-- Product Showcase: a direct child of the section (no padded ancestor) so it's naturally full-bleed on mobile; re-padded/centered to match the rest of the page at lg+ -->
-<div class="reveal w-full flex flex-col items-center mb-space-xl lg:max-w-[1240px] lg:mx-auto lg:px-gutter-desktop">
-<div class="relative w-full lg:max-w-lg h-[65vh] lg:h-auto lg:aspect-square rounded-none lg:rounded-3xl bg-surface-base p-space-lg flex flex-col justify-between border-y lg:border border-subtle shadow-2xl overflow-hidden group/cad">
+<!-- Product Showcase: a direct child of the section (no padded ancestor) so it's full-bleed at every breakpoint, mobile through desktop -->
+<div class="reveal w-full flex flex-col items-center mb-space-xl">
+<div class="relative w-full h-[65vh] lg:h-screen rounded-none bg-surface-base p-space-lg lg:p-space-2xl flex flex-col justify-between border-y border-subtle shadow-2xl overflow-hidden group/cad">
 <!-- Background Grid & Glow -->
 <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(rgba(32, 197, 183, 0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
 <div class="absolute inset-0 bg-gradient-to-b from-primary-container/5 via-transparent to-primary-container/5 pointer-events-none"></div>
@@ -544,10 +544,10 @@ body.menu-open { overflow: hidden; }
 </div>
 <!-- Central Rotating Product Video (hotspots + colourway toggle removed for now -- video is a single angle, not yet tied to interactive callouts) -->
 <div class="relative z-10 w-full flex-1 min-h-0 flex items-center justify-center py-2">
-<video alt="AeroCardia sensor pod, rotating" class="w-full h-full lg:h-auto lg:max-h-64 object-cover lg:object-contain drop-shadow-[0_15px_35px_rgba(32,197,183,0.22)]" id="setup-device-video" src="assets/video/setup-rotating.mp4" autoplay="" loop="" muted="" playsinline=""></video>
+<video alt="AeroCardia sensor pod, rotating" class="w-full h-full object-cover drop-shadow-[0_15px_35px_rgba(32,197,183,0.22)]" id="setup-device-video" src="assets/video/setup-rotating.mp4" autoplay="" loop="" muted="" playsinline=""></video>
 </div>
 <!-- Bottom Micro Specs Indicator -->
-<div class="relative z-10 grid grid-cols-3 gap-2 pt-space-xs border-t border-white/5 font-mono text-caption text-text-secondary text-center">
+<div class="relative z-10 grid grid-cols-3 gap-2 lg:gap-space-lg pt-space-xs border-t border-white/5 font-mono text-caption text-text-secondary text-center max-w-2xl mx-auto w-full">
 <div class="p-1.5 rounded-lg bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" title="29 grams ultra-lightweight composite">
 <div class="text-[10px] text-text-tertiary">WEIGHT</div>
 <div class="text-text-primary font-bold">29g Net</div>
@@ -562,7 +562,10 @@ body.menu-open { overflow: hidden; }
 </div>
 </div>
 </div>
-<div class="mt-space-md flex items-center gap-space-sm font-caption text-caption text-text-secondary px-gutter-mobile lg:px-0">
+</div>
+<!-- Caption, aligned with the text column above/below rather than full-bleed -->
+<div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop w-full">
+<div class="mt-space-md flex items-center gap-space-sm font-caption text-caption text-text-secondary">
 <span class="w-2 h-2 rounded-full bg-primary-container"></span>
 <span>Soft mask • Head strap • Sensor pod</span>
 </div>
