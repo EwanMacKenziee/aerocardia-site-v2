@@ -478,67 +478,42 @@ body.menu-open { overflow: hidden; }
 <div class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated transition-all duration-300 shadow-xl border-subtle">
 <div class="flex flex-col gap-space-md">
 <div class="flex items-center justify-between">
-<span class="font-data-readout text-data-readout text-primary-container font-mono">03 // OXIDATION</span>
+<span class="font-data-readout text-data-readout text-primary-container font-mono">03 // RESPIRATORY</span>
 <span class="material-symbols-outlined text-text-tertiary">local_fire_department</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-text-primary">Race-day targets</h3>
+<h3 class="font-headline-md text-headline-md text-text-primary">A real effort signal</h3>
 <p class="font-body-sm text-body-sm text-text-secondary">
-            Turn months of real gas-exchange data into pacing you can trust — from a 10k to a marathon or a gran fondo, know what is sustainable before you spend it.
+            RER shifts in real time as effort climbs — an honest, breath-by-breath read on how hard you're working, from warm-up through the finish.
           </p>
-<!-- SVG Substrate Oxidation Curve (Fat vs Carb) with Interactive Pins -->
-<div class="relative my-space-md p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-xs group/ox">
+<!-- Live RER trend line (single measured signal -- no fat/carb split or crossover-wattage claim, since that modeling isn't built yet) -->
+<div class="relative my-space-md p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-xs">
 <div class="flex justify-between text-caption font-caption text-text-tertiary font-mono">
-<span class="text-primary-container flex items-center gap-1">■ Fat Ox</span>
-<span class="text-telemetry-warning flex items-center gap-1">■ CHO Burn</span>
-<span class="text-text-primary font-bold">Crossover: 260W</span>
+<span class="text-primary-container flex items-center gap-1">■ Live RER</span>
+<span class="text-text-primary font-bold">0.98</span>
 </div>
 <div class="relative w-full h-16 flex items-center">
-<svg class="w-full h-full cursor-crosshair" preserveaspectratio="none" viewbox="0 0 200 60">
-<!-- Fat burn curve descending with glow on hover -->
-<path class="transition-all duration-300 group-hover/ox:filter group-hover/ox:drop-shadow-[0_0_4px_rgba(32,197,183,0.8)]" d="M 0 10 Q 70 12, 100 32 T 200 55" fill="none" stroke="#20C5B7" stroke-width="2.2"></path>
-<!-- Carb burn curve ascending with glow on hover -->
-<path class="transition-all duration-300 group-hover/ox:filter group-hover/ox:drop-shadow-[0_0_4px_rgba(245,158,11,0.8)]" d="M 0 55 Q 80 50, 100 32 T 200 6" fill="none" stroke="#F59E0B" stroke-width="2.2"></path>
-<!-- Vertical threshold guide dashed line -->
-<line stroke="rgba(255,255,255,0.2)" stroke-dasharray="2 2" stroke-width="1" x1="100" x2="100" y1="5" y2="55"></line>
-<!-- Crossover node -->
-<circle cx="100" cy="32" fill="#F1F5F9" r="3.5"></circle>
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 200 60">
+<path d="M 0 45 Q 60 40, 100 28 T 200 12" fill="none" stroke="#20C5B7" stroke-width="2.2"></path>
 </svg>
-<!-- Interactive FatMax Tooltip Pin -->
-<div class="group/fatmax absolute left-3 top-2.5 cursor-pointer">
-<div class="w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-primary-container/30 group-hover/fatmax:scale-125 transition-transform"></div>
-<div class="opacity-0 group-hover/fatmax:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-1.5 left-0 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-primary-container/40 shadow-xl backdrop-blur-md text-[11px] font-mono whitespace-nowrap">
-<span class="text-primary-container font-semibold">Aerobic Max:</span> Fat 0.68 g/min (180W)
-                </div>
-</div>
-<!-- Interactive Crossover Tooltip Pin -->
-<div class="group/crossover absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer">
-<div class="w-4 h-4 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition-colors">
-<span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
-</div>
-<div class="opacity-0 group-hover/crossover:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-40 px-2.5 py-1.5 rounded-lg bg-surface-card-elevated border border-white/20 shadow-2xl backdrop-blur-md text-[11px] font-mono text-text-primary whitespace-nowrap">
-<span class="text-text-primary font-bold">Crossover Point (260W):</span><br/>
-<span class="text-text-secondary">50% Fat / 50% Carb oxidation (RER 0.85)</span>
-</div>
-</div>
 </div>
 <div class="flex justify-between font-caption text-caption text-text-tertiary font-mono pt-1">
-<span>Aerobic (Fat Max)</span>
-<span class="text-text-primary">Threshold (Mix)</span>
-<span>Anaerobic (Glyco)</span>
+<span>Aerobic</span>
+<span class="text-text-primary">Mixed</span>
+<span>Anaerobic</span>
 </div>
 </div>
 <ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-text-secondary">
 <li class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
-<span>Threshold pace &amp; power targets</span>
+<span>Live RER, streamed in real time</span>
 </li>
 <li class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
-<span>Fuelling cues from live RER</span>
+<span>Track how it shifts across a session</span>
 </li>
 <li class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
-<span>Peak when it matters</span>
+<span>Useful from a 10k to a gran fondo</span>
 </li>
 </ul>
 </div>
@@ -613,7 +588,7 @@ body.menu-open { overflow: hidden; }
 <div class="text-secondary font-semibold flex items-center gap-1.5">
 <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Hydrophobic Expiratory Channel
         </div>
-<div class="text-text-secondary">Zero-condensation ultrasonic micro-vortex flow sensor</div>
+<div class="text-text-secondary">Flow tube with a hydrophobic coating to resist moisture</div>
 <div class="text-text-tertiary">Ventilation up to 240 L/min sprint capacity</div>
 </div>
 </div>
