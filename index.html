@@ -1143,6 +1143,11 @@ function aeroLogoFallback(img, label) {
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
   targets.forEach(function(t) { io.observe(t); });
+  // Safety net: if a browser/extension quirk ever stops the observer from
+  // firing on a given section, don't let content stay invisible forever.
+  setTimeout(function() {
+    targets.forEach(function(t) { t.classList.add('is-visible'); });
+  }, 2500);
 })();
 </script>
 <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
