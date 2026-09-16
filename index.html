@@ -529,69 +529,17 @@ body.menu-open { overflow: hidden; }
 <!-- Background Grid & Glow -->
 <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(rgba(32, 197, 183, 0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
 <div class="absolute inset-0 bg-gradient-to-b from-primary-container/5 via-transparent to-primary-container/5 pointer-events-none"></div>
-<!-- Top Bar with Switcher -->
+<!-- Top Bar -->
 <div class="relative z-20 flex justify-between items-center text-text-tertiary font-mono text-caption">
 <span class="text-primary-container flex items-center gap-1 font-semibold">
 <span class="material-symbols-outlined text-[15px] animate-spin" style="animation-duration: 12s;">memory</span>
   AEROCARDIA POD Mk-IV
 </span>
-<!-- View / Model Toggle -->
-<div class="flex items-center gap-1 bg-surface-card/80 p-0.5 rounded-full border border-white/10 text-[10px]">
-<button class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-bold transition-all" id="setup-view-flagship" onclick="setSetupModel('flagship')">Arctic Cyan</button>
-<button class="px-2.5 py-0.5 rounded-full text-text-secondary hover:text-text-primary transition-all" id="setup-view-solar" onclick="setSetupModel('solar')">Solar Gold</button>
 </div>
-</div>
-<!-- Central High-Res 3D Device Render with Interactive Hotspots -->
+<!-- Central Rotating Product Video (hotspots + colourway toggle removed for now -- video is a single angle, not yet tied to interactive callouts) -->
 <div class="relative z-10 w-full flex-1 flex items-center justify-center py-2">
 <div class="relative w-full max-w-md flex items-center justify-center">
-<!-- Active Product Render Image -->
-<img alt="AeroCardia sensor pod render" class="render-feather w-full h-auto object-contain max-h-64 drop-shadow-[0_15px_35px_rgba(32,197,183,0.22)] transition-all duration-500 scale-105" id="setup-device-img" src="assets/img/renders/device-cobalt.png"/>
-<!-- Radar Pulse Ring Behind Sensor Nozzle -->
-<div class="absolute left-[30%] top-[50%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-<div class="w-20 h-20 rounded-full border border-primary-container/40 animate-radar"></div>
-<div class="w-28 h-28 rounded-full border border-secondary/30 animate-radar" style="animation-delay: 1s;"></div>
-</div>
-<!-- Hotspot 1: Ergonomic Soft Face-Cup -->
-<div class="group/seal absolute right-[22%] top-[30%] cursor-pointer z-30">
-<div class="relative flex items-center justify-center">
-<span class="w-4 h-4 rounded-full bg-primary-container/40 animate-ping absolute"></span>
-<span class="w-3 h-3 rounded-full bg-primary-container border-2 border-surface-base shadow-[0_0_8px_#20C5B7]"></span>
-</div>
-<div class="opacity-0 group-hover/seal:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full right-0 mb-2.5 z-40 p-2.5 rounded-xl bg-surface-card-elevated/95 border border-primary-container/40 shadow-2xl backdrop-blur-md text-[11px] font-mono whitespace-nowrap">
-<div class="text-primary-container font-semibold flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Biocompatible Face-Cup Seal
-        </div>
-<div class="text-text-secondary">Medical-grade silicone (&lt;0.5 hPa leak rate)</div>
-<div class="text-text-tertiary">Quick-snap magnetic release connector</div>
-</div>
-</div>
-<!-- Hotspot 2: Core Micro-Spectrometer Pod -->
-<div class="group/core absolute left-[50%] top-[42%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30">
-<div class="relative flex items-center justify-center w-8 h-8 rounded-full hover:bg-primary-container/15 transition-colors">
-<span class="w-3.5 h-3.5 rounded-full bg-primary-container animate-pulse shadow-[0_0_12px_#20C5B7]"></span>
-</div>
-<div class="opacity-0 group-hover/core:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 z-40 p-2.5 rounded-xl bg-surface-card-elevated/95 border border-primary-container/50 shadow-2xl backdrop-blur-md text-[11px] font-mono whitespace-nowrap">
-<div class="text-primary-container font-bold flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Dual Optical Micro-Spectrometer
-        </div>
-<div class="text-text-secondary">50Hz differential O2/CO2 infrared optical bench</div>
-<div class="text-text-tertiary">Dynamic barometric &amp; humidity auto-compensation</div>
-</div>
-</div>
-<!-- Hotspot 3: Front Expiratory Vent Nozzle -->
-<div class="group/vent absolute left-[16%] top-[50%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-30">
-<div class="relative flex items-center justify-center">
-<span class="w-4 h-4 rounded-full bg-secondary/40 animate-ping absolute"></span>
-<span class="w-3 h-3 rounded-full bg-secondary border-2 border-surface-base shadow-[0_0_8px_#4CD7F6]"></span>
-</div>
-<div class="opacity-0 group-hover/vent:opacity-100 pointer-events-none transition-all duration-200 absolute bottom-full left-0 mb-2.5 z-40 p-2.5 rounded-xl bg-surface-card-elevated/95 border border-secondary/40 shadow-2xl backdrop-blur-md text-[11px] font-mono whitespace-nowrap">
-<div class="text-secondary font-semibold flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Hydrophobic Expiratory Channel
-        </div>
-<div class="text-text-secondary">Flow tube with a hydrophobic coating to resist moisture</div>
-<div class="text-text-tertiary">Ventilation up to 240 L/min sprint capacity</div>
-</div>
-</div>
+<video alt="AeroCardia sensor pod, rotating" class="w-full h-auto object-contain max-h-64 drop-shadow-[0_15px_35px_rgba(32,197,183,0.22)]" id="setup-device-video" src="assets/video/setup-rotating.mp4" autoplay="" loop="" muted="" playsinline=""></video>
 </div>
 </div>
 <!-- Bottom Micro Specs Indicator -->
@@ -1069,22 +1017,6 @@ body.menu-open { overflow: hidden; }
 </section>
 </div></main><footer class="w-full bg-surface-card-elevated"><div class="max-w-[1240px] mx-auto px-gutter-desktop pt-space-3xl pb-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-2xl"><div class="lg:col-span-2 flex flex-col gap-space-md pr-space-xl"><div class="flex items-center gap-space-sm"><img alt="AeroCardia Logo" class="h-7 w-auto object-contain" src="assets/img/aerocardia-logo.png"/><span class="font-headline-md text-headline-md font-semibold tracking-tight text-text-primary">AeroCardia</span></div><p class="font-body-sm text-body-sm text-text-secondary max-w-sm">Portable VO2 and cardiopulmonary breath intelligence. Clinical precision calibrated for high-performance human athletics and metabolic diagnostics.</p><div class="flex items-center gap-space-xs text-secondary-fixed-dim"><span class="material-symbols-outlined text-[18px]">vital_signs</span><span class="font-telemetry-badge text-telemetry-badge uppercase tracking-wider">Calibrated Biometric Stream</span></div></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Explore</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="product" href="#">Product</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#how-it-works">How it works</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="about" href="#about">About us</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="blog" href="#blog">Blog</a></li></ul></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Get started</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="join-the-waitlist" href="#waitlist">Join the waitlist</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="mailto:info@aerocardia.com">Contact the team</a></li></ul></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Connect</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://www.linkedin.com/company/aerocardia" rel="noopener" target="_blank">LinkedIn</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://www.instagram.com/aerocardia/" rel="noopener" target="_blank">Instagram</a></li><li class="flex"><a class="text-on-surface-variant hover:text-primary transition-colors font-data-readout text-data-readout" href="mailto:info@aerocardia.com">info@aerocardia.com</a></li></ul></div></div><div class="pt-space-xl flex flex-col gap-space-md"><div class="p-space-md rounded-lg bg-surface-container-lowest/60 text-text-tertiary font-caption text-caption leading-relaxed"><span class="text-text-secondary font-semibold">Wellness Disclaimer:</span> AeroCardia is intended exclusively for general wellness and fitness purposes. It is not a medical device and is not intended for use in the diagnosis, treatment, cure, mitigation, prevention, or monitoring of any disease or medical condition. Do not rely on AeroCardia for medical decisions or in place of professional medical advice or emergency medical care. If you believe you are experiencing a medical emergency, contact your local emergency services immediately.</div><div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm text-text-tertiary font-caption text-caption"><p>© 2026 AeroCardia Inc. All rights reserved.</p><div class="flex items-center gap-space-md"><a class="hover:text-text-secondary transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-text-secondary transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="hover:text-text-secondary transition-colors" data-path="biometric-compliance" href="#">Telemetry Compliance</a></div></div></div></div></footer>
 <script>
-// Interactive Setup Model Switcher
-function setSetupModel(type) {
-  const img = document.getElementById('setup-device-img');
-  const btnFlagship = document.getElementById('setup-view-flagship');
-  const btnSolar = document.getElementById('setup-view-solar');
-
-  if (type === 'flagship') {
-    img.src = 'assets/img/renders/device-cobalt.png';
-    btnFlagship.className = 'px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-bold transition-all';
-    btnSolar.className = 'px-2.5 py-0.5 rounded-full text-text-secondary hover:text-text-primary transition-all';
-  } else {
-    img.src = 'assets/img/renders/device-copper.png';
-    btnSolar.className = 'px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-bold transition-all';
-    btnFlagship.className = 'px-2.5 py-0.5 rounded-full text-text-secondary hover:text-text-primary transition-all';
-  }
-}
 
 // Interactive Championship Edition Colorway Showcase
 const editionData = {
