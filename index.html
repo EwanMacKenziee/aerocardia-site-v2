@@ -583,21 +583,21 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 </div>
 </div>
 </div>
-<!-- Caption, aligned with the text column above/below rather than full-bleed -->
+<!-- Caption, centered directly under the video -->
 <div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop w-full">
-<div class="mt-space-md flex items-center gap-space-sm font-caption text-caption text-text-secondary">
+<div class="mt-space-md flex items-center justify-center gap-space-sm font-caption text-caption text-text-secondary">
 <span class="w-2 h-2 rounded-full bg-primary-container"></span>
 <span>Soft mask • Head strap • Sensor pod</span>
 </div>
 </div>
-<!-- Text, below the video -->
+<!-- Text, centered below the video (avoids a blank gap beside a left-anchored column on wide screens) -->
 <div class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
-<div class="reveal flex flex-col items-start gap-space-md max-w-2xl">
+<div class="reveal flex flex-col items-center gap-space-md max-w-2xl mx-auto text-center">
 <p class="font-body-lg text-body-lg text-text-secondary">
           A soft cup seals over your nose and mouth, a light strap holds it, and the sensor pod does the rest. No mouthpiece to bite, no calibration ritual, no cart of gas analysers.
         </p>
 <div class="flex flex-col gap-space-md w-full pt-space-sm">
-<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-card border-subtle hover:border-biometric transition-colors">
+<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-card border-subtle hover:border-biometric transition-colors text-left">
 <div class="p-space-xs rounded-lg bg-primary-container/10 text-primary-container">
 <span class="material-symbols-outlined text-[24px]">bluetooth_connected</span>
 </div>
