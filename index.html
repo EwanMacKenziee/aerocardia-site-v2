@@ -369,16 +369,12 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <div class="marquee-photo-slot is-photo" data-photo-slot="healthspan-longevity"><img alt="" loading="lazy" src="assets/img/marquee/healthspan-longevity.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Healthspan &amp; Longevity</span></div>
 <div class="marquee-photo-slot is-photo" data-photo-slot="trail-ultra"><img alt="" loading="lazy" src="assets/img/marquee/trail-ultra.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Trail &amp; Ultra</span></div>
 <div class="marquee-photo-slot is-photo" data-photo-slot="triathlon-base"><img alt="" loading="lazy" src="assets/img/marquee/triathlon-base.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Triathlon Base</span></div>
-<div class="marquee-photo-slot is-photo is-render" data-photo-slot="vo2-max-testing"><img alt="" loading="lazy" src="assets/img/renders/device-cobalt.png"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">VO2 Max Testing</span></div>
-<div class="marquee-photo-slot" data-photo-slot="race-day-ready"><span class="material-symbols-outlined text-text-tertiary text-[26px]">emoji_events</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Race-Day Ready</span></div>
 <!-- Set B (duplicate for seamless loop) -->
 <div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/marathon-pacing.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Marathon Pacing</span></div>
 <div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/gran-fondo-power.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Gran Fondo Power</span></div>
 <div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/healthspan-longevity.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Healthspan &amp; Longevity</span></div>
 <div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/trail-ultra.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Trail &amp; Ultra</span></div>
 <div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/triathlon-base.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Triathlon Base</span></div>
-<div class="marquee-photo-slot is-photo is-render" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/renders/device-cobalt.png"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">VO2 Max Testing</span></div>
-<div class="marquee-photo-slot" aria-hidden="true"><span class="material-symbols-outlined text-text-tertiary text-[26px]">emoji_events</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Race-Day Ready</span></div>
 </div>
 </div>
 </section>
@@ -390,7 +386,7 @@ body.menu-open, body.viewer-open { overflow: hidden; }
         Personalised run &amp; ride training. Powered by the best data.
       </h2>
 <p class="font-body-lg text-body-lg text-text-secondary mt-space-xs">
-        Heart rate tells you how hard your heart is working. AeroCardia tells you what your whole system is doing — how much oxygen you are actually using, and how close you are to your ceiling.
+        Effort feels the same on a good day and a bad one. AeroCardia tells you what your whole system is doing — how much oxygen you are actually using, and how close you are to your ceiling.
       </p>
 </div>
 <!-- 3 Data Cards Grid -->
@@ -404,7 +400,7 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 </div>
 <h3 class="font-headline-md text-headline-md text-text-primary">Real-time guidance</h3>
 <p class="font-body-sm text-body-sm text-text-secondary">
-            Live VO2, ventilation and RER stream to your watch or head unit — see exactly what your engine is doing, breath by breath, on every hill and interval.
+            Live VO2, ventilation and RER stream to the AeroCardia app over Bluetooth — see exactly what your engine is doing, breath by breath, on every hill and interval.
           </p>
 <!-- Live breath-by-breath metric readout (raw signals only -- no HR/PPG, so no zone or lactate claims) -->
 <div class="relative my-space-md p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-sm">
@@ -585,21 +581,6 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <div class="relative z-10 w-full flex-1 min-h-0 flex items-center justify-center py-2">
 <video alt="AeroCardia sensor pod, rotating" class="w-full h-full object-cover drop-shadow-[0_15px_35px_rgba(32,197,183,0.22)]" id="setup-device-video" src="assets/video/setup-rotating.mp4" autoplay="" loop="" muted="" playsinline=""></video>
 </div>
-<!-- Bottom Micro Specs Indicator -->
-<div class="relative z-10 grid grid-cols-3 gap-2 lg:gap-space-lg pt-space-xs border-t border-white/5 font-mono text-caption text-text-secondary text-center max-w-2xl mx-auto w-full">
-<div class="p-1.5 rounded-lg bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" title="29 grams ultra-lightweight composite">
-<div class="text-[10px] text-text-tertiary">WEIGHT</div>
-<div class="text-text-primary font-bold">29g Net</div>
-</div>
-<div class="p-1.5 rounded-lg bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" title="Dual differential sampling at 50Hz">
-<div class="text-[10px] text-text-tertiary">SAMPLING</div>
-<div class="text-primary-container font-bold">50Hz Dual</div>
-</div>
-<div class="p-1.5 rounded-lg bg-surface-container/60 hover:bg-surface-container transition-colors cursor-pointer" title="Certified hypoallergenic medical silicone">
-<div class="text-[10px] text-text-tertiary">SEAL</div>
-<div class="text-secondary font-bold">Med-Silicone</div>
-</div>
-</div>
 </div>
 </div>
 <!-- Caption, aligned with the text column above/below rather than full-bleed -->
@@ -623,15 +604,6 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <div>
 <h4 class="font-body-base text-body-base font-semibold text-text-primary">Instant Universal Sync</h4>
 <p class="font-body-sm text-body-sm text-text-secondary">Pairs directly with our app via Bluetooth.</p>
-</div>
-</div>
-<div class="flex items-start gap-space-md p-space-md rounded-xl bg-surface-card border-subtle hover:border-biometric transition-colors">
-<div class="p-space-xs rounded-lg bg-secondary/10 text-secondary">
-<span class="material-symbols-outlined text-[24px]">water_drop</span>
-</div>
-<div>
-<h4 class="font-body-base text-body-base font-semibold text-text-primary">Sweat &amp; Weatherproof</h4>
-<p class="font-body-sm text-body-sm text-text-secondary">Engineered with IP67 hydrophobic diaphragms built specifically for torrential rain and humidity.</p>
 </div>
 </div>
 </div>
