@@ -100,6 +100,45 @@ html{scroll-behavior:smooth;}
   gap: 0.5rem;
 }
 
+/* Photo-filled marquee tile: real photography (or a device render) with a
+   teal-duotone scrim so it reads as one system with the rest of the site
+   instead of a raw stock photo, plus a caption for legibility over the image. */
+.marquee-photo-slot.is-photo {
+  position: relative;
+  border-style: solid;
+  border-color: rgba(255,255,255,0.10);
+  overflow: hidden;
+  align-items: stretch;
+  justify-content: flex-end;
+  gap: 0;
+  padding: 0;
+}
+.marquee-photo-slot.is-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.marquee-photo-slot.is-photo.is-render img { object-fit: contain; padding: 1rem; }
+.marquee-photo-slot.is-photo:not(.is-render) img { filter: grayscale(30%) contrast(1.08) brightness(0.82); }
+.marquee-photo-slot.is-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8,12,14,0) 45%, rgba(8,12,14,0.85) 100%),
+              linear-gradient(0deg, rgba(32,197,183,0.14), rgba(32,197,183,0.14));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.marquee-photo-slot.is-photo span {
+  position: relative;
+  z-index: 2;
+  padding: 0 0.75rem 0.6rem;
+}
+
 /* Backed-by logo tiles: white-silhouette treatment. grayscale+invert turns the
    flat white fill into black and the ink into light/white; screen blend has no
    brightness ceiling the way multiply does, so the ink can reach true white regardless of how
@@ -325,20 +364,20 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <div class="marquee-track">
 <!-- Set A — placeholder photo slots (Squarespace-style idle strip). No real photography sourced yet;
      each slot is data-photo-slot="..." so a real <img> can drop in later without touching layout. -->
-<div class="marquee-photo-slot" data-photo-slot="marathon-pacing"><span class="material-symbols-outlined text-text-tertiary text-[26px]">directions_run</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Marathon Pacing</span></div>
-<div class="marquee-photo-slot" data-photo-slot="gran-fondo-power"><span class="material-symbols-outlined text-text-tertiary text-[26px]">directions_bike</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Gran Fondo Power</span></div>
-<div class="marquee-photo-slot" data-photo-slot="healthspan-longevity"><span class="material-symbols-outlined text-text-tertiary text-[26px]">favorite</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Healthspan &amp; Longevity</span></div>
-<div class="marquee-photo-slot" data-photo-slot="trail-ultra"><span class="material-symbols-outlined text-text-tertiary text-[26px]">landscape</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Trail &amp; Ultra</span></div>
-<div class="marquee-photo-slot" data-photo-slot="triathlon-base"><span class="material-symbols-outlined text-text-tertiary text-[26px]">pool</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Triathlon Base</span></div>
-<div class="marquee-photo-slot" data-photo-slot="vo2-max-testing"><span class="material-symbols-outlined text-text-tertiary text-[26px]">monitor_heart</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">VO2 Max Testing</span></div>
+<div class="marquee-photo-slot is-photo" data-photo-slot="marathon-pacing"><img alt="" loading="lazy" src="assets/img/marquee/marathon-pacing.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Marathon Pacing</span></div>
+<div class="marquee-photo-slot is-photo" data-photo-slot="gran-fondo-power"><img alt="" loading="lazy" src="assets/img/marquee/gran-fondo-power.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Gran Fondo Power</span></div>
+<div class="marquee-photo-slot is-photo" data-photo-slot="healthspan-longevity"><img alt="" loading="lazy" src="assets/img/marquee/healthspan-longevity.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Healthspan &amp; Longevity</span></div>
+<div class="marquee-photo-slot is-photo" data-photo-slot="trail-ultra"><img alt="" loading="lazy" src="assets/img/marquee/trail-ultra.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Trail &amp; Ultra</span></div>
+<div class="marquee-photo-slot is-photo" data-photo-slot="triathlon-base"><img alt="" loading="lazy" src="assets/img/marquee/triathlon-base.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Triathlon Base</span></div>
+<div class="marquee-photo-slot is-photo is-render" data-photo-slot="vo2-max-testing"><img alt="" loading="lazy" src="assets/img/renders/device-cobalt.png"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">VO2 Max Testing</span></div>
 <div class="marquee-photo-slot" data-photo-slot="race-day-ready"><span class="material-symbols-outlined text-text-tertiary text-[26px]">emoji_events</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Race-Day Ready</span></div>
 <!-- Set B (duplicate for seamless loop) -->
-<div class="marquee-photo-slot" aria-hidden="true"><span class="material-symbols-outlined text-text-tertiary text-[26px]">directions_run</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Marathon Pacing</span></div>
-<div class="marquee-photo-slot" aria-hidden="true"><span class="material-symbols-outlined text-text-tertiary text-[26px]">directions_bike</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Gran Fondo Power</span></div>
-<div class="marquee-photo-slot" aria-hidden="true"><span class="material-symbols-outlined text-text-tertiary text-[26px]">favorite</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Healthspan &amp; Longevity</span></div>
-<div class="marquee-photo-slot" aria-hidden="true"><span class="material-symbols-outlined text-text-tertiary text-[26px]">landscape</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Trail &amp; Ultra</span></div>
-<div class="marquee-photo-slot" aria-hidden="true"><span class="material-symbols-outlined text-text-tertiary text-[26px]">pool</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Triathlon Base</span></div>
-<div class="marquee-photo-slot" aria-hidden="true"><span class="material-symbols-outlined text-text-tertiary text-[26px]">monitor_heart</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">VO2 Max Testing</span></div>
+<div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/marathon-pacing.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Marathon Pacing</span></div>
+<div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/gran-fondo-power.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Gran Fondo Power</span></div>
+<div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/healthspan-longevity.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Healthspan &amp; Longevity</span></div>
+<div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/trail-ultra.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Trail &amp; Ultra</span></div>
+<div class="marquee-photo-slot is-photo" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/marquee/triathlon-base.jpg"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">Triathlon Base</span></div>
+<div class="marquee-photo-slot is-photo is-render" aria-hidden="true"><img alt="" loading="lazy" src="assets/img/renders/device-cobalt.png"/><span class="font-caption text-caption text-text-primary uppercase tracking-widest">VO2 Max Testing</span></div>
 <div class="marquee-photo-slot" aria-hidden="true"><span class="material-symbols-outlined text-text-tertiary text-[26px]">emoji_events</span><span class="font-caption text-caption text-text-tertiary uppercase tracking-widest">Race-Day Ready</span></div>
 </div>
 </div>
