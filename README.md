@@ -21,7 +21,5 @@ npx vercel --prod # promote to production
 
 ## Open items
 
-- **Backed By logos**: currently placeholder monogram badges (`data-logo-slot` attributes on each tile in the "Backed By" section) for McGill Dobson Centre, Garage&Co Incubator, Vitruvius Venture Studio, and CLIP — swap in real `<img>` logos once received.
-- **CLIP**: replaced "Marika Zelenka Roy Prize" per request — confirm what CLIP is (program/partner/award) so the tile can get a proper mark instead of the placeholder paperclip icon.
-- **Device renders / championship editions**: still using the original Google-hosted image URLs from the design mockup — swap for owned/hosted assets before shipping publicly.
+- **Championship editions**: 12 of 17 country colourways now have real renders — Netherlands/copper, Belgium/white-yellow, GB/cobalt (subtle accent-bezel style, in `assets/img/renders/`), plus Italy, France, Germany, Spain, Colombia, Ecuador, Eritrea, Ethiopia, Canada (full color-block shell style, in `assets/img/editions/`, sourced from "Flags other views.zip"). Note the two styles look different side by side — that's a known tradeoff, not a bug. Still missing: Norway, Australia, United States, Mexico, UAE — these point to `assets/img/editions/<country>.png`, which don't exist yet, so the viewer falls back to "Render coming soon" for them.
 - **Stock photography**: no real photos have been sourced (copyright reasons) — the idle marquee strip uses icon+label tiles as a placeholder for real athlete photography, Squarespace-style.
