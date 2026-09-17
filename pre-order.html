@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Pre-order — AeroCardia</title><meta name="description" content="Reserve your AeroCardia with a fully refundable $70 CAD deposit. Choose 10% off hardware or 6+ months free subscription. Ships March 2027."/>
+<link rel="canonical" href="https://aerocardia-site-v2.vercel.app/pre-order.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="AeroCardia"/>
+<meta property="og:title" content="Pre-order AeroCardia"/>
+<meta property="og:description" content="Reserve your AeroCardia with a fully refundable $70 CAD deposit. Choose 10% off hardware or 6+ months free subscription. Ships March 2027."/>
+<meta property="og:url" content="https://aerocardia-site-v2.vercel.app/pre-order.html"/>
+<meta property="og:image" content="https://aerocardia-site-v2.vercel.app/assets/img/aerocardia-logo.png"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Pre-order AeroCardia"/>
+<meta name="twitter:description" content="Reserve your AeroCardia with a fully refundable $70 CAD deposit. Ships March 2027."/>
+<meta name="twitter:image" content="https://aerocardia-site-v2.vercel.app/assets/img/aerocardia-logo.png"/><link href="assets/img/aerocardia-logo.png" rel="icon" type="image/png"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+html{scroll-behavior:smooth;}
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.16,.84,.44,1), transform 0.9s cubic-bezier(.16,.84,.44,1); will-change: opacity, transform; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(.16,.84,.44,1), transform 0.7s cubic-bezier(.16,.84,.44,1); }
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+section[id] { scroll-margin-top: 96px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Mobile navigation panel (below the lg breakpoint) */
+#mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.28s cubic-bezier(.16,.84,.44,1), opacity 0.22s ease;
+}
+#mobile-menu.is-open { max-height: 70vh; overflow-y: auto; opacity: 1; }
+#mobile-menu-toggle .icon-close { display: none; }
+#mobile-menu-toggle.is-open .icon-menu { display: none; }
+#mobile-menu-toggle.is-open .icon-close { display: inline-block; }
+body.menu-open { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  #mobile-menu { transition: none; }
+}
+
+/* Payment schedule table */
+.pay-table { width: 100%; border-collapse: collapse; }
+.pay-table th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #475569; font-weight: 600; padding: 0 0 0.75rem; }
+.pay-table td { padding: 0.9rem 0; border-top: 1px solid rgba(255,255,255,0.08); font-size: 14px; color: #e0e3e5; vertical-align: top; }
+.pay-table td:first-child { color: #F1F5F9; font-weight: 600; }
+.pay-table td:nth-child(2) { font-family: 'JetBrains Mono', monospace; color: #A6EFE7; white-space: nowrap; }
+.pay-table td:last-child { color: #94A3B8; }
+
+/* Deposit option cards */
+.deposit-card { display: flex; flex-direction: column; gap: 0.9rem; padding: 1.5rem; border-radius: 1.25rem; background: #0E1417; border: 1px solid rgba(255,255,255,0.08); position: relative; }
+.deposit-card.is-highlight { border-color: rgba(32,197,183,0.35); box-shadow: 0 0 0 1px rgba(32,197,183,0.12), 0 0 32px rgba(32,197,183,0.08); }
+.deposit-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.deposit-card li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 14px; color: #94A3B8; line-height: 1.5; }
+.deposit-card li .material-symbols-outlined { font-size: 18px; color: #20C5B7; margin-top: 1px; flex-shrink: 0; }
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary": "#00332E", "border-cyan": "rgba(6, 182, 212, 0.25)", "primary-fixed": "#3FE0D6", "surface-container-low": "#181c1e", "on-secondary-fixed": "#001f26", "surface-card": "#0E1417", "on-secondary": "#003640", "outline-variant": "#3b4a41", "surface-variant": "#313538", "on-primary-fixed": "#001F1D", "on-primary-container": "#0A5B56", "outline": "#84958a", "surface-card-elevated": "#141D21", "on-primary-fixed-variant": "#0A4440", "inverse-primary": "#0C6A64", "surface-tint": "#1BB8AD", "telemetry-warning": "#F59E0B", "background": "#101416", "tertiary": "#A8EFE8", "tertiary-fixed-dim": "#17ADA2", "text-secondary": "#94A3B8", "error": "#ffb4ab", "border-biometric": "rgba(32, 197, 183, 0.22)", "secondary-fixed-dim": "#4cd7f6", "surface-base": "#080C0E", "on-error": "#690005", "surface-container": "#1c2022", "tertiary-container": "#22C4BA", "border-subtle": "rgba(255, 255, 255, 0.08)", "secondary": "#4cd7f6", "primary-container": "#20C5B7", "on-tertiary-container": "#0A5B56", "error-container": "#93000a", "glow-mint": "rgba(32, 197, 183, 0.18)", "surface-bright": "#363a3c", "telemetry-critical": "#EF4444", "secondary-fixed": "#acedff", "primary-fixed-dim": "#1BB8AD", "surface-container-highest": "#313538", "on-surface": "#e0e3e5", "on-secondary-fixed-variant": "#004e5c", "on-secondary-container": "#00424e", "on-surface-variant": "#b9cbbf", "tertiary-fixed": "#33D9CC", "inverse-surface": "#e0e3e5", "on-error-container": "#ffdad6", "surface-dim": "#101416", "secondary-container": "#03b5d3", "primary": "#A6EFE7", "on-tertiary-fixed": "#001F1D", "text-tertiary": "#475569", "on-tertiary-fixed-variant": "#0A4440", "on-background": "#e0e3e5", "on-tertiary": "#00332E", "inverse-on-surface": "#2d3133", "text-primary": "#F1F5F9", "surface-container-lowest": "#0b0f11", "surface": "#101416", "surface-container-high": "#262b2d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "3rem", "space-xs": "0.5rem", "space-md": "1rem", "container-max": "1240px", "space-2xs": "0.25rem", "gutter-mobile": "1rem", "gutter-desktop": "2rem", "space-3xl": "4.5rem", "space-4xl": "6rem", "space-sm": "0.75rem", "space-lg": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "caption": ["Inter"], "headline-lg": ["Inter"], "body-base": ["Inter"], "display-hero-mobile": ["Inter"], "display-hero": ["Inter"], "data-metric": ["JetBrains Mono"], "headline-md": ["Inter"], "headline-lg-mobile": ["Inter"], "telemetry-badge": ["JetBrains Mono"], "data-readout": ["JetBrains Mono"], "body-sm": ["Inter"], "body-lg": ["Inter"] }, "fontSize": { "caption": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "400" }], "headline-lg": ["38px", { "lineHeight": "1.18", "letterSpacing": "-0.025em", "fontWeight": "600" }], "body-base": ["15px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero-mobile": ["36px", { "lineHeight": "1.12", "letterSpacing": "-0.025em", "fontWeight": "700" }], "display-hero": ["56px", { "lineHeight": "1.08", "letterSpacing": "-0.035em", "fontWeight": "700" }], "data-metric": ["32px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg-mobile": ["28px", { "lineHeight": "1.22", "letterSpacing": "-0.02em", "fontWeight": "600" }], "telemetry-badge": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600" }], "data-readout": ["14px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface-base font-body-base text-body-base text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-card/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-20 max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md"><a class="flex items-center gap-space-sm" href="index.html"><img alt="AeroCardia Logo" class="h-8 w-auto object-contain" src="assets/img/aerocardia-logo.png"/><span class="font-headline-md text-headline-md font-semibold tracking-tight text-text-primary">AeroCardia</span></a><nav class="hidden lg:flex items-center gap-space-md bg-surface-container-lowest/80 px-space-md py-space-xs rounded-full"><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="index.html">Product</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="index.html#how-it-works">How it works</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="index.html#about">About</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="index.html#blog">Blog</a></nav><div class="flex items-center gap-space-sm sm:gap-space-md"><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-xs rounded-full bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold tracking-tight shadow-[0_0_20px_rgba(32,197,183,0.35)] hover:bg-primary hover:text-on-primary transition-all duration-300" href="#reserve">Reserve now</a><button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" class="lg:hidden flex items-center justify-center w-11 h-11 rounded-full bg-surface-container-lowest/80 text-text-primary border border-white/10 active:bg-surface-container-high transition-colors"><span class="material-symbols-outlined icon-menu text-[22px]">menu</span><span class="material-symbols-outlined icon-close text-[22px]">close</span></button></div></div><nav id="mobile-menu" class="lg:hidden bg-surface-card/97 backdrop-blur-xl border-t border-white/5" aria-label="Mobile"><div class="max-w-[1240px] mx-auto px-gutter-mobile py-space-md flex flex-col gap-space-2xs"><a class="px-space-md py-space-sm rounded-xl text-body-base text-body-base text-on-surface-variant" href="index.html">Product</a><a class="px-space-md py-space-sm rounded-xl text-body-base text-body-base text-on-surface-variant" href="index.html#how-it-works">How it works</a><a class="px-space-md py-space-sm rounded-xl text-body-base text-body-base text-on-surface-variant" href="index.html#about">About</a><a class="px-space-md py-space-sm rounded-xl text-body-base text-body-base text-on-surface-variant" href="index.html#blog">Blog</a><a class="mt-space-xs inline-flex items-center justify-center px-space-lg py-space-sm rounded-full bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold tracking-tight shadow-[0_0_20px_rgba(32,197,183,0.35)]" href="#reserve">Reserve now</a></div></nav></header>
+
+<main class="w-full pt-20 bg-surface-base">
+
+<!-- HERO -->
+<section class="w-full px-gutter-mobile lg:px-gutter-desktop pt-space-2xl lg:pt-space-3xl pb-space-2xl relative overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-primary-container/12 blur-[140px] rounded-full pointer-events-none"></div>
+<div class="max-w-[860px] mx-auto text-center relative z-10">
+<div class="reveal inline-flex items-center gap-space-xs px-space-md py-space-2xs rounded-full bg-surface-container-lowest/80 border border-white/10 mb-space-lg">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-telemetry-badge text-telemetry-badge uppercase tracking-widest text-text-secondary">Pre-order &middot; Ships March 2027</span>
+</div>
+<h1 class="reveal font-headline-lg text-headline-lg lg:text-[46px] lg:leading-[1.1] text-text-primary mb-space-md">Reserve your AeroCardia.</h1>
+<p class="reveal font-body-lg text-body-lg text-text-secondary max-w-xl mx-auto mb-space-xl">A $70 CAD deposit holds your spot in the first production run — fully refundable any time before your order ships, and worth 10% off hardware or 6+ months of Premium.</p>
+<div class="reveal flex flex-col sm:flex-row items-center justify-center gap-space-sm">
+<a class="inline-flex items-center gap-space-xs px-space-xl py-space-sm rounded-full bg-primary-container text-on-primary font-body-base text-body-base font-semibold tracking-tight shadow-[0_0_20px_rgba(32,197,183,0.35)] hover:bg-primary transition-all duration-300" href="#reserve"><span>Reserve with $70 CAD</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+<a class="inline-flex items-center gap-space-xs px-space-xl py-space-sm rounded-full border border-white/15 text-text-primary font-body-base text-body-base font-semibold tracking-tight hover:bg-white/5 transition-all duration-300" href="#how-it-works"><span>How the deposit works</span></a>
+</div>
+</div>
+<div class="reveal-stagger max-w-[860px] mx-auto grid grid-cols-3 gap-space-sm mt-space-2xl relative z-10">
+<div class="p-space-md rounded-2xl bg-surface-card border-subtle text-center">
+<p class="font-telemetry-badge text-telemetry-badge uppercase text-text-tertiary tracking-wider mb-space-2xs">System price</p>
+<p class="font-data-metric text-[22px] lg:text-data-metric text-text-primary">$699<span class="text-text-tertiary text-[13px] font-body-sm ml-1">CAD</span></p>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-card border-biometric text-center">
+<p class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-wider mb-space-2xs">Deposit today</p>
+<p class="font-data-metric text-[22px] lg:text-data-metric text-primary">$70<span class="text-text-tertiary text-[13px] font-body-sm ml-1">CAD</span></p>
+</div>
+<div class="p-space-md rounded-2xl bg-surface-card border-subtle text-center">
+<p class="font-telemetry-badge text-telemetry-badge uppercase text-text-tertiary tracking-wider mb-space-2xs">Refundable until</p>
+<p class="font-headline-md text-[17px] lg:text-headline-md text-text-primary leading-tight">Ship notice</p>
+</div>
+</div>
+</section>
+
+<!-- PAYMENT SCHEDULE -->
+<section class="w-full py-space-2xl lg:py-space-3xl px-gutter-mobile lg:px-gutter-desktop bg-surface-card-elevated border-y border-white/5" id="how-it-works">
+<div class="max-w-[760px] mx-auto">
+<div class="reveal flex flex-col items-start gap-space-xs mb-space-lg">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Payment schedule</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">Two payments, spread over the wait.</h2>
+</div>
+<div class="reveal p-space-lg rounded-2xl bg-surface-card border-subtle overflow-x-auto">
+<table class="pay-table">
+<thead><tr><th>Component</th><th>Amount</th><th>Timing</th></tr></thead>
+<tbody>
+<tr><td>Pre-order deposit</td><td>$70 CAD</td><td>Charged when you reserve</td></tr>
+<tr><td>Final payment</td><td>$600 CAD</td><td>5 days before your unit ships</td></tr>
+<tr><td>Total system price</td><td>$699 CAD</td><td>Collected across both payments</td></tr>
+<tr><td>Refund window</td><td>Full deposit</td><td>Any time until you get your "it's shipping" email</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- CHOOSE YOUR DEPOSIT -->
+<section class="w-full py-space-2xl lg:py-space-3xl px-gutter-mobile lg:px-gutter-desktop">
+<div class="max-w-[960px] mx-auto">
+<div class="reveal flex flex-col items-start gap-space-xs mb-space-xl">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Your choice at checkout</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">What your deposit goes toward.</h2>
+<p class="font-body-base text-body-base text-text-secondary max-w-lg">Same $70 deposit, two ways to use it. Pick whichever fits how you plan to use AeroCardia.</p>
+</div>
+<div class="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<div class="deposit-card">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-text-primary">Option A</h3>
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-text-tertiary tracking-wider">Hardware discount</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Your deposit comes straight off the system price.</p>
+<p class="font-data-metric text-[26px] text-text-primary">$629<span class="text-text-tertiary text-[13px] font-body-sm ml-1">CAD due at shipping</span></p>
+<ul>
+<li><span class="material-symbols-outlined">check_circle</span>$70 credited directly to your hardware price</li>
+<li><span class="material-symbols-outlined">check_circle</span>10% off the $699 system, locked in today</li>
+<li><span class="material-symbols-outlined">check_circle</span>Subscription billed separately (Free, $9.99 or $19.99/mo)</li>
+</ul>
+<p class="font-caption text-caption text-text-tertiary mt-auto pt-space-xs">Best for price-sensitive buyers.</p>
+</div>
+<div class="deposit-card is-highlight">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-text-primary">Option B</h3>
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-wider">Subscription credit</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Your deposit prepays your first months of Premium.</p>
+<p class="font-data-metric text-[26px] text-text-primary">7+<span class="text-text-tertiary text-[13px] font-body-sm ml-1">months of Premium free</span></p>
+<ul>
+<li><span class="material-symbols-outlined">check_circle</span>$70 credited to your first year of Premium ($9.99/mo)</li>
+<li><span class="material-symbols-outlined">check_circle</span>Full $699 CAD due for hardware at shipping</li>
+<li><span class="material-symbols-outlined">check_circle</span>Locks in Premium adoption from day one</li>
+</ul>
+<p class="font-caption text-caption text-text-tertiary mt-auto pt-space-xs">Best for subscription-focused buyers.</p>
+</div>
+</div>
+<div class="reveal mt-space-lg p-space-lg rounded-2xl bg-surface-card border-l-2 border-primary-container">
+<p class="font-body-base text-body-base text-text-secondary italic">"Your $70 pre-order deposit gets you 10% off hardware <span class="text-text-primary not-italic font-semibold">or</span> 6+ months free Premium subscription — you choose at checkout. Either way, you get 10% off all subscription pricing forever."</p>
+</div>
+</div>
+</section>
+
+<!-- REFUND POLICY -->
+<section class="w-full py-space-2xl lg:py-space-3xl px-gutter-mobile lg:px-gutter-desktop bg-surface-card-elevated border-y border-white/5">
+<div class="max-w-[960px] mx-auto">
+<div class="reveal flex flex-col items-start gap-space-xs mb-space-xl">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">No-risk reservation</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">Change your mind? Full refund.</h2>
+</div>
+<div class="reveal-stagger grid grid-cols-1 sm:grid-cols-3 gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[28px]">undo</span>
+<h4 class="font-headline-md text-headline-md text-text-primary text-[17px]">Cancel any time</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Your deposit is fully refundable right up until you get the email that your unit has shipped.</p>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[28px]">mail</span>
+<h4 class="font-headline-md text-headline-md text-text-primary text-[17px]">Regular updates</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">We'll email you as we build — manufacturing progress, testimonials, and a countdown to launch.</p>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[28px]">verified</span>
+<h4 class="font-headline-md text-headline-md text-text-primary text-[17px]">Transparent terms</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">No fine print. If your order is delayed by more than 2 weeks, you get a full refund plus a $50 credit.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WHAT HAPPENS NEXT -->
+<section class="w-full py-space-2xl lg:py-space-3xl px-gutter-mobile lg:px-gutter-desktop">
+<div class="max-w-[960px] mx-auto">
+<div class="reveal flex flex-col items-start gap-space-xs mb-space-xl">
+<span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">What happens next</span>
+<h2 class="font-headline-md text-headline-md text-text-primary">From reservation to your first run.</h2>
+</div>
+<div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="p-space-lg rounded-2xl bg-surface-card border-subtle flex flex-col gap-space-sm">
+<span class="font-telemetry-badge text-telemetry-badge text-primary-container">01</span>
+<h4 class="font-headline-md text-headline-md text-text-primary text-[16px]">Reserve today</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">$70 CAD deposit, fully refundable.</p>
+</div>
+<div class="p-space-lg rounded-2xl bg-surface-card border-subtle flex flex-col gap-space-sm">
+<span class="font-telemetry-badge text-telemetry-badge text-primary-container">02</span>
+<h4 class="font-headline-md text-headline-md text-text-primary text-[16px]">We keep you posted</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Progress updates every few weeks as we build.</p>
+</div>
+<div class="p-space-lg rounded-2xl bg-surface-card border-subtle flex flex-col gap-space-sm">
+<span class="font-telemetry-badge text-telemetry-badge text-primary-container">03</span>
+<h4 class="font-headline-md text-headline-md text-text-primary text-[16px]">Final payment</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">$600 CAD, 5 days before your unit ships.</p>
+</div>
+<div class="p-space-lg rounded-2xl bg-surface-card border-subtle flex flex-col gap-space-sm">
+<span class="font-telemetry-badge text-telemetry-badge text-primary-container">04</span>
+<h4 class="font-headline-md text-headline-md text-text-primary text-[16px]">Ships March 2027</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">2–3 day delivery once it leaves the warehouse.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- RESERVE FORM -->
+<section class="w-full py-space-3xl lg:py-space-4xl px-gutter-mobile lg:px-gutter-desktop bg-surface-card-elevated border-t border-white/5" id="reserve">
+<div class="max-w-[640px] mx-auto text-center">
+<span class="reveal font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Reserve your spot</span>
+<h2 class="reveal font-headline-lg text-headline-lg text-text-primary mt-space-xs mb-space-sm">Be one of the first 1,000.</h2>
+<p class="reveal font-body-base text-body-base text-text-secondary mb-space-xl">
+Leave your details below and we'll send you a secure checkout link for the $70 CAD deposit — fully refundable, no obligation.
+</p>
+<div class="reveal rounded-2xl overflow-hidden border-subtle bg-surface-card">
+<iframe allow="geolocation; microphone; camera; fullscreen" allowtransparency="true" frameborder="0" id="JotFormIFrame-262305901704046" scrolling="no" src="https://form.jotform.com/262305901704046" style="width:100%;min-width:100%;max-width:100%;height:539px;border:none;" title="AeroCardia Pre-order Reservation"></iframe>
+</div>
+<p class="reveal font-caption text-caption text-text-tertiary mt-space-md">Deposit collected at checkout confirmation — you won't be charged from this form.</p>
+</div>
+</section>
+
+</main>
+<footer class="w-full bg-surface-card-elevated"><div class="max-w-[1240px] mx-auto px-gutter-desktop pt-space-3xl pb-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-2xl"><div class="lg:col-span-2 flex flex-col gap-space-md pr-space-xl"><a class="flex items-center gap-space-sm" href="index.html"><img alt="AeroCardia Logo" class="h-7 w-auto object-contain" src="assets/img/aerocardia-logo.png"/><span class="font-headline-md text-headline-md font-semibold tracking-tight text-text-primary">AeroCardia</span></a><p class="font-body-sm text-body-sm text-text-secondary max-w-sm">Portable VO2 and cardiopulmonary breath intelligence. Clinical precision calibrated for high-performance human athletics and metabolic diagnostics.</p></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Explore</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="index.html">Product</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="index.html#how-it-works">How it works</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="index.html#about">About us</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="index.html#blog">Blog</a></li></ul></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Get started</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors font-semibold text-text-primary" href="pre-order.html">Pre-order</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="mailto:info@aerocardia.com">Contact the team</a></li></ul></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Connect</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://www.linkedin.com/company/aerocardia" rel="noopener" target="_blank">LinkedIn</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://www.instagram.com/aerocardia/" rel="noopener" target="_blank">Instagram</a></li><li class="flex"><a class="text-on-surface-variant hover:text-primary transition-colors font-data-readout text-data-readout" href="mailto:info@aerocardia.com">info@aerocardia.com</a></li></ul></div></div><div class="pt-space-xl flex flex-col gap-space-md"><div class="p-space-md rounded-lg bg-surface-container-lowest/60 text-text-tertiary font-caption text-caption leading-relaxed"><span class="text-text-secondary font-semibold">Wellness Disclaimer:</span> AeroCardia is intended exclusively for general wellness and fitness purposes. It is not a medical device and is not intended for use in the diagnosis, treatment, cure, mitigation, prevention, or monitoring of any disease or medical condition. Do not rely on AeroCardia for medical decisions or in place of professional medical advice or emergency medical care. If you believe you are experiencing a medical emergency, contact your local emergency services immediately. Pre-order pricing, timelines and policy are subject to change; the most current terms will be confirmed at checkout.</div><div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm text-text-tertiary font-caption text-caption"><p>© 2026 AeroCardia Inc. All rights reserved.</p><div class="flex items-center gap-space-md"><a class="hover:text-text-secondary transition-colors" href="#">Privacy Policy</a><a class="hover:text-text-secondary transition-colors" href="#">Terms of Service</a><a class="hover:text-text-secondary transition-colors" href="#">Telemetry Compliance</a></div></div></div></div></footer>
+<script>
+(function () {
+  var btn = document.getElementById('mobile-menu-toggle');
+  var menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+  function closeMenu() {
+    btn.classList.remove('is-open');
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }
+  function openMenu() {
+    btn.classList.add('is-open');
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+  }
+  btn.addEventListener('click', function () {
+    if (menu.classList.contains('is-open')) { closeMenu(); } else { openMenu(); }
+  });
+  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+  window.addEventListener('resize', function () { if (window.innerWidth >= 1024) closeMenu(); });
+})();
+(function() {
+  var targets = document.querySelectorAll('.reveal, .reveal-stagger');
+  if (!('IntersectionObserver' in window) || !targets.length) { targets.forEach(function(t){t.classList.add('is-visible');}); return; }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(t) { io.observe(t); });
+  setTimeout(function () {
+    targets.forEach(function (t) {
+      if (!t.classList.contains('is-visible') && t.getBoundingClientRect().top < window.innerHeight) {
+        t.classList.add('is-visible');
+      }
+    });
+  }, 1200);
+})();
+</script>
+<script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+<script>window.jotformEmbedHandler && window.jotformEmbedHandler("iframe[id='JotFormIFrame-262305901704046']", "https://form.jotform.com")</script>
+</body></html>
