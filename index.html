@@ -81,6 +81,11 @@ html{scroll-behavior:smooth;}
 .marquee-row:hover .marquee-track { animation-play-state: paused; }
 @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+/* Blog card marquee: same track mechanism, slower (denser reading content) and fixed card width */
+.blog-marquee-track { animation-duration: 60s; margin: 0 -0.75rem; }
+.blog-marquee-card { width: 19rem; margin: 0 0.75rem; }
+@media (min-width: 640px) { .blog-marquee-card { width: 21rem; } }
+
 /* Placeholder photo slots for the idle marquee — reserves real Squarespace-style
    photography space without faking a photo. Swap in a real <img> per
    [data-photo-slot] later; the diagonal hatch reads as "empty," not "broken." */
@@ -215,6 +220,10 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <a class="inline-flex items-center gap-space-xs px-space-xl py-space-sm rounded-full bg-primary-container text-on-primary font-body-base text-body-base font-semibold tracking-tight shadow-[0_0_24px_rgba(32,197,183,0.35)] hover:bg-primary transition-all duration-300" data-path="join-the-waitlist" href="#waitlist">
 <span>Join the waitlist</span>
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-full border border-primary-container/40 text-primary-container hover:bg-primary-container/10 font-body-base text-body-base font-semibold tracking-tight transition-colors backdrop-blur-md" data-path="pre-order" href="pre-order.html">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Pre-order now</span>
 </a>
 <a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-full bg-surface-card/90 hover:bg-surface-card-elevated text-text-primary font-body-base text-body-base transition-colors border-subtle backdrop-blur-md" data-path="how-it-works" href="#how-it-works">
 <span class="material-symbols-outlined text-secondary text-[20px]">play_circle</span>
@@ -873,10 +882,11 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </a>
 </div>
-<!-- High-End Article Cards -->
-<div class="reveal reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl">
-<!-- Article: How ARO2 Senses Your Breath -->
-<a class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-how-aro2-senses-your-breath.html">
+<!-- High-End Article Cards: horizontal idle marquee (same mechanism as the photo strip above) so a 5th card doesn't wrap into a mostly-empty row -->
+<div class="reveal marquee-row -mx-gutter-mobile lg:-mx-gutter-desktop px-gutter-mobile lg:px-gutter-desktop">
+<div class="marquee-track blog-marquee-track">
+<!-- Set A -->
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-how-aro2-senses-your-breath.html">
 <div class="flex flex-col gap-space-md">
 <div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
 <span>Sep 17 • 4 min read</span>
@@ -897,8 +907,7 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </div>
 </a>
-<!-- Article 0 -->
-<a class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-founder-showcase.html">
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-founder-showcase.html">
 <div class="flex flex-col gap-space-md">
 <div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
 <span>Sep 11 • 2 min read</span>
@@ -919,8 +928,7 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </div>
 </a>
-<!-- Article 1 -->
-<a class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-tour-de-france-vo2-max.html">
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-tour-de-france-vo2-max.html">
 <div class="flex flex-col gap-space-md">
 <div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
 <span>Aug 20 • 4 min read</span>
@@ -941,8 +949,7 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </div>
 </a>
-<!-- Article 2 -->
-<a class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-vo2-max-measurement-guide.html">
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-vo2-max-measurement-guide.html">
 <div class="flex flex-col gap-space-md">
 <div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
 <span>Jul 27 • 4 min read</span>
@@ -963,8 +970,7 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </div>
 </a>
-<!-- Article 3 -->
-<a class="flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-vo2-max-healthspan.html">
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-vo2-max-healthspan.html">
 <div class="flex flex-col gap-space-md">
 <div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
 <span>Jul 13 • 3 min read</span>
@@ -985,6 +991,113 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </div>
 </a>
+<!-- Set B (duplicate for seamless loop, hidden from assistive tech) -->
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-how-aro2-senses-your-breath.html" aria-hidden="true" tabindex="-1">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
+<span>Sep 17 • 4 min read</span>
+<span class="text-primary-container font-semibold">ENGINEERING</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest font-mono text-[11px] text-text-tertiary border-l-2 border-primary-container">
+            SERIES: HOW IT WORKS
+          </div>
+<h3 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">
+            How ARO2 Senses Your Breath
+          </h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            No hoses, no metabolic cart. The physiology behind turning a single sealed breath into live VO2, ventilation and RER.
+          </p>
+</div>
+<div class="pt-space-lg flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold">
+<span>Read the breakdown</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-founder-showcase.html" aria-hidden="true" tabindex="-1">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
+<span>Sep 11 • 2 min read</span>
+<span class="text-primary-container font-semibold">TEAM</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest font-mono text-[11px] text-text-tertiary border-l-2 border-primary-container">
+            SERIES: FOUNDER NOTES
+          </div>
+<h3 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">
+            Founder Showcase: Meet Matthew Behr, CEO of AeroCardia
+          </h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            Ultramarathons, a lost dog named Buoy, and why AeroCardia exists: "why estimate what you can quantify."
+          </p>
+</div>
+<div class="pt-space-lg flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold">
+<span>Meet the founder</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-tour-de-france-vo2-max.html" aria-hidden="true" tabindex="-1">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
+<span>Aug 20 • 4 min read</span>
+<span class="text-primary-container font-semibold">PHYSIOLOGY</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest font-mono text-[11px] text-text-tertiary border-l-2 border-primary-container">
+            SERIES: GRAND TOUR BIO-PACING
+          </div>
+<h3 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">
+            Peak Performance and Longevity: The Tour de France Guide to VO2 Max
+          </h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            What three weeks of racing at the limit of human endurance teaches the rest of us about pacing, ceilings and systemic cardiorespiratory recovery.
+          </p>
+</div>
+<div class="pt-space-lg flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold">
+<span>Read analysis</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-vo2-max-measurement-guide.html" aria-hidden="true" tabindex="-1">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
+<span>Jul 27 • 4 min read</span>
+<span class="text-secondary font-semibold">METABOLICS</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest font-mono text-[11px] text-text-tertiary border-l-2 border-secondary">
+            NORMATIVE STANDARDS 2026
+          </div>
+<h3 class="font-headline-md text-headline-md text-text-primary group-hover:text-secondary transition-colors">
+            The Ultimate Guide to VO2 Max: Measurement, Normative Data &amp; Optimization
+          </h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            How VO2 max is measured, what an elite score looks like stratified by age and biological sex, and the precise aerobic volume that genuinely moves it.
+          </p>
+</div>
+<div class="pt-space-lg flex items-center gap-space-xs text-secondary font-mono text-caption font-semibold">
+<span>Read analysis</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+<a class="blog-marquee-card shrink-0 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300 group cursor-pointer" href="blog-vo2-max-healthspan.html" aria-hidden="true" tabindex="-1">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between font-mono text-caption text-text-tertiary">
+<span>Jul 13 • 3 min read</span>
+<span class="text-primary font-semibold">LONGEVITY</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest font-mono text-[11px] text-text-tertiary border-l-2 border-primary">
+            ALL-CAUSE MORTALITY METRICS
+          </div>
+<h3 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary transition-colors">
+            What Is VO2 Max, and Why Does It Matter for Healthspan?
+          </h3>
+<p class="font-body-sm text-body-sm text-text-secondary">
+            The gold-standard measure of cardiorespiratory fitness — and statistically the single most powerful predictor of how long and how well you live.
+          </p>
+</div>
+<div class="pt-space-lg flex items-center gap-space-xs text-primary font-mono text-caption font-semibold">
+<span>Read analysis</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</a>
+</div>
 </div>
 </section>
 <!-- FINAL CONVERSION CTA -->
