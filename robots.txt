@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aerocardia-site-v2.vercel.app/sitemap.xml
+Sitemap: https://aerocardia.com/sitemap.xml

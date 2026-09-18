@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aerocardia-site-v2.vercel.app/</loc></url>
-  <url><loc>https://aerocardia-site-v2.vercel.app/blog-founder-showcase.html</loc></url>
-  <url><loc>https://aerocardia-site-v2.vercel.app/blog-tour-de-france-vo2-max.html</loc></url>
-  <url><loc>https://aerocardia-site-v2.vercel.app/blog-vo2-max-healthspan.html</loc></url>
-  <url><loc>https://aerocardia-site-v2.vercel.app/blog-vo2-max-measurement-guide.html</loc></url>
+  <url><loc>https://aerocardia.com/</loc></url>
+  <url><loc>https://aerocardia.com/pre-order.html</loc></url>
+  <url><loc>https://aerocardia.com/blog-founder-showcase.html</loc></url>
+  <url><loc>https://aerocardia.com/blog-how-aro2-senses-your-breath.html</loc></url>
+  <url><loc>https://aerocardia.com/blog-tour-de-france-vo2-max.html</loc></url>
+  <url><loc>https://aerocardia.com/blog-vo2-max-healthspan.html</loc></url>
+  <url><loc>https://aerocardia.com/blog-vo2-max-measurement-guide.html</loc></url>
 </urlset>
