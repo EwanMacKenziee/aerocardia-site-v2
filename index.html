@@ -158,7 +158,7 @@ html{scroll-behavior:smooth;}
 }
 
 /* Offset anchor-scroll targets so content isn't hidden under the fixed header */
-section[id] { scroll-margin-top: 96px; }
+section[id], #team { scroll-margin-top: 96px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -823,7 +823,7 @@ body.menu-open, body.viewer-open { overflow: hidden; }
 </div>
 </div>
 <!-- Team -->
-<div class="reveal flex flex-col items-start gap-space-xs mb-space-xl">
+<div class="reveal flex flex-col items-start gap-space-xs mb-space-xl" id="team">
 <span class="font-telemetry-badge text-telemetry-badge uppercase text-primary-container tracking-widest">Our Team</span>
 <h3 class="font-headline-md text-headline-md text-text-primary">Built by people who use it.</h3>
 </div>
