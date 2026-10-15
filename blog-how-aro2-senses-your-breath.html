@@ -57,9 +57,9 @@ body.menu-open { overflow: hidden; }
 <div class="reveal flex items-center gap-space-md font-mono text-caption text-text-tertiary mb-space-md"><span class="text-primary-container font-semibold">ENGINEERING</span><span>•</span><span>Sep 17 · 4 min read</span></div>
 <h1 class="reveal font-headline-lg text-headline-lg text-text-primary mb-space-xl">How ARO2 Senses Your Breath</h1>
 <div class="reveal article-body font-body-base text-body-base text-text-secondary">
-<p>A metabolic cart in an exercise physiology lab does one job extremely well: it measures exactly how much oxygen you consume and how much carbon dioxide you produce, breath by breath. It just needs a mouthpiece, a nose clip, a cart of gas analysers, and someone to run it. ARO2 is built to do the same core measurement — with none of that. Here's the physiology behind how it works, and why we built it the way we did.</p>
-<h2>The Principle: Indirect Calorimetry</h2>
-<p>Every measurement ARO2 takes traces back to one well-established technique in exercise physiology: indirect calorimetry, the practice of estimating metabolic rate and oxygen consumption from the gases you breathe in and out, rather than measuring anything inside the body directly [1]. It's called "indirect" because nothing is drawn from your blood or your muscles — the entire signal lives in the air passing through the mask.</p>
+<p>A metabolic cart in an exercise physiology lab does one job extremely well: it measures exactly how much oxygen you consume and how much carbon dioxide you produce, breath by breath. It just needs a mouthpiece, a nose clip, a cart of gas analysers, and someone to run it. ARO2 is built to read the same core signals — the oxygen you use and the carbon dioxide you breathe out — with none of that. Here's the physiology behind how it works, and why we built it the way we did.</p>
+<h2>The Principle: Reading Your Breath</h2>
+<p>Every reading ARO2 takes traces back to a well-established idea in exercise physiology: you can work out how much oxygen your body is using from the gases you breathe in and out, without measuring anything inside the body directly [1]. Nothing is drawn from your blood or your muscles — the entire signal lives in the air passing through the mask.</p>
 <p>To do this, a system needs two things from every single breath: how much air moved, and how much of that air's oxygen and carbon dioxide content changed between inhale and exhale.</p>
 <h2>One Seal, Two Measurements</h2>
 <p>This is why the ARO2 mask is a single soft cup that seals over your mouth, held on with a light strap — no mouthpiece to bite, no nose clip, no calibration ritual before you start moving. That seal has to capture your entire breath, because both measurements below depend on it:</p>
@@ -69,7 +69,7 @@ body.menu-open { overflow: hidden; }
 <p>In parallel, the pod samples the composition of the air you exhale — specifically, how much less oxygen and how much more carbon dioxide it carries compared to the ambient air you breathed in. Cross that difference with your ventilation, and you get the two numbers a metabolic cart is built around: VO2 (oxygen consumed) and VCO2 (carbon dioxide produced) [2].</p>
 <div class="callout"><strong>Why not just measure heart rate?</strong> Heart rate is a downstream, confounded proxy for effort — it drifts with heat, hydration, caffeine, stress and cardiac fatigue, independent of how hard you're actually working. VO2 and ventilation are the direct signal: what your engine is doing, not what your heart is doing in response to it. That's the whole reason ARO2 reads breath instead of pulse — it isn't a missing feature, it's the design.</div>
 <h2>From Airflow to a Number: The Breath-by-Breath Math</h2>
-<p>Once ventilation and the inhaled/exhaled gas fractions are known for a breath, the underlying math is the same set of equations any metabolic cart runs, simplified conceptually:</p>
+<p>Once ventilation and the inhaled/exhaled gas fractions are known for a breath, the underlying math is built on standard exercise-physiology equations, simplified conceptually:</p>
 <ul>
 <li><strong class="text-text-primary">VO2</strong> ≈ VE × (fraction of O2 you inhaled − fraction of O2 you exhaled)</li>
 <li><strong class="text-text-primary">VCO2</strong> ≈ VE × (fraction of CO2 you exhaled − fraction of CO2 you inhaled)</li>
@@ -82,14 +82,14 @@ body.menu-open { overflow: hidden; }
 <p>Worth being direct about the boundaries here. ARO2 has no PPG or heart-rate sensor, so it won't give you a heart-rate number or heart-rate-based training zones. And because it's a breath sensor rather than a blood or muscle sensor, it can't measure lactate directly — RER is a related but distinct signal, useful for tracking fuel use and effort, not a lactate value. AeroCardia is a wellness and training tool, not a diagnostic or medical device.</p>
 <h2>Key Takeaways</h2>
 <ul>
-<li><strong class="text-text-primary">Same physiology, different form factor:</strong> ARO2 is built on the same indirect calorimetry principles as a lab metabolic cart, just without the hoses and the cart.</li>
+<li><strong class="text-text-primary">Familiar physiology, simpler form factor:</strong> ARO2 reads the same breath signals that lab equipment does, just without the hoses and the cart.</li>
 <li><strong class="text-text-primary">One seal, two signals:</strong> the mask captures ventilation (how much air moved) and gas exchange (what changed in it) from the same breath.</li>
 <li><strong class="text-text-primary">Breath, not pulse:</strong> reading VO2 and ventilation directly avoids the lag and confounders that come with heart-rate-based effort estimates.</li>
 <li><strong class="text-text-primary">Live, not logged:</strong> values compute breath-by-breath and stream straight to the app over Bluetooth — no watch, no download-and-review step.</li>
 </ul>
 <h2>Sources</h2>
 <ul class="font-mono text-[13px]">
-<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12080799/" rel="noopener" target="_blank">NCBI — Indirect calorimetry as the gold-standard method</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12080799/" rel="noopener" target="_blank">NCBI — Measuring oxygen use from breath gases</a></li>
 <li><a href="https://pubmed.ncbi.nlm.nih.gov/33637739/" rel="noopener" target="_blank">PubMed — Breath-by-breath gas exchange measurement principles</a></li>
 <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3729016/" rel="noopener" target="_blank">PMC — RER criteria for maximal effort</a></li>
 </ul>
