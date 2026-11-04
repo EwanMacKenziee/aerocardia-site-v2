@@ -12,7 +12,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://aerocardia.com';
+const SITE = 'https://www.aerocardia.com';
 const FALLBACK_IMAGE = 'assets/img/aerocardia-logo.png';
 const START = '<!-- BLOG-CARDS:START -->';
 const END = '<!-- BLOG-CARDS:END -->';
@@ -89,7 +89,7 @@ function buildIndex(current, posts) {
 }
 
 function buildSitemap(current, posts) {
-  const urls = [`${SITE}/blog`, ...posts.map((post) => `${SITE}/${post.file}`)];
+  const urls = [`${SITE}/blog`, ...posts.map((post) => `${SITE}/${post.file.replace(/\.html$/, '')}`)];
   const missing = urls.filter((url) => !current.includes(`<loc>${url}</loc>`));
   if (!missing.length) return current;
   const lines = missing.map((url) => `  <url><loc>${url}</loc></url>\n`).join('');
