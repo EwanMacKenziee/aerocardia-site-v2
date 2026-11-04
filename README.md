@@ -19,6 +19,12 @@ npx vercel --prod # promote to production
 
 `vercel.json` is already set up for a zero-config static deploy (no framework, no build command needed).
 
+## Publishing a blog post
+
+Add the post as `blog-<slug>.html`, based on an existing post. It needs an `<h1>`, a meta description, `Mon D · N min read` in its header, a `datePublished` value in its JSON-LD, and ideally a hero image as the article's first image.
+
+When it reaches `master`, the `Update blog index` GitHub Action adds its card to `blog.html` and its URL to `sitemap.xml`, then commits the change. To do this by hand, run `node scripts/build-blog-index.mjs`.
+
 ## Open items
 
 - **Championship editions**: all 17 country colourways now use the full color-block shell style (`assets/img/editions/`) — Netherlands and Belgium were the last two on the older subtle accent-bezel renders (`assets/img/renders/`) and have since been swapped over, so the grid is now visually consistent end to end.

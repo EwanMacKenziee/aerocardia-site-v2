@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Blog — AeroCardia</title><meta name="description" content="Articles on training physiology, fitness data and how to make sense of the numbers."/>
+<link rel="canonical" href="https://aerocardia.com/blog"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="AeroCardia"/>
+<meta property="og:title" content="AeroCardia Blog"/>
+<meta property="og:description" content="Articles on training physiology, fitness data and how to make sense of the numbers."/>
+<meta property="og:url" content="https://aerocardia.com/blog"/>
+<meta property="og:image" content="https://aerocardia.com/assets/img/aerocardia-logo.png"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AeroCardia Blog"/>
+<meta name="twitter:description" content="Articles on training physiology, fitness data and how to make sense of the numbers."/>
+<meta name="twitter:image" content="https://aerocardia.com/assets/img/aerocardia-logo.png"/><link href="assets/img/aerocardia-logo.png" rel="icon" type="image/png"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+html{scroll-behavior:smooth;}
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.16,.84,.44,1), transform 0.9s cubic-bezier(.16,.84,.44,1); will-change: opacity, transform; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+section[id] { scroll-margin-top: 96px; }
+.article-body h2 { font-family: 'Inter'; font-size: 24px; line-height: 1.3; letter-spacing: -0.015em; font-weight: 600; color: #F1F5F9; margin-top: 2.5rem; margin-bottom: 1rem; }
+.article-body h3 { font-family: 'Inter'; font-size: 17px; font-weight: 600; color: #F1F5F9; margin-top: 1.75rem; margin-bottom: 0.75rem; }
+.article-body p { margin-bottom: 1.25rem; }
+.article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 13px; }
+.article-body th, .article-body td { border: 1px solid rgba(255,255,255,0.08); padding: 0.6rem 0.9rem; text-align: left; }
+.article-body th { background: #141D21; color: #F1F5F9; font-weight: 600; }
+.article-body td { color: #94A3B8; }
+.article-body .table-wrap { overflow-x: auto; }
+.article-body .callout { background: #0E1417; border-left: 3px solid #4CD7F6; border-radius: 0.5rem; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+.article-body .callout strong { color: #4CD7F6; }
+.article-body ul { list-style: disc; padding-left: 1.25rem; margin-bottom: 1.25rem; }
+.article-body li { margin-bottom: 0.5rem; }
+.article-body a { color: #4CD7F6; text-decoration: underline; text-underline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Mobile navigation panel (below the lg breakpoint) */
+#mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.28s cubic-bezier(.16,.84,.44,1), opacity 0.22s ease;
+}
+#mobile-menu.is-open { max-height: 70vh; overflow-y: auto; opacity: 1; }
+#mobile-menu-toggle .icon-close { display: none; }
+#mobile-menu-toggle.is-open .icon-menu { display: none; }
+#mobile-menu-toggle.is-open .icon-close { display: inline-block; }
+body.menu-open { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  #mobile-menu { transition: none; }
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary": "#00332E", "border-cyan": "rgba(6, 182, 212, 0.25)", "primary-fixed": "#3FE0D6", "surface-container-low": "#181c1e", "on-secondary-fixed": "#001f26", "surface-card": "#0E1417", "on-secondary": "#003640", "outline-variant": "#3b4a41", "surface-variant": "#313538", "on-primary-fixed": "#001F1D", "on-primary-container": "#0A5B56", "outline": "#84958a", "surface-card-elevated": "#141D21", "on-primary-fixed-variant": "#0A4440", "inverse-primary": "#0C6A64", "surface-tint": "#1BB8AD", "telemetry-warning": "#F59E0B", "background": "#101416", "tertiary": "#A8EFE8", "tertiary-fixed-dim": "#17ADA2", "text-secondary": "#94A3B8", "error": "#ffb4ab", "border-biometric": "rgba(32, 197, 183, 0.22)", "secondary-fixed-dim": "#4cd7f6", "surface-base": "#080C0E", "on-error": "#690005", "surface-container": "#1c2022", "tertiary-container": "#22C4BA", "border-subtle": "rgba(255, 255, 255, 0.08)", "secondary": "#4cd7f6", "primary-container": "#20C5B7", "on-tertiary-container": "#0A5B56", "error-container": "#93000a", "glow-mint": "rgba(32, 197, 183, 0.18)", "surface-bright": "#363a3c", "telemetry-critical": "#EF4444", "secondary-fixed": "#acedff", "primary-fixed-dim": "#1BB8AD", "surface-container-highest": "#313538", "on-surface": "#e0e3e5", "on-secondary-fixed-variant": "#004e5c", "on-secondary-container": "#00424e", "on-surface-variant": "#b9cbbf", "tertiary-fixed": "#33D9CC", "inverse-surface": "#e0e3e5", "on-error-container": "#ffdad6", "surface-dim": "#101416", "secondary-container": "#03b5d3", "primary": "#A6EFE7", "on-tertiary-fixed": "#001F1D", "text-tertiary": "#64748B", "on-tertiary-fixed-variant": "#0A4440", "on-background": "#e0e3e5", "on-tertiary": "#00332E", "inverse-on-surface": "#2d3133", "text-primary": "#F1F5F9", "surface-container-lowest": "#0b0f11", "surface": "#101416", "surface-container-high": "#262b2d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "3rem", "space-xs": "0.5rem", "space-md": "1rem", "container-max": "1240px", "space-2xs": "0.25rem", "gutter-mobile": "1rem", "gutter-desktop": "2rem", "space-3xl": "4.5rem", "space-4xl": "6rem", "space-sm": "0.75rem", "space-lg": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "caption": ["Inter"], "headline-lg": ["Inter"], "body-base": ["Inter"], "display-hero-mobile": ["Inter"], "display-hero": ["Inter"], "data-metric": ["JetBrains Mono"], "headline-md": ["Inter"], "headline-lg-mobile": ["Inter"], "telemetry-badge": ["JetBrains Mono"], "data-readout": ["JetBrains Mono"], "body-sm": ["Inter"], "body-lg": ["Inter"] }, "fontSize": { "caption": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "400" }], "headline-lg": ["38px", { "lineHeight": "1.18", "letterSpacing": "-0.025em", "fontWeight": "600" }], "body-base": ["15px", { "lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero-mobile": ["36px", { "lineHeight": "1.12", "letterSpacing": "-0.025em", "fontWeight": "700" }], "display-hero": ["56px", { "lineHeight": "1.08", "letterSpacing": "-0.035em", "fontWeight": "700" }], "data-metric": ["32px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }], "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg-mobile": ["28px", { "lineHeight": "1.22", "letterSpacing": "-0.02em", "fontWeight": "600" }], "telemetry-badge": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "600" }], "data-readout": ["14px", { "lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface-base font-body-base text-body-base text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-card/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-20 max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md"><a class="flex items-center gap-space-sm" href="index.html"><img alt="AeroCardia Logo" class="h-8 w-auto object-contain" src="assets/img/aerocardia-logo.png"/><span class="font-headline-md text-headline-md font-semibold tracking-tight text-text-primary">AeroCardia</span></a><nav class="hidden lg:flex items-center gap-space-md bg-surface-container-lowest/80 px-space-md py-space-xs rounded-full"><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="index.html">Product</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="index.html#how-it-works">How it works</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="index.html#about">About</a><a aria-current="page" class="px-space-md py-space-xs transition-colors bg-surface-container-high text-primary-container font-semibold rounded-full" href="blog.html">Blog</a><a class="px-space-md py-space-xs text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="pre-order.html">Pre-order</a></nav><div class="flex items-center gap-space-sm sm:gap-space-md"><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-xs rounded-full bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold tracking-tight shadow-[0_0_20px_rgba(32,197,183,0.35)] hover:bg-primary hover:text-on-primary transition-all duration-300" href="index.html#waitlist">Join the waitlist</a><button id="mobile-menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" class="lg:hidden flex items-center justify-center w-11 h-11 rounded-full bg-surface-container-lowest/80 text-text-primary border border-white/10 active:bg-surface-container-high transition-colors"><span class="material-symbols-outlined icon-menu text-[22px]">menu</span><span class="material-symbols-outlined icon-close text-[22px]">close</span></button></div></div><nav id="mobile-menu" class="lg:hidden bg-surface-card/97 backdrop-blur-xl border-t border-white/5" aria-label="Mobile"><div class="max-w-[1240px] mx-auto px-gutter-mobile py-space-md flex flex-col gap-space-2xs"><a class="px-space-md py-space-sm rounded-xl text-body-base text-body-base text-on-surface-variant" href="index.html">Product</a><a class="px-space-md py-space-sm rounded-xl text-body-base text-body-base text-on-surface-variant" href="index.html#how-it-works">How it works</a><a class="px-space-md py-space-sm rounded-xl text-body-base text-body-base text-on-surface-variant" href="index.html#about">About</a><a class="px-space-md py-space-sm rounded-xl text-body-base text-body-base font-semibold text-text-primary bg-surface-container-lowest/60" href="blog.html">Blog</a><a class="px-space-md py-space-sm rounded-xl text-body-base text-body-base text-on-surface-variant" href="pre-order.html">Pre-order</a><a class="mt-space-xs inline-flex items-center justify-center px-space-lg py-space-sm rounded-full bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold tracking-tight shadow-[0_0_20px_rgba(32,197,183,0.35)]" href="index.html#waitlist">Join the waitlist</a></div></nav></header>
+<main class="w-full pt-20 bg-surface-base">
+<section class="max-w-[1240px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-space-2xl lg:py-space-3xl">
+<h1 class="reveal font-headline-lg text-headline-lg text-text-primary mb-space-sm">Blog</h1>
+<p class="reveal font-body-lg text-body-lg text-text-secondary max-w-2xl mb-space-xl">Articles on training physiology, fitness data and how to make sense of the numbers.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- BLOG-CARDS:START -->
+<a class="reveal group flex flex-col overflow-hidden rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300" href="blog-we-track-everything-fitness-data.html">
+<div class="aspect-[16/9] overflow-hidden bg-surface-container-lowest"><img alt="Dozens of faint, jittery data lines on a dark background converging into one clear rising line, representing noisy fitness data becoming a single useful signal." class="w-full h-full object-cover" loading="lazy" src="assets/img/blog/we-track-everything-fitness-data/hero.webp"/></div>
+<div class="flex flex-col flex-1 gap-space-sm p-space-lg">
+<p class="font-mono text-caption text-text-tertiary">Nov 4 · 10 min read</p>
+<h2 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">We track everything. But do we really understand our fitness?</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">Wearables give endurance athletes plenty of numbers. What steps, heart rate, pace, calories and oxygen uptake estimates can and can&#x27;t tell you, with sources.</p>
+<span class="mt-auto pt-space-sm inline-flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold"><span>Read the post</span><span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+</div>
+</a>
+<a class="reveal group flex flex-col overflow-hidden rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300" href="blog-how-aro2-senses-your-breath.html">
+<div class="aspect-[16/9] overflow-hidden bg-surface-container-lowest"><img alt="" class="w-full h-full object-contain p-space-2xl" loading="lazy" src="assets/img/aerocardia-logo.png"/></div>
+<div class="flex flex-col flex-1 gap-space-sm p-space-lg">
+<p class="font-mono text-caption text-text-tertiary">Sep 17 · 4 min read</p>
+<h2 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">How ARO2 Senses Your Breath</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">No hoses, no metabolic cart. Here's the physiology behind how the ARO2 sensor pod turns a single sealed breath into live VO2, ventilation and RER.</p>
+<span class="mt-auto pt-space-sm inline-flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold"><span>Read the post</span><span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+</div>
+</a>
+<a class="reveal group flex flex-col overflow-hidden rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300" href="blog-founder-showcase.html">
+<div class="aspect-[16/9] overflow-hidden bg-surface-container-lowest"><img alt="Matthew Behr presenting AeroCardia on stage at the CLIC innovation competition" class="w-full h-full object-cover" loading="lazy" src="assets/img/blog/founder-showcase/clic-presentation.jpg"/></div>
+<div class="flex flex-col flex-1 gap-space-sm p-space-lg">
+<p class="font-mono text-caption text-text-tertiary">Sep 11 · 2 min read</p>
+<h2 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">Founder Showcase</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">Founder and CEO Matthew Behr on ultramarathons, why AeroCardia exists, and building a device that measures instead of estimates.</p>
+<span class="mt-auto pt-space-sm inline-flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold"><span>Read the post</span><span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+</div>
+</a>
+<a class="reveal group flex flex-col overflow-hidden rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300" href="blog-tour-de-france-vo2-max.html">
+<div class="aspect-[16/9] overflow-hidden bg-surface-container-lowest"><img alt="Cyclists racing in a peloton, motion blur" class="w-full h-full object-cover" loading="lazy" src="https://static.wixstatic.com/media/nsplsh_534a57504b4d6239752d6b~mv2_d_3000_1995_s_2.jpg/v1/fill/w_1600,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/img.jpg"/></div>
+<div class="flex flex-col flex-1 gap-space-sm p-space-lg">
+<p class="font-mono text-caption text-text-tertiary">Aug 20 · 4 min read</p>
+<h2 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">Peak Performance: The Tour de France Guide to VO2 Max</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">What three weeks of racing at the limit of human endurance teaches the rest of us about VO2 max, pacing, and training.</p>
+<span class="mt-auto pt-space-sm inline-flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold"><span>Read the post</span><span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+</div>
+</a>
+<a class="reveal group flex flex-col overflow-hidden rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300" href="blog-vo2-max-measurement-guide.html">
+<div class="aspect-[16/9] overflow-hidden bg-surface-container-lowest"><img alt="Runner stretching outdoors at sunset" class="w-full h-full object-cover" loading="lazy" src="https://static.wixstatic.com/media/c95d18_b836d9d9a6384571afabf56f301a739b~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/img.jpg"/></div>
+<div class="flex flex-col flex-1 gap-space-sm p-space-lg">
+<p class="font-mono text-caption text-text-tertiary">Jul 27 · 4 min read</p>
+<h2 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">The Ultimate Guide to VO2 Max: Measurement, Normative Data, and Performance Optimization</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">How VO2 max is measured, what an elite score looks like by age and sex, and the training protocols that actually move it.</p>
+<span class="mt-auto pt-space-sm inline-flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold"><span>Read the post</span><span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+</div>
+</a>
+<a class="reveal group flex flex-col overflow-hidden rounded-2xl bg-surface-card hover:bg-surface-card-elevated border-subtle transition-all duration-300" href="blog-vo2-max-healthspan.html">
+<div class="aspect-[16/9] overflow-hidden bg-surface-container-lowest"><img alt="Runner's legs mid-stride on a track" class="w-full h-full object-cover" loading="lazy" src="https://static.wixstatic.com/media/c95d18_71f643dc8d6a46fd8e8bd6b7e6304391~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/img.jpg"/></div>
+<div class="flex flex-col flex-1 gap-space-sm p-space-lg">
+<p class="font-mono text-caption text-text-tertiary">Jul 13 · 3 min read</p>
+<h2 class="font-headline-md text-headline-md text-text-primary group-hover:text-primary-container transition-colors">What Is VO2 Max, and Why Does It Matter?</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">What VO2 max is, why it matters for endurance training, and how to measure it, in the lab and on the go.</p>
+<span class="mt-auto pt-space-sm inline-flex items-center gap-space-xs text-primary-container font-mono text-caption font-semibold"><span>Read the post</span><span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span></span>
+</div>
+</a>
+<!-- BLOG-CARDS:END -->
+</div>
+</section>
+</main>
+<footer class="w-full bg-surface-card-elevated"><div class="max-w-[1240px] mx-auto px-gutter-desktop pt-space-3xl pb-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-2xl"><div class="lg:col-span-2 flex flex-col gap-space-md pr-space-xl"><a class="flex items-center gap-space-sm" href="index.html"><img alt="AeroCardia Logo" class="h-7 w-auto object-contain" src="assets/img/aerocardia-logo.png"/><span class="font-headline-md text-headline-md font-semibold tracking-tight text-text-primary">AeroCardia</span></a><p class="font-body-sm text-body-sm text-text-secondary max-w-sm">Portable VO2 and breath sensing for runners, cyclists and everyday athletes.</p></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Explore</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="index.html">Product</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="index.html#how-it-works">How it works</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="index.html#about">About us</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="blog.html">Blog</a></li></ul></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Get started</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="index.html#waitlist">Join the waitlist</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="mailto:info@aerocardia.com">Contact the team</a></li></ul></div><div class="flex flex-col gap-space-sm"><h4 class="font-telemetry-badge text-telemetry-badge uppercase text-primary tracking-wider">Connect</h4><ul class="flex flex-col gap-space-xs font-body-sm text-body-sm"><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://www.linkedin.com/company/aerocardia" rel="noopener" target="_blank">LinkedIn</a></li><li class="flex"><a class="text-on-surface-variant hover:text-on-surface transition-colors" href="https://www.instagram.com/aerocardia/" rel="noopener" target="_blank">Instagram</a></li><li class="flex"><a class="text-on-surface-variant hover:text-primary transition-colors font-data-readout text-data-readout" href="mailto:info@aerocardia.com">info@aerocardia.com</a></li></ul></div></div><div class="pt-space-xl flex flex-col gap-space-md"><div class="p-space-md rounded-lg bg-surface-container-lowest/60 text-text-tertiary font-caption text-caption leading-relaxed"><span class="text-text-secondary font-semibold">Wellness Disclaimer:</span> AeroCardia is intended exclusively for general wellness and fitness purposes. It is not a medical device and is not intended for use in the diagnosis, treatment, cure, mitigation, prevention, or monitoring of any disease or medical condition. Do not rely on AeroCardia for medical decisions or in place of professional medical advice or emergency medical care. If you believe you are experiencing a medical emergency, contact your local emergency services immediately.</div><div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm text-text-tertiary font-caption text-caption"><p>© 2026 AeroCardia Inc. All rights reserved.</p><div class="flex items-center gap-space-md"><a class="hover:text-text-secondary transition-colors" href="#">Privacy Policy</a><a class="hover:text-text-secondary transition-colors" href="#">Terms of Service</a><a class="hover:text-text-secondary transition-colors" href="#">Telemetry Compliance</a></div></div></div></div></footer>
+<script>
+(function () {
+  var btn = document.getElementById('mobile-menu-toggle');
+  var menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+  function closeMenu() {
+    btn.classList.remove('is-open');
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }
+  function openMenu() {
+    btn.classList.add('is-open');
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+  }
+  btn.addEventListener('click', function () {
+    if (menu.classList.contains('is-open')) { closeMenu(); } else { openMenu(); }
+  });
+  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+  window.addEventListener('resize', function () { if (window.innerWidth >= 1024) closeMenu(); });
+})();
+(function() {
+  var targets = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || !targets.length) { targets.forEach(function(t){t.classList.add('is-visible');}); return; }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(t) { io.observe(t); });
+})();
+</script>
+</body></html>
